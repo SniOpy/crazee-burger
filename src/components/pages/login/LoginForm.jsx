@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { Link } from 'react-router-dom';
 
 export default function LoginForm() {
      //! state
@@ -7,7 +8,7 @@ export default function LoginForm() {
      const handleSubmit = (event) => { 
          event.preventDefault();
          alert(`Bonjour ${firstname}`)
-         setFirstname(" ")
+         setFirstname("")
       }
 
       const handleChange = (event) => { 
@@ -20,14 +21,15 @@ export default function LoginForm() {
         <h1>Bienvenue chez nous !</h1>
         <br />
         <h2>Connectez-vous</h2>
-        <form action="" onSubmit={handleSubmit}>
+        <form action="submit" onSubmit={handleSubmit}>
             <input 
               type="text" 
               onChange={handleChange}  
               placeholder='Entrer votre nom...'
               required
             />
-            <button type='submit' >Accéder à votre espace</button>
+            <Link to="/order"><button type='submit'>Accéder à votre espace</button></Link>
+
         </form>
     </div>
   )
