@@ -1,14 +1,16 @@
-import LoginPage from "./components/pages/login/LoginPage";
+    import { Route, Routes } from "react-router-dom";
+    import LoginPage from "./components/pages/login/LoginPage";
+    import ErrorPage from "./components/pages/error/ErrorPage";
+    import OrderPage from "./components/pages/order/OrderPage";
 
+    export default function App() {
 
-
-export default function App() {
-  //! state
-  
-  //! comportements
-  
-  //! render
-
-  return <LoginPage/>
-}
+            return (
+            <Routes>
+              <Route path="/" element={<LoginPage/>}></Route>
+              <Route path="/order/:username" element={<OrderPage/>}></Route>
+              <Route path="*" element={<ErrorPage/>}></Route>
+            </Routes>
+            )
+  }
 
