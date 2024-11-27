@@ -1,7 +1,9 @@
 import React from 'react'
 import { FaUserCircle } from 'react-icons/fa';
 import styled from 'styled-components'
-import { theme } from '../theme';
+import ButtonPrimary from './ButtonPrimary';
+import { FaChevronRight } from "react-icons/fa";
+
 export default function TextInput({ value, onChange, ...restProps }) {
 
   return (
@@ -12,7 +14,10 @@ export default function TextInput({ value, onChange, ...restProps }) {
         onChange={onChange}
         {...restProps}
       />
-      <button type='submit'>Accéder à mon espace  </button>
+      <ButtonPrimary
+        label={"Accéder à mon espace"}
+        icon={<FaChevronRight className='icon' />} />
+
     </TextInputStyled>
   )
 }
@@ -36,22 +41,9 @@ const TextInputStyled = styled.div`
     padding: 14px;
     min-width: 10px;
   }
-  
-  button {
-    background-color: ${theme.colors.primary};
-    color: #fff;
-    padding: 10px;
-    margin-top: 8px;
-    font-family: 'Open Sans', cursive;
-    transition:0.3s;
-    border-radius: 5px;
-  }
 
-  button:hover {
-    background-color: #fff;
-    color: ${theme.colors.primary};
-    /* border: 1px solid ${theme.colors.primary}; */
-    cursor: pointer;  
+  .icon {
+      margin-left: 10px;
   }
 `;
 
