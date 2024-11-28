@@ -3,6 +3,7 @@ import { FaUserCircle } from 'react-icons/fa';
 import styled from 'styled-components'
 import ButtonPrimary from './ButtonPrimary';
 import { FaChevronRight } from "react-icons/fa";
+import { theme } from '../theme';
 
 export default function TextInput({ value, onChange, ...restProps }) {
 
@@ -32,6 +33,10 @@ const TextInputStyled = styled.div`
     padding: 5px 35px;
     border-radius: 5px;
     font-family: "Open Sans", cursive;
+
+    &::placeholder {
+      color: ${theme.colors.greyMedium}
+    }
   }
 
   
