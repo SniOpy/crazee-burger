@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+import styled from "styled-components";
 
 export default function NavBarRight({ username }) {
     return (
@@ -9,5 +11,5 @@ export default function NavBarRight({ username }) {
 }
 
 const NavBarRightStyled = styled.div`
-  
+  border:1px solid black;
 `;

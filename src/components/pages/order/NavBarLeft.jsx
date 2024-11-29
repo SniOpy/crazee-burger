@@ -10,5 +10,5 @@ export default function NavBarLeft() {
 }
 
 const NavBarLeftStyled = styled.div`
-  
+  border:1px solid purple;
 `;
