@@ -7,7 +7,7 @@ export default function LoginPage() {
   //! render
   return (
     <LoginPageStyled>
-      <Logo />
+      <Logo className={"logo-img"} />
       <LoginForm />
     </LoginPageStyled>
   )
@@ -15,7 +15,6 @@ export default function LoginPage() {
 
 
 const LoginPageStyled = styled.div`
-  // background-color: red;
   height: 100vh;
   display: flex;
   flex-direction: column;
@@ -25,7 +24,6 @@ const LoginPageStyled = styled.div`
   &::before {
     content: "";
     background:url("/images/burger-background.jpg") rgba(0, 0, 0, 0.75);
-    /* background-color: #000; */
     background-size : cover;
     background-position: center;
     background-blend-mode: darken;
@@ -38,4 +36,8 @@ const LoginPageStyled = styled.div`
     right:0;
     z-index:-1; // permet de poser des éléments sur d'autres
   }
+  .logo-img {
+        transform: scale(2.5);
+    }
+  
 `;
