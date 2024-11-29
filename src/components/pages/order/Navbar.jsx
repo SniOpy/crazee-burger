@@ -5,14 +5,15 @@ import NavBarRight from "../order/NavBarRight";
 export default function Navbar({ username }) {
     return (
         <NavbarStyled>
-            <div className="navbar">
-                <NavBarLeft />
-                <NavBarRight username={username} />
-            </div>
+            <NavBarLeft />
+            <NavBarRight username={username} />
         </NavbarStyled>
     )
 }
 
 const NavbarStyled = styled.div`
-  
+    /* background: blue; */
+    display:flex;
+    justify-content: space-between;
+    padding: 0 20px;
 `;

@@ -1,14 +1,14 @@
 
 import styled from 'styled-components';
-
+import Logo from '../../reusable-ui/Logo';
 export default function NavBarLeft() {
     return (
         <NavBarLeftStyled>
-            Left
+            <Logo />
         </NavBarLeftStyled>
     )
 }
 
 const NavBarLeftStyled = styled.div`
-  border:1px solid purple;
+
 `;

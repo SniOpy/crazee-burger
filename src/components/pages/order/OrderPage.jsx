@@ -24,19 +24,9 @@ const OrderPageStyled = styled.div`
   justify-content: center;
   align-items: center;
 
-
-  .container {
+    .container {
     background:red;
     height:95vh;
     width: 1400px;
-  }
-
-  .navbar{
-    background: blue;
-    display:flex;
-    justify-content: space-between;
-  }
-  .main{
-    background: green;
   }
 `;
