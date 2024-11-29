@@ -1,19 +1,20 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import { FaCircleUser } from "react-icons/fa6";
+import { theme } from "../../theme";
+import { FaRegUserCircle } from "react-icons/fa";
 
 export default function NavBarRight({ username }) {
     return (
         <NavBarRightStyled>
             <div className="info">
                 <div className="profile">
-                    <span>Bonjour {username}</span>
+                    <span>Hey, <span className="username">{username}</span></span>
                     <Link to="/" className="logout-button">
                         <a >Se déconnecter</a>
                     </Link>
                 </div>
                 <div className="icon">
-                    <FaCircleUser className="icon-user" />
+                    <FaRegUserCircle className="icon-user" />
                 </div>
             </div>
         </NavBarRightStyled>
@@ -30,12 +31,13 @@ const NavBarRightStyled = styled.div`
         display: flex;
         gap:15px;
         margin-right:50px; 
-        color:#747B91;F04: 
+        color:#747B91;
     }
     .profile {
         display:flex;
         flex-direction: column;
         align-items: flex-end;
+        font-size: ${theme.fonts.P2};
         
     }
     .icon-user {
@@ -46,10 +48,15 @@ const NavBarRightStyled = styled.div`
     a{
     font-size: 10px;
     text-decoration:none;
-    color:#fff;
+    color:${theme.colors.greySemiDark};
 
-    &:hover {
-    text-decoration:underline #fff;
+        &:hover {
+        text-decoration:underline${theme.colors.greyMedium};;
     }
-  }
+    }
+
+    .username {
+        color: ${theme.colors.primary};
+        font-weight: ${theme.weights.bold};
+    }
 `;
