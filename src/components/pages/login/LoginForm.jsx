@@ -51,7 +51,7 @@ const LoginFormStyled = styled.div`
     letter-spacing: 1.5px;;
   }
   h2 {
-    font-weight: ${theme.weights.medium};
+    font-weight: ${theme.fonts.weights.medium};
   }
 
   hr{

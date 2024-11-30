@@ -57,6 +57,6 @@ const NavBarRightStyled = styled.div`
 
     .username {
         color: ${theme.colors.primary};
-        font-weight: ${theme.weights.bold};
+        font-weight: ${theme.fonts.weights.bold};
     }
 `;
