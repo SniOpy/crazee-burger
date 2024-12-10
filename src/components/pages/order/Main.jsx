@@ -13,9 +13,18 @@ export default function Main() {
 
         {menu.map((product) => {
           return (
-          <div className="card" key={product.id}>
-            <div className="product">{product.title}</div>
-           </div>
+            <div className="product" key={product.id}>
+              <div className="image">
+                <img src={product.imageSource} alt={product.title} />
+              </div>
+              <div className="info-text">
+                <div className="title">{product.title}</div>
+                <div className="description">
+                  <div className="price">{product.price} €F</div>
+                  <button className="add-button">Ajouter</button>
+                </div>
+              </div>
+            </div>
           )
         })}
       </div>
@@ -53,6 +62,16 @@ const MainStyled = styled.div`
       border-radius: ${theme.borderRadius.round};
       width:240px;
       height:330px;
+
+      .image {
+        width: 200px;
+        height: 145px;
+        img{
+          object-fit: contain;
+          width: 100%;
+          height: 100%;
+        }
+      }
     }
   }
 `;
