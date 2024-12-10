@@ -1,21 +1,23 @@
 import styled from "styled-components";
 import { theme } from "../../theme";
-import {fakeMenu1} from '../../../fakeData/fakeMenu'
+import {fakeMenu2} from '../../../fakeData/fakeMenu'
 import { useState } from "react";
 
 export default function Main() {
 
-    const [menu, setMenu] = useState(fakeMenu1)
+    const [menu, setMenu] = useState(fakeMenu2)
   return (
     <MainStyled>
       {/* <div className="basket">basket</div> */}
       <div className="menu">
-          {menu.map((product) => {
-            return (
-            <h2 key={product.id}>
-              {product.title}
-            </h2>)
-          })}
+
+        {menu.map((product) => {
+          return (
+          <div className="card" key={product.id}>
+            <div className="product">{product.title}</div>
+           </div>
+          )
+        })}
       </div>
     </MainStyled>
   )
@@ -27,17 +29,30 @@ const MainStyled = styled.div`
   border-bottom-left-radius: ${theme.borderRadius.extraRound};
   border-bottom-right-radius:${theme.borderRadius.extraRound};
   box-shadow: 0px 8px 20px 8px rgba(0, 0, 0, 0.2) inset ;
-  display: grid;
-    grid-template-columns: 1fr;
+ 
   /* grid-template-columns: 25% 1fr; */
   overflow-y: scroll;
 
+
+
   .basket {
-    border: 2px solid purple;
-   background: pink;
+    border: 1px solid purple;
   }
   .menu {
-    border: 2px solid purple;
-    background: purple;
+    
+    border: 1px solid pink;
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    grid-row-gap: 60px;
+    padding: 50px 50px 150px;
+    justify-items: center;
+
+    .product {
+      background: ${theme.colors.background_white};
+      box-shadow: 0px 8px 20px 8px rgba(0, 0, 0, 0.2) inset;
+      border-radius: ${theme.borderRadius.round};
+      width:240px;
+      height:330px;
+    }
   }
 `;
