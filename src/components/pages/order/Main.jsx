@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { theme } from "../../theme";
 import {fakeMenu2} from '../../../fakeData/fakeMenu'
 import { useState } from "react";
+import Product from "./Product";
 
 export default function Main() {
 
@@ -13,18 +14,7 @@ export default function Main() {
 
         {menu.map((product) => {
           return (
-            <div className="product" key={product.id}>
-              <div className="image">
-                <img src={product.imageSource} alt={product.title} />
-              </div>
-              <div className="info-text">
-                <div className="title">{product.title}</div>
-                <div className="description">
-                  <div className="price">{product.price} €F</div>
-                  <button className="add-button">Ajouter</button>
-                </div>
-              </div>
-            </div>
+            <Product imageSource={product.imageSource} title={product.title} price={product.price} key={product.id}/>
           )
         })}
       </div>
@@ -38,7 +28,6 @@ const MainStyled = styled.div`
   border-bottom-left-radius: ${theme.borderRadius.extraRound};
   border-bottom-right-radius:${theme.borderRadius.extraRound};
   box-shadow: 0px 8px 20px 8px rgba(0, 0, 0, 0.2) inset ;
- 
   /* grid-template-columns: 25% 1fr; */
   overflow-y: scroll;
 
