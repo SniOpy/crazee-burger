@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import { theme } from "../../theme";
-import {fakeMenu2} from '../../../fakeData/fakeMenu'
+import { theme } from "../../../theme";
+import {fakeMenu2} from '../../../../fakeData/fakeMenu'
 import { useState } from "react";
 import Product from "./Product";
 
