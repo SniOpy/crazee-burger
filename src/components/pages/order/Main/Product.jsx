@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { theme } from "../../theme";
+import { theme } from "../../../theme";
 
 export default function Product({title, imageSource, price}) {
   return (
@@ -11,7 +11,7 @@ export default function Product({title, imageSource, price}) {
                 <div className="title">{title}</div>
                 <div className="description">
                   <div className="price">{price} €</div>
-                  <button className="add-button">Ajouter</button>
+                  <button type="button" className="add-button">Ajouter</button>
                 </div>
               </div>
             </ProductStyled>
@@ -41,6 +41,39 @@ const ProductStyled = styled.div`
       }
 
       .info-text {
-        border: 1px solid green;
+        display:grid;
+
+        .title {
+            font-family: 'Amatic SC', cursive;
+            font-size :36px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+          }
+        .description {
+          display:grid;
+          grid-template-columns: 1fr 1fr ;
+          align-items: center;
+
+          .price {
+            width: 100%;
+            color:${theme.colors.primary};
+            font-size: 16px;
+            font-family: "Open Sans";
+            overflow: hidden;
+            text-overflow: ellipsis;
+          }
+          
+
+          .add-button {
+            background-color: ${theme.colors.primary};
+            color:#fff;
+            border: none;
+            width: 95px;
+            height: 38px;
+            border-radius: ${theme.borderRadius.round};
+            font-weight: ${theme.weights.medium}
+          }
+        }
       }
 `;
