@@ -19,4 +19,10 @@ const PrimaryButtonStyled = styled.button`
             height: 38px;
             border-radius: ${theme.borderRadius.round};
             font-weight: ${theme.weights.medium};
+
+            &:hover {
+                background: #fff;
+                color: ${theme.colors.primary};
+                border : 1px solid ${theme.colors.primary};
+            }
 `;
