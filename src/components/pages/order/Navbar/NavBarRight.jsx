@@ -1,12 +1,16 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { FaRegUserCircle } from "react-icons/fa";
+import ToggleButton from "../../../../utils/ToggleButton";
 import { theme } from "../../../theme";
 
 export default function NavBarRight({ username }) {
     return (
         <NavBarRightStyled>
             <div className="info">
+                <div className="admin">
+                    <ToggleButton/>
+                </div>
                 <div className="profile">
                     <span>Hey, <span className="username">{username}</span></span>
                     <Link to="/" className="logout-button">
