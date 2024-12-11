@@ -1,7 +1,7 @@
 import styled from "styled-components";
-import NavBarLeft from "../order/NavBarLeft";
-import NavBarRight from "../order/NavBarRight";
-import { theme } from "../../theme";
+import { theme } from "../../../theme";
+import NavBarLeft from "./NavBarLeft";
+import NavBarRight from "./NavBarRight";
 
 export default function Navbar({ username }) {
     return (

@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import { theme } from "../../theme";
 import { FaRegUserCircle } from "react-icons/fa";
+import { theme } from "../../../theme";
 
 export default function NavBarRight({ username }) {
     return (
