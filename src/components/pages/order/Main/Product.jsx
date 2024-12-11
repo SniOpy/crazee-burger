@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { theme } from "../../../theme";
-
+import { formatPrice } from "../../../../utils/maths";
 export default function Product({title, imageSource, price}) {
   return (
             <ProductStyled className="product">
@@ -10,7 +10,7 @@ export default function Product({title, imageSource, price}) {
               <div className="info-text">
                 <div className="title">{title}</div>
                 <div className="description">
-                  <div className="price">{price} €</div>
+                  <div className="price">{formatPrice(price)}</div>
                   <button type="button" className="add-button">Ajouter</button>
                 </div>
               </div>
