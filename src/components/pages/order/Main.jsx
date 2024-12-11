@@ -14,7 +14,8 @@ export default function Main() {
 
         {menu.map((product) => {
           return (
-            <Product imageSource={product.imageSource} title={product.title} price={product.price} key={product.id}/>
+            <Product 
+            imageSource={product.imageSource} title={product.title} price={product.price} key={product.id}/>
           )
         })}
       </div>
@@ -44,23 +45,5 @@ const MainStyled = styled.div`
     grid-row-gap: 60px;
     padding: 50px 50px 150px;
     justify-items: center;
-
-    .product {
-      background: ${theme.colors.background_white};
-      box-shadow: 0px 8px 20px 8px rgba(0, 0, 0, 0.2) inset;
-      border-radius: ${theme.borderRadius.round};
-      width:240px;
-      height:330px;
-
-      .image {
-        width: 200px;
-        height: 145px;
-        img{
-          object-fit: contain;
-          width: 100%;
-          height: 100%;
-        }
-      }
-    }
   }
 `;
