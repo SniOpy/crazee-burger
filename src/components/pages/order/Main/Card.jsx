@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { theme } from "../../../theme";
-import { formatPrice } from "../../../../utils/maths";
+import PrimaryButton from "./PrimaryButton";
 export default function Card({title, imageSource, leftDescription}) {
   return (
             <CardStyled className="card">
@@ -10,8 +10,10 @@ export default function Card({title, imageSource, leftDescription}) {
               <div className="info-text">
                 <div className="title">{title}</div>
                 <div className="description">
-                  <div className="price">{leftDescription}</div>
-                  <button type="button" className="add-button">Ajouter</button>
+                  <div className="leftDescription">{leftDescription}</div>
+                  <div className="rightDescription">
+                    <PrimaryButton className="primary-button" label="Ajouter"/>
+                  </div>
                 </div>
               </div>
             </CardStyled>
@@ -55,24 +57,13 @@ const CardStyled = styled.div`
           grid-template-columns: 1fr 1fr ;
           align-items: center;
 
-          .price {
+          .leftDescription {
             width: 100%;
             color:${theme.colors.primary};
             font-size: 16px;
             font-family: "Open Sans";
             overflow: hidden;
             text-overflow: ellipsis;
-          }
-          
-
-          .add-button {
-            background-color: ${theme.colors.primary};
-            color:#fff;
-            border: none;
-            width: 95px;
-            height: 38px;
-            border-radius: ${theme.borderRadius.round};
-            font-weight: ${theme.weights.medium}
           }
         }
       }
