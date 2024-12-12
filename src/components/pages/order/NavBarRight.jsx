@@ -2,11 +2,18 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { theme } from "../../theme";
 import { FaRegUserCircle } from "react-icons/fa";
+import ToggleButton from "../../reusable-ui/ToggleButton";
 
 export default function NavBarRight({ username }) {
     return (
         <NavBarRightStyled>
             <div className="info">
+                <div className="admin">
+                    <ToggleButton 
+                        labelIfUnchecked="ACTIVER LE MODE ADMIN"
+                        labelIfChecked="désactiver le mode admin"
+                        />
+                </div>
                 <div className="profile">
                     <span>Hey, <span className="username">{username}</span></span>
                     <Link to="/" className="logout-button">
