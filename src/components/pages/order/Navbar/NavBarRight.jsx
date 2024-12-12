@@ -1,15 +1,32 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import { FaRegUserCircle } from "react-icons/fa";
+import { FaRegUserCircle, FaUserSecret } from "react-icons/fa";
 import ToggleButton from "../../../../utils/ToggleButton";
 import { theme } from "../../../theme";
+import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer, toast } from "react-toastify";
+
 
 export default function NavBarRight({ username }) {
+
+    const notify = () => toast.info("Mode admin activé", {
+        icon: <FaUserSecret size={30} />,
+        theme: "dark",
+        position: "bottom-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      })
+    
     return (
         <NavBarRightStyled>
             <div className="info">
                 <div className="admin">
-                    <ToggleButton/>
+                    <ToggleButton labelIfUnchecked="ACTIVER LE MODE ADMIN" labelIfChecked="Désactiver le mode admin"/>
+                    <ToastContainer />
                 </div>
                 <div className="profile">
                     <span>Hey, <span className="username">{username}</span></span>
@@ -18,7 +35,7 @@ export default function NavBarRight({ username }) {
                     </Link>
                 </div>
                 <div className="icon">
-                    <FaRegUserCircle className="icon-user" />
+                    <FaRegUserCircle className="icon-user"/>
                 </div>
             </div>
         </NavBarRightStyled>
@@ -42,6 +59,7 @@ const NavBarRightStyled = styled.div`
         flex-direction: column;
         align-items: flex-end;
         font-size: ${theme.fonts.P2};
+        margin-left: 50px;
         
     }
     .icon-user {
