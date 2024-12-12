@@ -5,11 +5,17 @@ import ToggleButton from "../../../../utils/ToggleButton";
 import { theme } from "../../../theme";
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer, toast } from "react-toastify";
+import { useState } from "react";
 
 
 export default function NavBarRight({ username }) {
 
-    const notify = () => toast.info("Mode admin activé", {
+    const [isModeAdmin, setIsModeAdmin] = useState(false);
+
+    const displayToastNotification = () => {
+
+        if(!isModeAdmin) {
+        toast.info("Mode admin activé", {
         icon: <FaUserSecret size={30} />,
         theme: "dark",
         position: "bottom-right",
@@ -20,12 +26,20 @@ export default function NavBarRight({ username }) {
         draggable: true,
         progress: undefined,
       })
+      
+    }
+    setIsModeAdmin(!isModeAdmin);
     
+}
     return (
         <NavBarRightStyled>
             <div className="info">
                 <div className="admin">
-                    <ToggleButton labelIfUnchecked="ACTIVER LE MODE ADMIN" labelIfChecked="Désactiver le mode admin"/>
+                    <ToggleButton 
+                        labelIfUnchecked="ACTIVER LE MODE ADMIN" 
+                        labelIfChecked="Désactiver le mode admin"
+                        onToggle={displayToastNotification}/>
+                        
                     <ToastContainer />
                 </div>
                 <div className="profile">
