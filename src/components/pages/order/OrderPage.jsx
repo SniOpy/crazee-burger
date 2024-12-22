@@ -3,6 +3,7 @@ import styled from "styled-components";
 import Navbar from "./Navbar";
 import Main from "./Main/Main";
 import { theme } from "../../theme";
+import Admin from "./Admin/Admin";
 
 export default function OrderPage() {
 
@@ -13,6 +14,7 @@ export default function OrderPage() {
       <div className="container">
         <Navbar username={username} />
         <Main />
+        < Admin />
       </div>
     </OrderPageStyled>
   )
@@ -32,3 +34,5 @@ const OrderPageStyled = styled.div`
     border-bottom-right-radius:${theme.borderRadius.extraRound};
   }
 `;
+
+
