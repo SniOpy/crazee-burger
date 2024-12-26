@@ -18,7 +18,7 @@ const PrimaryButtonStyled = styled.button`
             width: 95px;
             height: 38px;
             border-radius: ${theme.borderRadius.round};
-            font-weight: ${theme.weights.medium};
+            font-weight: ${theme.fonts.weights.medium};
 
             &:hover {
                 background: #fff;
