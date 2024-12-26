@@ -1,12 +1,9 @@
 import styled from "styled-components";
 import { theme } from "../../../theme";
-import {fakeMenu2} from '../../../../fakeData/fakeMenu'
-import { useState } from "react";
-import Card from "./Card";
-import { formatPrice } from "../../../../utils/maths";
+import Menu from "./Menu";
 export default function Main() {
 
-    const [menu, setMenu] = useState(fakeMenu2)
+    
   return (
     <MainStyled>
       {/* <div className="basket">basket</div> */}
@@ -14,14 +11,7 @@ export default function Main() {
         Basket
       </div> */}
       <div className="menu-and-admin">
-        <div className="menu">
-          {menu.map(({id,title, imageSource,price}) => {
-            return (
-              <Card
-              imageSource={imageSource} title={title} leftDescription={formatPrice(price)} key={id}/>
-            )
-          })}
-        </div>
+        <Menu/>
         <div className="admin">
           Admin
         </div>
