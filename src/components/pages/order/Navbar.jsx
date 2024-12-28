@@ -3,11 +3,11 @@ import NavBarLeft from "../order/NavBarLeft";
 import NavBarRight from "../order/NavBarRight";
 import { theme } from "../../theme";
 
-export default function Navbar({ username }) {
+export default function Navbar() {
     return (
         <NavbarStyled>
             <NavBarLeft />
-            <NavBarRight username={username} />
+            <NavBarRight  />
         </NavbarStyled>
     )
 }

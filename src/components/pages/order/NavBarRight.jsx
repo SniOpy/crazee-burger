@@ -1,16 +1,17 @@
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import styled from "styled-components";
 import { FaRegUserCircle, FaUserSecret } from "react-icons/fa";
 import ToggleButton from "../../reusable-ui/ToggleButton";
 import NavbarRightSideIncomplet from './NavbarRightSideIncomplet'
 import { theme } from "../../theme";
 import { toast } from "react-toastify";
-import { useState } from "react";
+import { useContext } from "react";
+import OrderContext from "../../../context/OrderContext";
 
 
-export default function NavBarRight({ username }) {
-
-    const [isModeAdmin, setIsModeAdmin] = useState(false);
+export default function NavBarRight() {
+    const {isModeAdmin,setIsModeAdmin} = useContext(OrderContext)
+    const { username } = useParams();
 
     const displayToastNotification = () => {
 
@@ -34,6 +35,7 @@ export default function NavBarRight({ username }) {
             <div className="info">
                 <div className="admin">
                     <ToggleButton 
+                        isChecked={isModeAdmin}
                         labelIfUnchecked="activer le mode admin"
                         labelIfChecked="désactiver le mode admin"
                         onToggle={displayToastNotification}
