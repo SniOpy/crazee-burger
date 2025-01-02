@@ -2,6 +2,7 @@ import styled from "styled-components";
 import Tab from "../../../../reusable-ui/Tab";
 import { FiChevronDown, FiChevronUp } from "react-icons/fi";
 import { AiOutlinePlus } from "react-icons/ai";
+import { MdModeEditOutline } from "react-icons/md";
 import { theme } from "../../../../theme";
 
 export default function AdminTabs({ isCollapsed, setisCollapsed }) {
@@ -18,6 +19,12 @@ export default function AdminTabs({ isCollapsed, setisCollapsed }) {
       <Tab
         label="Ajouter un produit"
         Icon={<AiOutlinePlus />}
+        className={!isCollapsed ? "is-active" : ""}
+        onClick={() => { setisCollapsed((!isCollapsed)) }}
+      />
+      <Tab
+        label="Modifier un produit"
+        Icon={<MdModeEditOutline />}
         className={!isCollapsed ? "is-active" : ""}
         onClick={() => { setisCollapsed((!isCollapsed)) }}
       />
