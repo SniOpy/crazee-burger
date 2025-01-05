@@ -1,6 +1,6 @@
 import React from "react"
-import styled from "styled-components"
-import { theme } from "../theme"
+import styled from "styled-components/macro"
+import { theme } from "../../theme"
 
 export default function ToggleButton({
   isChecked,
@@ -28,8 +28,7 @@ export default function ToggleButton({
 }
 
 const ToggleButtonStyled = styled.div`
-
-  padding-right: 50px;
+  /* border: 1px solid red; */
 
   display: flex;
   margin-right: 10px;
@@ -44,7 +43,7 @@ const ToggleButtonStyled = styled.div`
       height: 40px;
       width: 200px;
       position: relative;
-      font-size: ${theme.fonts.XXS};
+      font-size: ${theme.fonts.size.XXS};
       letter-spacing: 0.5px;
       border: 2px solid ${theme.colors.background_dark};
       padding: 0;
@@ -101,7 +100,7 @@ const ToggleButtonStyled = styled.div`
       left: auto;
       opacity: 1;
       color: ${theme.colors.primary};
-      font-weight: ${theme.weights.bold};
+      font-weight: ${theme.fonts.weights.bold};
     }
 
     // small circle when not checked

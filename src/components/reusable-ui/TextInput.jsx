@@ -1,54 +1,41 @@
-import React from 'react'
-import { FaUserCircle } from 'react-icons/fa';
-import styled from 'styled-components'
-import ButtonPrimary from './ButtonPrimary';
-import { FaChevronRight } from "react-icons/fa";
-import { theme } from '../theme';
+import styled from "styled-components"
+import { theme } from "../../theme"
 
-export default function TextInput({ value, onChange, ...restProps }) {
-
+export default function TextInput({ value, onChange, Icon, ...extraProps }) {
   return (
-    <TextInputStyled>
-      <FaUserCircle className='fa-circle' />
-      <input
-        value={value}
-        onChange={onChange}
-        {...restProps}
-      />
-      <ButtonPrimary
-        label={"Accéder à mon espace"}
-        icon={<FaChevronRight className='icon' />} />
-
-    </TextInputStyled>
+    <InputStyled>
+      {Icon && Icon}
+      <input onChange={onChange} type="text" {...extraProps} />
+    </InputStyled>
   )
 }
 
-const TextInputStyled = styled.div`
-    display:flex;
-    flex-direction: column;
-
-  input {
-    width: 300px;
-    height: 30px;
-    padding: 5px 35px;
-    border-radius: 5px;
-    font-family: "Open Sans", cursive;
-
-    &::placeholder {
-      color: ${theme.colors.greyMedium}
-    }
-  }
-
-  
-  .fa-circle {
-    position: absolute;
-    color:grey;
-    padding: 14px;
-    min-width: 10px;
-  }
+const InputStyled = styled.div`
+  background-color: #fff;
+  border-radius: ${theme.borderRadius.round};
+  display: flex;
+  align-items: center;
+  padding: 18px 24px;
+  margin: 18px 0; // could be handle in Parent too
+  /* white-space: nowrap; */
 
   .icon {
-      margin-left: 10px;
+    font-size: ${theme.fonts.size.SM};
+    margin-right: 8px;
+    color: ${theme.colors.greySemiDark};
+    /* min-width: 1em; // that way, the icon size is NOT affected by width of the entire component. */
   }
-`;
 
+  input {
+    border: none;
+    font-size: ${theme.fonts.size.SM};
+    color: ${theme.colors.dark};
+    width: 100%;
+    /* display: flex; */
+
+    &::placeholder {
+      background: ${theme.colors.white};
+      color: ${theme.colors.greyMedium};
+    }
+  }
+`

@@ -1,34 +1,55 @@
-import { useParams } from "react-router-dom";
-import styled from "styled-components";
-import Navbar from "./Navbar";
-import Main from "./Main/Main";
-import { theme } from "../../theme";
+import { useState } from "react"
+import { useParams } from "react-router-dom"
+import styled from "styled-components"
+import { theme } from "../../../theme"
+import Main from "./Main/Main"
+import Navbar from "./Navbar/Navbar"
+import OrderContext from "../../../context/OrderContext"
 
 export default function OrderPage() {
+  // state
+  const { username } = useParams()
+  const [isModeAdmin, setIsModeAdmin] = useState(false)
+  const [isCollapsed, setIsCollapsed] = useState(false)
+  const [currentTabSelected, setCurrentTabSelected] = useState("add")
 
-  const { username } = useParams();
+  // comportements
 
+  const orderContextValue = {
+    isModeAdmin,
+    setIsModeAdmin,
+    isCollapsed,
+    setIsCollapsed,
+    currentTabSelected,
+    setCurrentTabSelected,
+  }
+
+  //affichage
   return (
-    <OrderPageStyled>
-      <div className="container">
-        <Navbar username={username} />
-        <Main />
-      </div>
-    </OrderPageStyled>
+    <OrderContext.Provider value={orderContextValue}>
+      <OrderPageStyled>
+        <div className="container">
+          <Navbar username={username} />
+          <Main />
+        </div>
+      </OrderPageStyled>
+    </OrderContext.Provider>
   )
 }
 
 const OrderPageStyled = styled.div`
-  background: orange;
+  background: ${theme.colors.primary};
   height: 100vh;
-  display:flex;
+  display: flex;
   justify-content: center;
   align-items: center;
 
-    .container {
-    height:95vh;
+  .container {
+    background: red;
+    height: 95vh;
     width: 1400px;
-    border-bottom-left-radius: ${theme.borderRadius.extraRound};
-    border-bottom-right-radius:${theme.borderRadius.extraRound};
+    display: flex;
+    flex-direction: column;
+    border-radius: ${theme.borderRadius.extraRound};
   }
-`;
+`
