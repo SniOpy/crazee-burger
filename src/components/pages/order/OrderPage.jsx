@@ -8,18 +8,27 @@ import { useState } from "react";
 export default function OrderPage() {
 
   const [isModeAdmin, setIsModeAdmin] = useState(true);
+  const [isCollapsed, setisCollapsed] = useState(false);
+  const [isEditTab, setIsEditTab] = useState(false);
+  const [isAddTab, setIsAddTab] = useState(false);
 
   const orderContextValue = {
-    isModeAdmin, 
-    setIsModeAdmin
+    isModeAdmin,
+    setIsModeAdmin,
+    isCollapsed,
+    setisCollapsed,
+    isEditTab,
+    setIsEditTab,
+    isAddTab,
+    setIsAddTab,
   }
-  
+
 
   return (
     <OrderContext.Provider value={orderContextValue}>
       <OrderPageStyled>
         <div className="container">
-          <Navbar  />
+          <Navbar />
           <Main />
         </div>
       </OrderPageStyled>

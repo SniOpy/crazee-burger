@@ -1,6 +1,10 @@
 import styled from "styled-components";
 import { theme } from '../../../../theme'
-export default function AdminPanel({ isAddTab, isEditTab }) {
+import { useContext } from "react";
+import OrderContext from "../../../../../context/OrderContext";
+export default function AdminPanel() {
+
+  const { isAddTab, isEditTab } = useContext(OrderContext);
   return (
     <AdminPanelStyled>
       {isAddTab && "Ajouter un produit"}
