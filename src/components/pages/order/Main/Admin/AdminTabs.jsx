@@ -5,28 +5,38 @@ import { AiOutlinePlus } from "react-icons/ai";
 import { MdModeEditOutline } from "react-icons/md";
 import { theme } from "../../../../theme";
 
-export default function AdminTabs({ isCollapsed, setisCollapsed }) {
+export default function AdminTabs({ isCollapsed, setisCollapsed, isAddTab, setIsAddTab, isEditTab, setIsEditTab }) {
 
 
+  const selectAddTab = () => {
+    setIsAddTab(true)
+    setIsEditTab(false)
+    setisCollapsed(true)
+  }
+  const selectEditTab = () => {
+    setIsEditTab(true)
+    setIsAddTab(false)
+    setisCollapsed(true)
+  }
   return (
     <AdminTabsStyled>
       <Tab
         label=""
         Icon={isCollapsed ? <FiChevronDown /> : <FiChevronUp />}
         className={!isCollapsed ? "is-active" : ""}
-        onClick={() => { setisCollapsed((!isCollapsed)) }}
+        onClick={() => { setisCollapsed(!isCollapsed) }}
       />
       <Tab
         label="Ajouter un produit"
         Icon={<AiOutlinePlus />}
-        className={!isCollapsed ? "is-active" : ""}
-        onClick={() => { setisCollapsed((!isCollapsed)) }}
+        className={isAddTab ? "is-active" : ""}
+        onClick={selectAddTab}
       />
       <Tab
         label="Modifier un produit"
         Icon={<MdModeEditOutline />}
-        className={!isCollapsed ? "is-active" : ""}
-        onClick={() => { setisCollapsed((!isCollapsed)) }}
+        className={isEditTab ? "is-active" : ""}
+        onClick={selectEditTab}
       />
     </AdminTabsStyled>
   )
