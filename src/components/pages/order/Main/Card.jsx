@@ -1,29 +1,29 @@
 import styled from "styled-components";
 import { theme } from "../../../theme";
 import PrimaryButton from "./PrimaryButton";
-export default function Card({title, imageSource, leftDescription}) {
+export default function Card({ title, imageSource, leftDescription }) {
   return (
-            <CardStyled className="card">
-              <div className="image">
-                <img src={imageSource} alt={title} />
-              </div>
-              <div className="info-text">
-                <div className="title">{title}</div>
-                <div className="description">
-                  <div className="leftDescription">{leftDescription}</div>
-                  <div className="rightDescription">
-                    <PrimaryButton className="primary-button" label="Ajouter"/>
-                  </div>
-                </div>
-              </div>
-            </CardStyled>
+    <CardStyled className="card">
+      <div className="image">
+        <img src={imageSource} alt={title} />
+      </div>
+      <div className="info-text">
+        <div className="title">{title}</div>
+        <div className="description">
+          <div className="leftDescription">{leftDescription}</div>
+          <div className="rightDescription">
+            <PrimaryButton className="primary-button" label="Ajouter" />
+          </div>
+        </div>
+      </div>
+    </CardStyled>
   )
 }
 
 const CardStyled = styled.div`
    
       background: ${theme.colors.background_white};
-      box-shadow: 0px 8px 20px 8px rgba(0, 0, 0, 0.2) inset;
+      box-shadow: ${theme.shadows.strong};
       border-radius: ${theme.borderRadius.round};
       width:200px;
       height:300px;

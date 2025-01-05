@@ -6,14 +6,14 @@ import { useContext } from "react";
 import OrderContext from "../../../../context/OrderContext";
 export default function Main() {
 
-  const {isModeAdmin} = useContext(OrderContext)
-    
+  const { isModeAdmin } = useContext(OrderContext)
+
   return (
     <MainStyled>
       {/* <div className="basket">basket</div> */}
       <div className="menu-and-admin">
-        <Menu/>
-        {isModeAdmin && <Admin/>}
+        <Menu />
+        {isModeAdmin && <Admin />}
       </div>
     </MainStyled>
   )
@@ -24,7 +24,7 @@ const MainStyled = styled.div`
   height: 800px;
   border-bottom-left-radius: ${theme.borderRadius.extraRound};
   border-bottom-right-radius:${theme.borderRadius.extraRound};
-  box-shadow: 0px 8px 20px 8px rgba(0, 0, 0, 0.2) inset ;
+  box-shadow: ${theme.shadows.strong};
   display: grid;
   grid-template-columns: 1fr;
 

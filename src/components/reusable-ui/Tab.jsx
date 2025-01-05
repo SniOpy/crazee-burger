@@ -17,7 +17,7 @@ const TabStyled = styled.button`
 
  padding: 0 22px;
  height: 43px;
- box-shadow: 0px -6px 8px -2px rgba(0, 0, 0, 0.1);
+ box-shadow: ${theme.shadows.subtle};
  background-color: ${theme.colors.white};
  border:solid;
  cursor: pointer;
