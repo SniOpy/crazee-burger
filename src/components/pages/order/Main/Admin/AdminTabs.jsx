@@ -22,9 +22,42 @@ export default function AdminTabs() {
       setIsAddTab(false)
     }
   }
+
+  const tabsConfig = [
+    {
+      label: "",
+      Icon: isCollapsed ? <FiChevronDown /> : < FiChevronUp />,
+      className: !isCollapsed ? "is-active" : "",
+      onClick: () => { setisCollapsed(!isCollapsed) }
+    },
+    {
+      label: "Ajouter un produit",
+      Icon: <AiOutlinePlus />,
+      className: isAddTab ? "is-active" : "",
+      onClick: () => selectTab("add")
+    },
+    {
+      label: "Modifier un produit",
+      Icon: <MdModeEditOutline />,
+      className: isEditTab ? "is-active" : "",
+      onClick: () => selectTab("edit")
+    }
+
+  ]
   return (
     <AdminTabsStyled>
-      <Tab
+
+      {tabsConfig.map((tab) => {
+        return (
+          <Tab
+            label={tab.label}
+            Icon={tab.Icon}
+            className={tab.className}
+            onClick={tab.onClick}
+          />
+        )
+      })}
+      {/* <Tab
         label=""
         Icon={isCollapsed ? <FiChevronDown /> : <FiChevronUp />}
         className={!isCollapsed ? "is-active" : ""}
@@ -41,7 +74,7 @@ export default function AdminTabs() {
         Icon={<MdModeEditOutline />}
         className={isEditTab ? "is-active" : ""}
         onClick={() => selectTab("edit")}
-      />
+      /> */}
     </AdminTabsStyled>
   )
 }
