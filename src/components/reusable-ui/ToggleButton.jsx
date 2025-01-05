@@ -71,6 +71,7 @@ const ToggleButtonStyled = styled.div`
       width: 150px;
       text-align: center;
       z-index: 2;
+      font-size: 12px;
       text-transform: uppercase;
       position: absolute;
       top: 50%;

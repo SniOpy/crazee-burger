@@ -10,12 +10,12 @@ import OrderContext from "../../../context/OrderContext";
 
 
 export default function NavBarRight() {
-    const {isModeAdmin,setIsModeAdmin} = useContext(OrderContext)
+    const { isModeAdmin, setIsModeAdmin } = useContext(OrderContext)
     const { username } = useParams();
 
     const displayToastNotification = () => {
 
-        if(!isModeAdmin) {
+        if (!isModeAdmin) {
             toast.info("Mode admin activé", {
                 icon: <FaUserSecret size={30} />,
                 theme: "dark",
@@ -34,15 +34,15 @@ export default function NavBarRight() {
         <NavBarRightStyled>
             <div className="info">
                 <div className="admin">
-                    <ToggleButton 
+                    <ToggleButton
                         isChecked={isModeAdmin}
-                        labelIfUnchecked="activer le mode admin"
+                        labelIfUnchecked="activer le mode admin "
                         labelIfChecked="désactiver le mode admin"
                         onToggle={displayToastNotification}
                     />
                     <NavbarRightSideIncomplet />
                 </div>
-                
+
                 <div className="profile">
                     <span>Hey, <span className="username">{username}</span></span>
                     <Link to="/" className="logout-button">
@@ -73,7 +73,7 @@ const NavBarRightStyled = styled.div`
         display:flex;
         flex-direction: column;
         align-items: flex-end;
-        font-size: ${theme.fonts.P2};
+        font-size: ${theme.fonts.size.P0};
         
         
     }
