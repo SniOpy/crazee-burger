@@ -1,8 +1,8 @@
 import React from "react"
 import "react-toastify/dist/ReactToastify.css"
+import { theme } from "../../../../theme"
 import { ToastContainer } from "react-toastify"
 import styled from "styled-components"
-import { theme } from "../../theme"
 
 export default function NavbarRightSideIncomplet() {
   return (
