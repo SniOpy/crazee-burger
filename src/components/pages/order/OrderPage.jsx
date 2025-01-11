@@ -5,13 +5,28 @@ import { theme } from "../../../theme"
 import Main from "./Main/Main"
 import Navbar from "./Navbar/Navbar"
 import OrderContext from "../../../context/OrderContext"
+import { fakeMenu } from "../../../fakeData/fakeMenu"
 
 export default function OrderPage() {
   // state
   const { username } = useParams()
   const [isModeAdmin, setIsModeAdmin] = useState(true)
   const [isCollapsed, setIsCollapsed] = useState(false)
-  const [currentTabSelected, setCurrentTabSelected] = useState("add")
+  const [currentTabSelected, setCurrentTabSelected] = useState("add");
+  const [menu, setMenu] = useState(fakeMenu.SMALL);
+
+
+  const addProduct = (newProduct) => {
+    //1. Copie du state
+    const copyMenu = [...menu];
+
+    //2. Manipulation du state
+    const updatedMenu = [newProduct, ...copyMenu];
+
+    //3. Nouveau state
+    setMenu(updatedMenu);
+  }
+
 
   // comportements
 
@@ -22,6 +37,9 @@ export default function OrderPage() {
     setIsCollapsed,
     currentTabSelected,
     setCurrentTabSelected,
+    menu,
+    addProduct,
+    
   }
 
   //affichage
