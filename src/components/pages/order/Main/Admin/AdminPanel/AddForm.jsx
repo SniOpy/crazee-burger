@@ -1,16 +1,49 @@
+import { useContext, useState } from "react";
 import styled from "styled-components";
+import OrderContext from "../../../../../../context/OrderContext";
+
+
 
 export default function AddForm() {
+
+  const [title, setTitle] = useState("");
+  const [imageSource, setImageSource] = useState("");
+  const [price, setPrice] = useState(0);
+  const { addProduct } = useContext(OrderContext);
+
+  const newProduct = {
+    id: new Date().getTime(),
+    title,
+    imageSource,
+    price,
+  }
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    addProduct(newProduct);
+  }
+
+  const handleTitleChange = (event) => {
+    setTitle(event.target.value);
+  }
+
+  const handleImageChange = (event) => {
+    setImageSource(event.target.value);
+  }
+
+  const handlePriceChange = (event) => {
+    setPrice(event.target.value);
+  }
+
   return (
-    <AddFormStyled>
+    <AddFormStyled onSubmit={handleSubmit}>
       <div className="image-preview">Image Preview</div>
       <div className="input-fields">
-        <input type="text" placeholder="Nom"/>
-        <input type="text" placeholder="Lien"/>
-        <input type="text" placeholder="Prix"/>
+        <input type="text" placeholder="Nom du produit (ex: Super Burger)" value={title} onChange={handleTitleChange}/>
+        <input type="text" placeholder="Lien URL d'une image (ex: https://la-photo-de-mon-produit.png)" value={imageSource} onChange={handleImageChange}/>
+        <input type="text" placeholder='Ex: "2119,56", et "2119.56"' value={price} onChange={handlePriceChange}/>
       </div>
-      <div className="button-submit">
-         <button>Button</button>
+      <div className="button-submit">       
+         <button type="submit">Button</button>
       </div>
     </AddFormStyled>
   )
