@@ -16,17 +16,18 @@ export default function AddForm() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
+
     const productToAdd = {
       ...newProduct,
-      id: new Date().getTime(),
+      id: crypto.randomUUID(), // is used to generate id
     };
     addProduct(productToAdd);
   };
 
   const handleChange = (event) => {
-    const newValue = event.target.value;
-    const nameInput = event.target.name;
-    setNewProduct({ ...newProduct, [nameInput]: newValue });
+    const { value, name } = event.target;
+
+    setNewProduct({ ...newProduct, [name]: value });
   };
 
   return (
