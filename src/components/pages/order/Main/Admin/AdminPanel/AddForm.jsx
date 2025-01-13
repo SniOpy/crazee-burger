@@ -1,6 +1,7 @@
 import { useContext, useState } from "react";
 import styled from "styled-components";
 import OrderContext from "../../../../../../context/OrderContext";
+import { FiCheck } from "react-icons/fi";
 
 const EMPTY_PRODUCT = {
   id: "",
@@ -13,6 +14,7 @@ export default function AddForm() {
   const { addProduct } = useContext(OrderContext);
 
   const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT);
+  const [isSubmitted, setIsSubmitted] = useState(false);
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -23,6 +25,15 @@ export default function AddForm() {
     };
     addProduct(productToAdd);
     setNewProduct(EMPTY_PRODUCT);
+
+    displaySuccessMessage();
+  };
+
+  const displaySuccessMessage = () => {
+    setIsSubmitted(true);
+    setTimeout(() => {
+      setIsSubmitted(false);
+    }, 2000);
   };
 
   const handleChange = (event) => {
@@ -63,8 +74,16 @@ export default function AddForm() {
           onChange={handleChange}
         />
       </div>
-      <div className="button-submit">
-        <button type="submit">Button</button>
+      <div className="submit ">
+        <button className="submit-button" type="">
+          Button{" "}
+        </button>
+        {isSubmitted && (
+          <span>
+            {" "}
+            <FiCheck /> Ajouté avec succès
+          </span>
+        )}
       </div>
     </AddFormStyled>
   );
@@ -80,7 +99,6 @@ const AddFormStyled = styled.form`
   grid-template-columns: 1fr 3fr;
 
   .image-preview {
-    background: red;
     grid-area: 1 / 1 / 3 / 2;
     img {
       width: 100%;
@@ -94,10 +112,13 @@ const AddFormStyled = styled.form`
     grid-area: 1 / 2 / 3 / 3;
     display: grid;
   }
-  .button-submit {
-    background: green;
+  .submit {
     grid-area: 3 / 2 / 3 / -1;
-    display: grid;
-    width: 50%;
+    display: flex;
+    align-items: center;
+
+    .submit-button {
+      width: 50%;
+    }
   }
 `;
