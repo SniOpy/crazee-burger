@@ -1,20 +1,19 @@
-import { useState } from "react"
-import { useParams } from "react-router-dom"
-import styled from "styled-components"
-import { theme } from "../../../theme"
-import Main from "./Main/Main"
-import Navbar from "./Navbar/Navbar"
-import OrderContext from "../../../context/OrderContext"
-import { fakeMenu } from "../../../fakeData/fakeMenu"
+import { useState } from "react";
+import { useParams } from "react-router-dom";
+import styled from "styled-components";
+import { theme } from "../../../theme";
+import Main from "./Main/Main";
+import Navbar from "./Navbar/Navbar";
+import OrderContext from "../../../context/OrderContext";
+import { fakeMenu } from "../../../fakeData/fakeMenu";
 
 export default function OrderPage() {
   // state
-  const { username } = useParams()
-  const [isModeAdmin, setIsModeAdmin] = useState(true)
-  const [isCollapsed, setIsCollapsed] = useState(false)
+  const { username } = useParams();
+  const [isModeAdmin, setIsModeAdmin] = useState(true);
+  const [isCollapsed, setIsCollapsed] = useState(false);
   const [currentTabSelected, setCurrentTabSelected] = useState("add");
-  const [menu, setMenu] = useState(fakeMenu.SMALL);
-
+  const [menu, setMenu] = useState(fakeMenu.MEDIUM);
 
   const addProduct = (newProduct) => {
     //1. Copie du state
@@ -25,8 +24,7 @@ export default function OrderPage() {
 
     //3. Nouveau state
     setMenu(updatedMenu);
-  }
-
+  };
 
   // comportements
 
@@ -39,8 +37,7 @@ export default function OrderPage() {
     setCurrentTabSelected,
     menu,
     addProduct,
-    
-  }
+  };
 
   //affichage
   return (
@@ -52,7 +49,7 @@ export default function OrderPage() {
         </div>
       </OrderPageStyled>
     </OrderContext.Provider>
-  )
+  );
 }
 
 const OrderPageStyled = styled.div`
@@ -70,4 +67,4 @@ const OrderPageStyled = styled.div`
     flex-direction: column;
     border-radius: ${theme.borderRadius.extraRound};
   }
-`
+`;
