@@ -1,18 +1,16 @@
+import styled from "styled-components";
 
-import styled from "styled-components"
-
-import { theme } from "../../../../theme"
-import { formatPrice } from "../../../../utils/maths"
-import Card from "../../../reusable-ui/Card"
+import { theme } from "../../../../theme";
+import { formatPrice } from "../../../../utils/maths";
+import Card from "../../../reusable-ui/Card";
 import { useContext } from "react";
 import OrderContext from "../../../../context/OrderContext";
 
+const IMAGE_BY_DEFAULT = "/images/coming-soon.png";
 
 export default function Menu() {
+  const { menu } = useContext(OrderContext);
 
-  const {menu} =  useContext(OrderContext);
-
-  
   return (
     <MenuStyled className="menu">
       {menu.map(({ id, title, imageSource, price }) => {
@@ -20,13 +18,13 @@ export default function Menu() {
           <Card
             key={id}
             title={title}
-            imageSource={imageSource}
+            imageSource={imageSource ? imageSource : IMAGE_BY_DEFAULT}
             leftDescription={formatPrice(price)}
           />
-        )
+        );
       })}
     </MenuStyled>
-  )
+  );
 }
 
 const MenuStyled = styled.div`
@@ -40,4 +38,4 @@ const MenuStyled = styled.div`
   overflow-y: scroll;
   border-bottom-left-radius: ${theme.borderRadius.extraRound};
   border-bottom-right-radius: ${theme.borderRadius.extraRound};
-`
+`;
