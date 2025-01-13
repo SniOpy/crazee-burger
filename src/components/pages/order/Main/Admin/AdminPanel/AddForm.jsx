@@ -6,7 +6,7 @@ const EMPTY_PRODUCT = {
   id: "",
   title: "",
   imageSource: "",
-  price: 0,
+  price: "",
 };
 
 export default function AddForm() {
@@ -22,6 +22,7 @@ export default function AddForm() {
       id: crypto.randomUUID(), // is used to generate id
     };
     addProduct(productToAdd);
+    setNewProduct(EMPTY_PRODUCT);
   };
 
   const handleChange = (event) => {
@@ -32,7 +33,13 @@ export default function AddForm() {
 
   return (
     <AddFormStyled onSubmit={handleSubmit}>
-      <div className="image-preview">Image Preview</div>
+      <div className="image-preview">
+        {newProduct.imageSource ? (
+          <img src={newProduct.imageSource} alt={newProduct.title} />
+        ) : (
+          "Aucune image"
+        )}
+      </div>
       <div className="input-fields">
         <input
           name="title"
@@ -75,6 +82,12 @@ const AddFormStyled = styled.form`
   .image-preview {
     background: red;
     grid-area: 1 / 1 / 3 / 2;
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      object-position: center;
+    }
   }
   .input-fields {
     background: blue;
