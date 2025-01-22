@@ -26,6 +26,10 @@ export default function OrderPage() {
     setMenu(menuUpdated);
   };
 
+  const resetMenu = () => {
+    setMenu(fakeMenu.MEDIUM);
+  };
+
   const addProduct = (newProduct) => {
     //1. Copie du state
     const copyMenu = [...menu];
@@ -49,6 +53,7 @@ export default function OrderPage() {
     menu,
     addProduct,
     handleDelete,
+    resetMenu,
   };
 
   //affichage
