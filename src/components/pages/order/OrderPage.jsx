@@ -13,7 +13,7 @@ export default function OrderPage() {
   const [isModeAdmin, setIsModeAdmin] = useState(true);
   const [isCollapsed, setIsCollapsed] = useState(false);
   const [currentTabSelected, setCurrentTabSelected] = useState("add");
-  const [menu, setMenu] = useState(fakeMenu.MEDIUM);
+  const [menu, setMenu] = useState(fakeMenu.SMALL);
 
   const handleDelete = (productId) => {
     // 1. copie du state
@@ -27,7 +27,7 @@ export default function OrderPage() {
   };
 
   const resetMenu = () => {
-    setMenu(fakeMenu.MEDIUM);
+    setMenu(fakeMenu.SMALL);
   };
 
   const addProduct = (newProduct) => {
