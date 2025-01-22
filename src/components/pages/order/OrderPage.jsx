@@ -15,6 +15,17 @@ export default function OrderPage() {
   const [currentTabSelected, setCurrentTabSelected] = useState("add");
   const [menu, setMenu] = useState(fakeMenu.MEDIUM);
 
+  const handleDelete = (productId) => {
+    // 1. copie du state
+    const menuCopy = [...menu];
+
+    // 2. manipulation de la copie
+    const menuUpdated = menuCopy.filter((product) => product.id !== productId);
+    console.log(menuUpdated);
+    // 3. update du state
+    setMenu(menuUpdated);
+  };
+
   const addProduct = (newProduct) => {
     //1. Copie du state
     const copyMenu = [...menu];
@@ -37,6 +48,7 @@ export default function OrderPage() {
     setCurrentTabSelected,
     menu,
     addProduct,
+    handleDelete,
   };
 
   //affichage
