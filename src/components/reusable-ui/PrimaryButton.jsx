@@ -5,7 +5,7 @@ export default function PrimaryButton({ label, Icon, className, onClick }) {
   return (
     <PrimaryButtonStyled className={className} onClick={onClick}>
       <span>{label}</span>
-      {Icon && Icon}
+      <div className="icon"> {Icon && Icon}</div>
     </PrimaryButtonStyled>
   );
 }
@@ -35,6 +35,7 @@ const PrimaryButtonStyled = styled.button`
     border: 1px solid ${theme.colors.primary};
     transition: all 200ms ease-out;
   }
+
   &:active {
     background-color: ${theme.colors.primary};
     color: ${theme.colors.white};
@@ -46,16 +47,26 @@ const PrimaryButtonStyled = styled.button`
     z-index: 2;
   }
 
+  .icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* margin-left: 10px; */
+    /* min-width: 1em; // that way, the icon size is NOT affected by width of the entire component. */
+  }
+
   &.with-focus {
-    border: 1px solid white;
+    border: 1px solid ${theme.colors.white};
     background-color: ${theme.colors.white};
     color: ${theme.colors.primary};
-    :hover {
-      color: ${theme.colors.white};
+
+    &:hover {
+      color: ${theme.colors.primary};
       background-color: ${theme.colors.primary};
       border: 1px solid ${theme.colors.white};
     }
-    :active {
+
+    &:active {
       background-color: ${theme.colors.white};
       color: ${theme.colors.primary};
     }
