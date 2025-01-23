@@ -1,4 +1,6 @@
 import styled from "styled-components";
+import PrimaryButton from "../../../../../reusable-ui/PrimaryButton";
+// import { IoChevronForward } from "react-icons/io5";
 
 export default function EmptyMenuAdmin({ onReset }) {
   return (
@@ -7,7 +9,12 @@ export default function EmptyMenuAdmin({ onReset }) {
       <span className="second-message">
         Cliquez ci-dessous pour le réinitialiser
       </span>
-      <button onClick={onReset}>Générer de nouveaux produits</button>
+      <div>
+        <PrimaryButton
+          onClick={onReset}
+          label={"Générer de nouveaux produits"}
+        />
+      </div>
     </EmptyMenuAdminStyled>
   );
 }
@@ -35,7 +42,7 @@ const EmptyMenuAdminStyled = styled.div`
     font-weight: 400;
   }
 
-  button {
+  /* button {
     background-color: rgba(255, 159, 27, 1);
     color: #fff;
     border-radius: 5px;
@@ -43,11 +50,10 @@ const EmptyMenuAdminStyled = styled.div`
     padding: 19px 25px;
     cursor: pointer;
     font-family: "Arial";
-    font-weight: 700;
+    font-weight: 700; */
 
-    :hover {
+  /* :hover {
       background-color: #29231a;
       color: #fff;
-    }
-  }
+    } */
 `;
