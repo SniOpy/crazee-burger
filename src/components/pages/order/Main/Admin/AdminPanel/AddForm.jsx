@@ -2,6 +2,11 @@ import { useContext, useState } from "react";
 import styled from "styled-components";
 import OrderContext from "../../../../../../context/OrderContext";
 import { FiCheck } from "react-icons/fi";
+import { theme } from "../../../../../../theme";
+import TextInput from "../../../../../reusable-ui/TextInput";
+import { FaHamburger } from "react-icons/fa";
+import { BsFillCameraFill } from "react-icons/bs";
+import { MdOutlineEuro } from "react-icons/md";
 
 const EMPTY_PRODUCT = {
   id: "",
@@ -52,26 +57,29 @@ export default function AddForm() {
         )}
       </div>
       <div className="input-fields">
-        <input
+        <TextInput
           name="title"
           type="text"
           placeholder="Nom du produit (ex: Super Burger)"
           value={newProduct.title}
           onChange={handleChange}
+          Icon={<FaHamburger />}
         />
-        <input
+        <TextInput
           name="imageSource"
           type="text"
           placeholder="Lien URL d'une image (ex: https://la-photo-de-mon-produit.png)"
           value={newProduct.imageSource}
           onChange={handleChange}
+          Icon={<BsFillCameraFill />}
         />
-        <input
+        <TextInput
           name="price"
           type="text"
           placeholder='Ex: "2119,56", et "2119.56"'
           value={newProduct.price}
           onChange={handleChange}
+          Icon={<MdOutlineEuro />}
         />
       </div>
       <div className="submit ">
@@ -91,15 +99,25 @@ export default function AddForm() {
 
 const AddFormStyled = styled.form`
   border: 2px solid black;
-  padding: 30px 5%;
+  padding: 10px 5%;
   display: grid;
   height: 100%;
   width: 70%;
   grid-template-rows: repeat(4, 1fr);
   grid-template-columns: 1fr 3fr;
+  grid-column-gap: 20px;
+  grid-row-gap: 8px;
+  padding-top: 30px;
 
   .image-preview {
+    border-radius: 5px;
+    color: ${theme.colors.greyMedium};
+    border: 1px solid ${theme.colors.greyLight};
+    display: flex;
+    justify-content: center;
+    align-items: center;
     grid-area: 1 / 1 / 3 / 2;
+
     img {
       width: 100%;
       height: 100%;
