@@ -64,6 +64,7 @@ export default function AddForm() {
           value={newProduct.title}
           onChange={handleChange}
           Icon={<FaHamburger />}
+          version="minimalist"
         />
         <TextInput
           name="imageSource"
@@ -72,6 +73,7 @@ export default function AddForm() {
           value={newProduct.imageSource}
           onChange={handleChange}
           Icon={<BsFillCameraFill />}
+          version="minimalist"
         />
         <TextInput
           name="price"
@@ -80,6 +82,7 @@ export default function AddForm() {
           value={newProduct.price}
           onChange={handleChange}
           Icon={<MdOutlineEuro />}
+          version="minimalist"
         />
       </div>
       <div className="submit ">
@@ -98,7 +101,6 @@ export default function AddForm() {
 }
 
 const AddFormStyled = styled.form`
-  border: 2px solid black;
   padding: 10px 5%;
   display: grid;
   height: 100%;
@@ -117,6 +119,7 @@ const AddFormStyled = styled.form`
     justify-content: center;
     align-items: center;
     grid-area: 1 / 1 / 3 / 2;
+    /* padding: 70px 0; */
 
     img {
       width: 100%;
@@ -126,9 +129,9 @@ const AddFormStyled = styled.form`
     }
   }
   .input-fields {
-    background: blue;
     grid-area: 1 / 2 / 3 / 3;
     display: grid;
+    grid-row-gap: 8px;
   }
   .submit {
     grid-area: 3 / 2 / 3 / -1;
