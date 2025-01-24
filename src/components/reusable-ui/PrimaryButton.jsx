@@ -26,7 +26,6 @@ const PrimaryButtonStyled = styled.button`
 
 const extraStyleNormal = css`
   width: 100%;
-  border: 1px solid red;
   display: inline-flex;
   justify-content: center;
   align-items: center;
@@ -35,13 +34,13 @@ const extraStyleNormal = css`
   text-decoration: none; //removes the text decoration in case you’re applying the .btn class to a link.
   line-height: 1;
 
-  padding: 18px 24px;
-  border-radius: 5px;
-  font-size: 15px;
-  font-weight: 800;
-  color: white;
-  background-color: #ff9f1b;
-  border: 1px solid #ff9f1b;
+  padding: ${theme.fonts.size.P1} ${theme.fonts.size.P3};
+  border-radius: ${theme.borderRadius.round};
+  font-size: ${theme.fonts.size.XS};
+  font-weight: ${theme.fonts.weights.bold};
+  color: ${theme.colors.white};
+  background-color: ${theme.colors.primary};
+  border: 1px solid ${theme.colors.primary};
 
   &:hover {
     color: ${theme.colors.primary};
@@ -91,7 +90,7 @@ const extraStyleSuccess = css`
   background: ${theme.colors.success};
   font-size: ${theme.fonts.size.XS};
   border-radius: ${theme.borderRadius.round};
-  padding: 10px 29px;
+  padding: ${theme.fonts.size.XXS} 29px;
   color: ${theme.colors.white};
   border: 1px solid ${theme.colors.success};
   font-weight: ${theme.fonts.weights.bold};
