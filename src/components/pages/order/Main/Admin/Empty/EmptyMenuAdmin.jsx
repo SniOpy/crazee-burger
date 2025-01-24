@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import PrimaryButton from "../../../../../reusable-ui/PrimaryButton";
+import Button from "../../../../../reusable-ui/Button";
 // import { IoChevronForward } from "react-icons/io5";
 
 export default function EmptyMenuAdmin({ onReset }) {
@@ -10,10 +10,7 @@ export default function EmptyMenuAdmin({ onReset }) {
         Cliquez ci-dessous pour le réinitialiser
       </span>
       <div>
-        <PrimaryButton
-          onClick={onReset}
-          label={"Générer de nouveaux produits"}
-        />
+        <Button onClick={onReset} label={"Générer de nouveaux produits"} />
       </div>
     </EmptyMenuAdminStyled>
   );
