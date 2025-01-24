@@ -24,6 +24,7 @@ const EmptyMenuAdminStyled = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  padding-bottom: 120px;
   gap: 30px;
 
   .first-message,

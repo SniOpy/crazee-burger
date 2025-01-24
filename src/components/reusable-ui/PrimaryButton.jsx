@@ -1,9 +1,19 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { theme } from "../../theme";
 
-export default function PrimaryButton({ label, Icon, className, onClick }) {
+export default function PrimaryButton({
+  label,
+  Icon,
+  className,
+  onClick,
+  version = "normal",
+}) {
   return (
-    <PrimaryButtonStyled className={className} onClick={onClick}>
+    <PrimaryButtonStyled
+      className={className}
+      onClick={onClick}
+      version={version}
+    >
       <span>{label}</span>
       <div className="icon"> {Icon && Icon}</div>
     </PrimaryButtonStyled>
@@ -11,6 +21,11 @@ export default function PrimaryButton({ label, Icon, className, onClick }) {
 }
 
 const PrimaryButtonStyled = styled.button`
+  ${(props) => props.version === "normal" && extraStyleNormal}
+  ${(props) => props.version === "success" && extraStyleSuccess}
+`;
+
+const extraStyleNormal = css`
   width: 100%;
   border: 1px solid red;
   display: inline-flex;
@@ -71,4 +86,15 @@ const PrimaryButtonStyled = styled.button`
       color: ${theme.colors.primary};
     }
   }
+`;
+
+const extraStyleSuccess = css`
+  background: ${theme.colors.success};
+  font-size: ${theme.fonts.size.XS};
+  border: ${theme.borderRadius.round};
+  padding: 10px 29px;
+  color: ${theme.colors.white};
+  border: 1px solid ${theme.colors.success};
+  font-weight: ${theme.fonts.weights.bold};
+  font-family: "Arial", cursive;
 `;
