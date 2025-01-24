@@ -6,6 +6,7 @@ import Main from "./Main/Main";
 import Navbar from "./Navbar/Navbar";
 import OrderContext from "../../../context/OrderContext";
 import { fakeMenu } from "../../../fakeData/fakeMenu";
+import { EMPTY_PRODUCT } from "./Main/Admin/AdminPanel/AddForm";
 
 export default function OrderPage() {
   // state
@@ -14,6 +15,7 @@ export default function OrderPage() {
   const [isCollapsed, setIsCollapsed] = useState(false);
   const [currentTabSelected, setCurrentTabSelected] = useState("add");
   const [menu, setMenu] = useState(fakeMenu.SMALL);
+  const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT);
 
   const handleDelete = (productId) => {
     // 1. copie du state
@@ -54,6 +56,8 @@ export default function OrderPage() {
     addProduct,
     handleDelete,
     resetMenu,
+    newProduct,
+    setNewProduct,
   };
 
   //affichage

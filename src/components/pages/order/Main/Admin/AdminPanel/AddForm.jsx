@@ -1,7 +1,7 @@
 import { useContext, useState } from "react";
 import styled from "styled-components";
 import OrderContext from "../../../../../../context/OrderContext";
-import { FiCheck } from "react-icons/fi";
+import { FiCheckCircle } from "react-icons/fi";
 import { theme } from "../../../../../../theme";
 import TextInput from "../../../../../reusable-ui/TextInput";
 import { FaHamburger } from "react-icons/fa";
@@ -9,7 +9,7 @@ import { BsFillCameraFill } from "react-icons/bs";
 import { MdOutlineEuro } from "react-icons/md";
 import Button from "../../../../../reusable-ui/Button.jsx";
 
-const EMPTY_PRODUCT = {
+export const EMPTY_PRODUCT = {
   id: "",
   title: "",
   imageSource: "",
@@ -17,9 +17,8 @@ const EMPTY_PRODUCT = {
 };
 
 export default function AddForm({ version = "normal" }) {
-  const { addProduct } = useContext(OrderContext);
+  const { addProduct, newProduct, setNewProduct } = useContext(OrderContext);
 
-  const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT);
   const [isSubmitted, setIsSubmitted] = useState(false);
 
   const handleSubmit = (event) => {
@@ -93,9 +92,10 @@ export default function AddForm({ version = "normal" }) {
           version="success"
         />
         {isSubmitted && (
-          <span>
+          <span className="submit-message">
             {" "}
-            <FiCheck /> Ajouté avec succès
+            <FiCheckCircle className="icon" />
+            <span className="message">Ajouté avec succès</span>
           </span>
         )}
       </div>
@@ -140,9 +140,29 @@ const AddFormStyled = styled.form`
     grid-area: 3 / 2 / 3 / -1;
     display: flex;
     align-items: center;
+    gap: 5px;
 
     .submit-button {
       width: 50%;
+    }
+    .submit-message {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      /* border: 1px solid red; */
+      color: ${theme.colors.success};
+      gap: 5px;
+
+      .icon {
+        margin-left: 10px;
+        width: 1em;
+        height: 1em;
+      }
+      .message {
+        font-weight: ${theme.fonts.weights.regular};
+        font-size: ${theme.fonts.size.P0};
+        font-family: "Open Sans", cursive;
+      }
     }
   }
 `;
