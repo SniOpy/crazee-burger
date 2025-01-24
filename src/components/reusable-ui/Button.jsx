@@ -91,6 +91,17 @@ const extraStyleSuccess = css`
   border: 1px solid ${theme.colors.success};
   font-weight: ${theme.fonts.weights.bold};
   font-family: "Arial", cursive;
+
+  &:hover {
+    color: ${theme.colors.success};
+    background-color: ${theme.colors.white};
+    border: 1px solid ${theme.colors.success};
+  }
+
+  &:active {
+    background-color: ${theme.colors.white};
+    color: ${theme.colors.success};
+  }
 `;
 
 const extraStyle = {
