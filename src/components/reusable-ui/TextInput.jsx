@@ -10,7 +10,7 @@ export default function TextInput({
   ...extraProps
 }) {
   return (
-    <InputStyled className={className} area="aze" version={version}>
+    <InputStyled className={className} version={version}>
       <div className="icon"> {Icon && Icon}</div>
       <input onChange={onChange} type="text" {...extraProps} />
     </InputStyled>
@@ -48,8 +48,10 @@ const InputStyled = styled.div`
     }
   }
 
-  ${(props) => props.version === "normal" && extraNormalStyle}
-  ${(props) => props.version === "minimalist" && extraMinimalistStyle}
+  /* ${(props) => props.version === "normal" && extraNormalStyle}
+  ${(props) => props.version === "minimalist" && extraMinimalistStyle} */
+
+  ${({ version }) => extraStyle[version]}
 `;
 
 const extraNormalStyle = css`
@@ -80,3 +82,9 @@ const extraMinimalistStyle = css`
     }
   }
 `;
+
+// les dictionnaires
+const extraStyle = {
+  normal: extraNormalStyle,
+  minimalist: extraMinimalistStyle,
+};

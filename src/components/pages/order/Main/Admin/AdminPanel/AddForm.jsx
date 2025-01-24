@@ -7,6 +7,7 @@ import TextInput from "../../../../../reusable-ui/TextInput";
 import { FaHamburger } from "react-icons/fa";
 import { BsFillCameraFill } from "react-icons/bs";
 import { MdOutlineEuro } from "react-icons/md";
+import PrimaryButton from "../../../../../reusable-ui/PrimaryButton.jsx";
 
 const EMPTY_PRODUCT = {
   id: "",
@@ -15,7 +16,7 @@ const EMPTY_PRODUCT = {
   price: "",
 };
 
-export default function AddForm() {
+export default function AddForm({ version = "normal" }) {
   const { addProduct } = useContext(OrderContext);
 
   const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT);
@@ -86,9 +87,14 @@ export default function AddForm() {
         />
       </div>
       <div className="submit ">
-        <button className="submit-button" type="">
+        {/* <button className="submit-button" type="">
           Button{" "}
-        </button>
+        </button> */}
+        <PrimaryButton
+          label="Ajouter un nouveau produit"
+          className="submit-button"
+          version="success"
+        />
         {isSubmitted && (
           <span>
             {" "}
