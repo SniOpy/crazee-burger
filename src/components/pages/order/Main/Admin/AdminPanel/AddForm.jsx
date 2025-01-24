@@ -87,11 +87,8 @@ export default function AddForm({ version = "normal" }) {
         />
       </div>
       <div className="submit ">
-        {/* <button className="submit-button" type="">
-          Button{" "}
-        </button> */}
         <PrimaryButton
-          label="Ajouter un nouveau produit"
+          label="Ajouter un nouveau produit au menu"
           className="submit-button"
           version="success"
         />

@@ -21,8 +21,7 @@ export default function PrimaryButton({
 }
 
 const PrimaryButtonStyled = styled.button`
-  ${(props) => props.version === "normal" && extraStyleNormal}
-  ${(props) => props.version === "success" && extraStyleSuccess}
+  ${(props) => extraStyle[props.version]}
 `;
 
 const extraStyleNormal = css`
@@ -91,10 +90,15 @@ const extraStyleNormal = css`
 const extraStyleSuccess = css`
   background: ${theme.colors.success};
   font-size: ${theme.fonts.size.XS};
-  border: ${theme.borderRadius.round};
+  border-radius: ${theme.borderRadius.round};
   padding: 10px 29px;
   color: ${theme.colors.white};
   border: 1px solid ${theme.colors.success};
   font-weight: ${theme.fonts.weights.bold};
   font-family: "Arial", cursive;
 `;
+
+const extraStyle = {
+  normal: extraStyleNormal,
+  success: extraStyleSuccess,
+};
