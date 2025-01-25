@@ -8,6 +8,7 @@ import { FaHamburger } from "react-icons/fa";
 import { BsFillCameraFill } from "react-icons/bs";
 import { MdOutlineEuro } from "react-icons/md";
 import Button from "../../../../../reusable-ui/Button.jsx";
+import ImagePreview from "./ImagePreview.jsx";
 
 export const EMPTY_PRODUCT = {
   id: "",
@@ -49,13 +50,10 @@ export default function AddForm({ version = "normal" }) {
 
   return (
     <AddFormStyled onSubmit={handleSubmit}>
-      <div className="image-preview">
-        {newProduct.imageSource ? (
-          <img src={newProduct.imageSource} alt={newProduct.title} />
-        ) : (
-          "Aucune image"
-        )}
-      </div>
+      <ImagePreview
+        imageSource={newProduct.imageSource}
+        title={newProduct.title}
+      />
       <div className="input-fields">
         <TextInput
           name="title"
@@ -114,23 +112,6 @@ const AddFormStyled = styled.form`
   grid-row-gap: 8px;
   padding-top: 30px;
 
-  .image-preview {
-    border-radius: 5px;
-    color: ${theme.colors.greyMedium};
-    border: 1px solid ${theme.colors.greyLight};
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    grid-area: 1 / 1 / 3 / 2;
-    /* padding: 70px 0; */
-
-    img {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-      object-position: center;
-    }
-  }
   .input-fields {
     grid-area: 1 / 2 / 3 / 3;
     display: grid;

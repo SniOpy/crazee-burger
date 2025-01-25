@@ -43,7 +43,11 @@ export default function LoginForm() {
           version="normal"
         />
 
-        <Button label={"Accéder à mon espace"} Icon={<IoChevronForward />} />
+        <Button
+          label={"Accéder à mon espace"}
+          Icon={<IoChevronForward />}
+          className="button-login"
+        />
       </div>
     </LoginFormStyled>
   );
@@ -76,5 +80,8 @@ const LoginFormStyled = styled.form`
 
   .input-login {
     margin: 18px 0; // could be handle in Parent too
+  }
+  .button-login {
+    cursor: pointer;
   }
 `;
