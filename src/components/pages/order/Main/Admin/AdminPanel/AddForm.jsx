@@ -1,14 +1,13 @@
 import { useContext, useState } from "react";
 import styled from "styled-components";
 import OrderContext from "../../../../../../context/OrderContext";
-import { FiCheckCircle } from "react-icons/fi";
-import { theme } from "../../../../../../theme";
 import TextInput from "../../../../../reusable-ui/TextInput";
 import { FaHamburger } from "react-icons/fa";
 import { BsFillCameraFill } from "react-icons/bs";
 import { MdOutlineEuro } from "react-icons/md";
 import Button from "../../../../../reusable-ui/Button.jsx";
 import ImagePreview from "./ImagePreview.jsx";
+import SubmitMessage from "./SubmitMessage.jsx";
 
 export const EMPTY_PRODUCT = {
   id: "",
@@ -89,13 +88,7 @@ export default function AddForm({ version = "normal" }) {
           className="submit-button"
           version="success"
         />
-        {isSubmitted && (
-          <span className="submit-message">
-            {" "}
-            <FiCheckCircle className="icon" />
-            <span className="message">Ajouté avec succès</span>
-          </span>
-        )}
+        {isSubmitted && <SubmitMessage />}
       </div>
     </AddFormStyled>
   );
@@ -125,25 +118,6 @@ const AddFormStyled = styled.form`
 
     .submit-button {
       width: 50%;
-    }
-    .submit-message {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      /* border: 1px solid red; */
-      color: ${theme.colors.success};
-      gap: 5px;
-
-      .icon {
-        margin-left: 10px;
-        width: 1em;
-        height: 1em;
-      }
-      .message {
-        font-weight: ${theme.fonts.weights.regular};
-        font-size: ${theme.fonts.size.P0};
-        font-family: "Open Sans", cursive;
-      }
     }
   }
 `;
