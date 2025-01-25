@@ -2,12 +2,10 @@ import { useContext, useState } from "react";
 import styled from "styled-components";
 import OrderContext from "../../../../../../context/OrderContext";
 import TextInput from "../../../../../reusable-ui/TextInput";
-import { FaHamburger } from "react-icons/fa";
-import { BsFillCameraFill } from "react-icons/bs";
-import { MdOutlineEuro } from "react-icons/md";
 import Button from "../../../../../reusable-ui/Button.jsx";
 import ImagePreview from "./ImagePreview.jsx";
 import SubmitMessage from "./SubmitMessage.jsx";
+import { getInputTextConfig } from "./inputTextConfig.jsx";
 
 export const EMPTY_PRODUCT = {
   id: "",
@@ -16,10 +14,12 @@ export const EMPTY_PRODUCT = {
   price: "",
 };
 
-export default function AddForm({ version = "normal" }) {
+export default function AddForm() {
   const { addProduct, newProduct, setNewProduct } = useContext(OrderContext);
 
   const [isSubmitted, setIsSubmitted] = useState(false);
+
+  const inputTexts = getInputTextConfig(newProduct);
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -54,33 +54,20 @@ export default function AddForm({ version = "normal" }) {
         title={newProduct.title}
       />
       <div className="input-fields">
-        <TextInput
-          name="title"
-          type="text"
-          placeholder="Nom du produit (ex: Super Burger)"
-          value={newProduct.title}
-          onChange={handleChange}
-          Icon={<FaHamburger />}
-          version="minimalist"
-        />
-        <TextInput
-          name="imageSource"
-          type="text"
-          placeholder="Lien URL d'une image (ex: https://la-photo-de-mon-produit.png)"
-          value={newProduct.imageSource}
-          onChange={handleChange}
-          Icon={<BsFillCameraFill />}
-          version="minimalist"
-        />
-        <TextInput
-          name="price"
-          type="text"
-          placeholder='Ex: "2119,56", et "2119.56"'
-          value={newProduct.price}
-          onChange={handleChange}
-          Icon={<MdOutlineEuro />}
-          version="minimalist"
-        />
+        {inputTexts.map((input) => {
+          return (
+            <TextInput
+              // name={input.name}
+              // placeholder={input.placeholder}
+              // value={input.value}
+              // Icon={input.Icon}
+              {...input}
+              key={input.id}
+              onChange={handleChange}
+              version="minimalist"
+            />
+          );
+        })}
       </div>
       <div className="submit ">
         <Button
