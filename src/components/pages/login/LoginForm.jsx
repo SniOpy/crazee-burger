@@ -9,7 +9,7 @@ import { theme } from "../../../theme";
 
 export default function LoginForm() {
   // state
-  const [inputValue, setInputValue] = useState("");
+  const [inputValue, setInputValue] = useState("Bob");
   const navigate = useNavigate();
 
   // comportements
@@ -43,11 +43,7 @@ export default function LoginForm() {
           version="normal"
         />
 
-        <Button
-          label={"Accéder à mon espace"}
-          Icon={<IoChevronForward />}
-          className="button-login"
-        />
+        <Button label={"Accéder à mon espace"} Icon={<IoChevronForward />} />
       </div>
     </LoginFormStyled>
   );
@@ -79,9 +75,6 @@ const LoginFormStyled = styled.form`
   }
 
   .input-login {
-    margin: 18px 0; // could be handle in Parent too
-  }
-  .button-login {
-    cursor: pointer;
+    margin: 18px 0; // must be handled in Parent
   }
 `;

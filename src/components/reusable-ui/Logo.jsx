@@ -1,5 +1,5 @@
-import styled from "styled-components"
-import { theme } from "../../theme"
+import styled from "styled-components";
+import { theme } from "../../theme";
 
 export default function Logo({ className, onClick }) {
   return (
@@ -8,12 +8,14 @@ export default function Logo({ className, onClick }) {
       <img src="/images/logo-orange.png" alt="logo-crazee-burger" />
       <h1>BURGER</h1>
     </LogoStyled>
-  )
+  );
 }
 
 const LogoStyled = styled.div`
+  border: 2px solid red;
   display: flex;
   align-items: center;
+  background-color: white;
 
   h1 {
     display: inline;
@@ -34,4 +36,4 @@ const LogoStyled = styled.div`
     width: 80px; // for Safari and Firefox
     margin: 0 ${theme.gridUnit / 2}px;
   }
-`
+`;
