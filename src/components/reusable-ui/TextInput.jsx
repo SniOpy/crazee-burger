@@ -1,54 +1,90 @@
-import React from 'react'
-import { FaUserCircle } from 'react-icons/fa';
-import styled from 'styled-components'
-import ButtonPrimary from './ButtonPrimary';
-import { FaChevronRight } from "react-icons/fa";
-import { theme } from '../theme';
+import styled, { css } from "styled-components";
+import { theme } from "../../theme";
 
-export default function TextInput({ value, onChange, ...restProps }) {
-
+export default function TextInput({
+  value,
+  onChange,
+  Icon,
+  className,
+  version = "normal",
+  ...extraProps
+}) {
   return (
-    <TextInputStyled>
-      <FaUserCircle className='fa-circle' />
-      <input
-        value={value}
-        onChange={onChange}
-        {...restProps}
-      />
-      <ButtonPrimary
-        label={"Accéder à mon espace"}
-        icon={<FaChevronRight className='icon' />} />
-
-    </TextInputStyled>
-  )
+    <InputStyled className={className} version={version}>
+      <div className="icon"> {Icon && Icon}</div>
+      <input onChange={onChange} type="text" {...extraProps} />
+    </InputStyled>
+  );
 }
 
-const TextInputStyled = styled.div`
-    display:flex;
-    flex-direction: column;
+const InputStyled = styled.div`
+  background-color: ${theme.colors.white};
+  border-radius: ${theme.borderRadius.round};
+  display: flex;
+  align-items: center;
+  padding: 18px 24px;
+
+  .icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: ${theme.fonts.size.SM};
+    margin: 0 8px 0 10px;
+    color: ${theme.colors.greySemiDark};
+    /* min-width: 1em; // that way, the icon size is NOT affected by width of the entire component. */
+  }
 
   input {
-    width: 300px;
-    height: 30px;
-    padding: 5px 35px;
-    border-radius: 5px;
-    font-family: "Open Sans", cursive;
+    border: none;
+    font-size: ${theme.fonts.size.SM};
+    color: ${theme.colors.dark};
+    width: 100%;
+
+    /* display: flex; */
 
     &::placeholder {
-      color: ${theme.colors.greyMedium}
+      background: ${theme.colors.background_white};
+      color: ${theme.colors.greyMedium};
     }
   }
 
-  
-  .fa-circle {
-    position: absolute;
-    color:grey;
-    padding: 14px;
-    min-width: 10px;
-  }
+  /* ${(props) => props.version === "normal" && extraNormalStyle}
+  ${(props) => props.version === "minimalist" && extraMinimalistStyle} */
 
-  .icon {
-      margin-left: 10px;
+  ${({ version }) => extraStyle[version]}
+`;
+
+const extraNormalStyle = css`
+  background-color: ${theme.colors.white};
+  padding: 18px 28px;
+  color: ${theme.colors.greySemiDark};
+
+  input {
+    color: ${theme.colors.dark};
+
+    &::placeholder {
+      background: ${theme.colors.white};
+    }
   }
 `;
 
+const extraMinimalistStyle = css`
+  background-color: ${theme.colors.background_white};
+  padding: 8px 16px;
+  color: ${theme.colors.greyBlue};
+
+  input {
+    background: ${theme.colors.background_white};
+    color: ${theme.colors.dark};
+
+    &:focus {
+      outline: 0; // add outline
+    }
+  }
+`;
+
+// les dictionnaires
+const extraStyle = {
+  normal: extraNormalStyle,
+  minimalist: extraMinimalistStyle,
+};
