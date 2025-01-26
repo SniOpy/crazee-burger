@@ -9,9 +9,10 @@ export default function Card({
   leftDescription,
   onDelete,
   hasDeleteButton,
+  className,
 }) {
   return (
-    <CardStyled className="produit">
+    <CardStyled className={className}>
       {hasDeleteButton && (
         <button
           className="delete-button"
@@ -50,6 +51,7 @@ const CardStyled = styled.div`
   box-shadow: ${theme.shadows.medium};
   border-radius: ${theme.borderRadius.extraRound};
   position: relative;
+  cursor: pointer;
 
   .delete-button {
     /* border: 1px solid red; */

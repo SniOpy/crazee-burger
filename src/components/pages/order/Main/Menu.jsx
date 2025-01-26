@@ -29,6 +29,7 @@ export default function Menu() {
             leftDescription={formatPrice(price)}
             hasDeleteButton={isModeAdmin}
             onDelete={() => handleDelete(id)}
+            className={isModeAdmin && "light-box"}
           />
         );
       })}
@@ -47,4 +48,11 @@ const MenuStyled = styled.div`
   overflow-y: scroll;
   border-bottom-left-radius: ${theme.borderRadius.extraRound};
   border-bottom-right-radius: ${theme.borderRadius.extraRound};
+
+  .light-box:hover {
+    outline: none;
+    box-shadow: 0px 0px 8px ${theme.colors.primary};
+    -moz-box-shadow: 0px 0px 8px ${theme.colors.primary};
+    -webkit-box-shadow: 0px 0px 8px ${theme.colors.primary};
+  }
 `;
