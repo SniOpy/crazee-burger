@@ -1,6 +1,5 @@
 import styled from "styled-components";
-import Button from "../../../../../reusable-ui/Button";
-// import { IoChevronForward } from "react-icons/io5";
+import Button from "../../../../../../reusable-ui/Button.jsx";
 
 export default function EmptyMenuAdmin({ onReset }) {
   return (

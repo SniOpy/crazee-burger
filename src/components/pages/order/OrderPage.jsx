@@ -6,16 +6,26 @@ import Main from "./Main/Main";
 import Navbar from "./Navbar/Navbar";
 import OrderContext from "../../../context/OrderContext";
 import { fakeMenu } from "../../../fakeData/fakeMenu";
-import { EMPTY_PRODUCT } from "./Main/Admin/AdminPanel/AddForm";
+import { EMPTY_PRODUCT } from "../../../enums/product";
 
 export default function OrderPage() {
-  // state
+  //! state
   const { username } = useParams();
-  const [isModeAdmin, setIsModeAdmin] = useState(false);
+  const [isModeAdmin, setIsModeAdmin] = useState(true);
   const [isCollapsed, setIsCollapsed] = useState(false);
-  const [currentTabSelected, setCurrentTabSelected] = useState("add");
+  const [currentTabSelected, setCurrentTabSelected] = useState("edit");
   const [menu, setMenu] = useState(fakeMenu.MEDIUM);
   const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT);
+  const [productClicked, setProductClicked] = useState("");
+
+  //! comportements
+
+  const selectedProduct = (idCardSelected) => {
+    const productSelected = menu.find(
+      (product) => product.id === idCardSelected
+    );
+    setProductClicked(productSelected);
+  };
 
   const handleDelete = (productId) => {
     // 1. copie du state
@@ -23,13 +33,13 @@ export default function OrderPage() {
 
     // 2. manipulation de la copie
     const menuUpdated = menuCopy.filter((product) => product.id !== productId);
-    console.log(menuUpdated);
+
     // 3. update du state
     setMenu(menuUpdated);
   };
 
   const resetMenu = () => {
-    setMenu(fakeMenu.SMALL);
+    setMenu(fakeMenu.MEDIUM);
   };
 
   const addProduct = (newProduct) => {
@@ -42,8 +52,6 @@ export default function OrderPage() {
     //3. Nouveau state
     setMenu(updatedMenu);
   };
-
-  // comportements
 
   const orderContextValue = {
     isModeAdmin,
@@ -58,9 +66,11 @@ export default function OrderPage() {
     resetMenu,
     newProduct,
     setNewProduct,
+    selectedProduct,
+    productClicked,
   };
 
-  //affichage
+  //! affichage
   return (
     <OrderContext.Provider value={orderContextValue}>
       <OrderPageStyled>

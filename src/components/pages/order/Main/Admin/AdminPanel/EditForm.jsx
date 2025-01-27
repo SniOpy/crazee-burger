@@ -1,25 +1,24 @@
 import styled from "styled-components";
-import { theme } from "../../../../../../theme";
-import { HiCursorClick } from "react-icons/hi";
+import EmptyTabEdit from "../Empty/EmptyTab/EmptyTabEdit";
+import OrderContext from "../../../../../../context/OrderContext";
+import { useContext } from "react";
 
 export default function EditForm() {
+  const { productClicked } = useContext(OrderContext);
+  //! state
+
+  //! comportement
+
+  //! affichage
   return (
     <EditFormStyled>
       <span>
-        Cliquez sur un produit pour le modifier <HiCursorClick />
+        {" "}
+        {productClicked.title}
+        <EmptyTabEdit />
       </span>
     </EditFormStyled>
   );
 }
 
-const EditFormStyled = styled.div`
-  /* border: 1px solid red; */
-  padding: 10px 5%;
-  display: flex;
-  /* align-items: center; */
-  font-family: "Amatic SC", cursive;
-  font-size: ${theme.fonts.size.P3};
-  font-weight: ${theme.fonts.weights.regular};
-  color: rgba(116, 123, 145, 1);
-  margin-top: 81px;
-`;
+const EditFormStyled = styled.div``;
