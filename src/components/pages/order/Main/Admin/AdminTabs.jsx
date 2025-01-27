@@ -21,7 +21,7 @@ export default function AdminTabs() {
 
   const tabs = tabsConfig;
 
-  // affichage
+  //! affichage
   return (
     <AdminTabsStyled>
       <Tab

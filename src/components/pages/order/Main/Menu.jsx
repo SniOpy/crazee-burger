@@ -5,19 +5,20 @@ import { formatPrice } from "../../../../utils/maths";
 import Card from "../../../reusable-ui/Card";
 import { useContext } from "react";
 import OrderContext from "../../../../context/OrderContext";
-import EmptyMenuAdmin from "./Admin/Empty/EmptyMenuAdmin";
-import EmptyMenuClient from "./Admin/Empty/EmptyMenuClient";
+import EmptyMenuAdmin from "./Admin/Empty/EmptyMenu/EmptyMenuAdmin";
+import EmptyMenuClient from "./Admin/Empty/EmptyMenu/EmptyMenuClient";
 
 const IMAGE_BY_DEFAULT = "/images/coming-soon.png";
 
 export default function Menu() {
-  const { menu, isModeAdmin, handleDelete, resetMenu } =
+  const { menu, isModeAdmin, handleDelete, resetMenu, selectedProduct } =
     useContext(OrderContext);
 
   if (menu.length === 0) {
     if (!isModeAdmin) return <EmptyMenuClient />;
     return <EmptyMenuAdmin onReset={resetMenu} />;
   }
+
   return (
     <MenuStyled className="menu">
       {menu.map(({ id, title, imageSource, price }) => {
@@ -29,7 +30,7 @@ export default function Menu() {
             leftDescription={formatPrice(price)}
             hasDeleteButton={isModeAdmin}
             onDelete={() => handleDelete(id)}
-            className={isModeAdmin && "light-box"}
+            onClick={() => selectedProduct(id)}
           />
         );
       })}
@@ -48,11 +49,4 @@ const MenuStyled = styled.div`
   overflow-y: scroll;
   border-bottom-left-radius: ${theme.borderRadius.extraRound};
   border-bottom-right-radius: ${theme.borderRadius.extraRound};
-
-  .light-box:hover {
-    outline: none;
-    box-shadow: 0px 0px 8px ${theme.colors.primary};
-    -moz-box-shadow: 0px 0px 8px ${theme.colors.primary};
-    -webkit-box-shadow: 0px 0px 8px ${theme.colors.primary};
-  }
 `;
