@@ -6,13 +6,7 @@ import Button from "../../../../../reusable-ui/Button.jsx";
 import ImagePreview from "./ImagePreview.jsx";
 import SubmitMessage from "./SubmitMessage.jsx";
 import { getInputTextConfig } from "./inputTextConfig.jsx";
-
-export const EMPTY_PRODUCT = {
-  id: "",
-  title: "",
-  imageSource: "",
-  price: "",
-};
+import { EMPTY_PRODUCT } from "../../../../../../enums/product";
 
 export default function AddForm() {
   const { addProduct, newProduct, setNewProduct } = useContext(OrderContext);

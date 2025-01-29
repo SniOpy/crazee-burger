@@ -12,7 +12,7 @@ export default function TextInput({
   return (
     <InputStyled className={className} version={version}>
       <div className="icon"> {Icon && Icon}</div>
-      <input onChange={onChange} type="text" {...extraProps} />
+      <input onChange={onChange} type="text" {...extraProps} value={value} />
     </InputStyled>
   );
 }
