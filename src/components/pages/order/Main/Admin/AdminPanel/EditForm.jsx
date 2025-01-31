@@ -5,25 +5,23 @@ import TextInput from "../../../../../reusable-ui/TextInput";
 import ImagePreview from "./ImagePreview.jsx";
 import { getInputTextConfig } from "./inputTextConfig.jsx";
 import styled from "styled-components";
-// import { EMPTY_PRODUCT } from "../../../../../../enums/product.js";
 
 export default function EditForm() {
-  const { productClicked } = useContext(OrderContext);
-
-  const [productBeingUpdated, setProductBeingUpdated] =
-    useState(productClicked);
+  const { productClicked, setProductClicked, handleEdit } =
+    useContext(OrderContext);
 
   const inputTexts = getInputTextConfig(productClicked);
 
   const handleChange = (event) => {
     const { name, value } = event.target;
-
-    setProductBeingUpdated({
-      ...productBeingUpdated,
+    const productBeingEdited = {
+      ...productClicked,
       [name]: value,
-    });
-  };
+    };
 
+    setProductClicked(productBeingEdited);
+    handleEdit(productBeingEdited);
+  };
   return (
     <EditFormStyled>
       <ImagePreview
