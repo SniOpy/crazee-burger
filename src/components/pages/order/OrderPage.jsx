@@ -24,6 +24,7 @@ export default function OrderPage() {
     const productSelected = menu.find(
       (product) => product.id === idCardSelected
     );
+
     setProductClicked(productSelected);
   };
 
@@ -36,6 +37,21 @@ export default function OrderPage() {
 
     // 3. update du state
     setMenu(menuUpdated);
+  };
+
+  const handleEdit = (productEdited) => {
+    //1. copy state
+    const menuCopy = JSON.parse(JSON.stringify(menu));
+
+    // 2. State manipulation
+    const productIndex = menuCopy.findIndex(
+      (product) => product.id === productEdited.id
+    );
+
+    menuCopy[productIndex] = productEdited;
+
+    // 3. State update
+    setMenu(menuCopy);
   };
 
   const resetMenu = () => {
@@ -68,6 +84,8 @@ export default function OrderPage() {
     setNewProduct,
     selectedProduct,
     productClicked,
+    setProductClicked,
+    handleEdit,
   };
 
   //! affichage
