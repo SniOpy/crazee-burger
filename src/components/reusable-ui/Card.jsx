@@ -50,6 +50,10 @@ export default function Card({
 }
 
 const CardStyled = styled.div`
+  ${(props) => props.isHoverable && hoverableStyle}
+  /* border: 1px solid red; */
+  border-radius: ${theme.borderRadius.extraRound};
+
   .card {
     background: ${theme.colors.white};
     box-sizing: border-box;
@@ -155,11 +159,11 @@ const CardStyled = styled.div`
   }
 `;
 
-// const hoverableStyle = css`
-//   :hover {
-//     transform: scale(1.5);
-//     transition: ease-out 0.4s;
-//     box-shadow: ${theme.shadows.orangeHighLight};
-//     cursor: pointer;
-//   }
-// `;
+const hoverableStyle = css`
+  &:hover {
+    transform: scale(1.05);
+    transition: ease-out 0.3s;
+    box-shadow: ${theme.shadows.orangeHighLight};
+    cursor: pointer;
+  }
+`;
