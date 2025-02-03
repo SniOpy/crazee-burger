@@ -53,6 +53,7 @@ const CardStyled = styled.div`
   ${(props) => props.isHoverable && hoverableStyle}
   /* border: 1px solid red; */
   border-radius: ${theme.borderRadius.extraRound};
+  transition: all 0.4s ease-out;
 
   .card {
     background: ${theme.colors.white};
@@ -162,7 +163,6 @@ const CardStyled = styled.div`
 const hoverableStyle = css`
   &:hover {
     transform: scale(1.05);
-    transition: ease-out 0.3s;
     box-shadow: ${theme.shadows.orangeHighLight};
     cursor: pointer;
   }
