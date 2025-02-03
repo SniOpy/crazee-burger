@@ -14,7 +14,6 @@ export default function Logo({ className, onClick }) {
 const LogoStyled = styled.div`
   display: flex;
   align-items: center;
-  background-color: white;
 
   h1 {
     display: inline;
