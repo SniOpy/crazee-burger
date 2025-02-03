@@ -31,6 +31,7 @@ export default function Menu() {
             hasDeleteButton={isModeAdmin}
             onDelete={() => handleDelete(id)}
             onClick={() => selectedProduct(id)}
+            isHoverable={isModeAdmin}
           />
         );
       })}
