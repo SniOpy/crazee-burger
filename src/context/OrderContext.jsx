@@ -19,6 +19,6 @@ export default createContext({
   setNewProduct: () => {},
 
   selectedProduct: () => {},
-  setProductClicked: () => {},
-  productClicked: [],
+  setProductSelected: () => {},
+  productSelected: [],
 });

@@ -11,8 +11,14 @@ import EmptyMenuClient from "./Admin/Empty/EmptyMenu/EmptyMenuClient";
 const IMAGE_BY_DEFAULT = "/images/coming-soon.png";
 
 export default function Menu() {
-  const { menu, isModeAdmin, handleDelete, resetMenu, selectedProduct } =
-    useContext(OrderContext);
+  const {
+    menu,
+    isModeAdmin,
+    handleDelete,
+    resetMenu,
+    productClicked,
+    selectedProduct,
+  } = useContext(OrderContext);
 
   if (menu.length === 0) {
     if (!isModeAdmin) return <EmptyMenuClient />;
@@ -32,6 +38,7 @@ export default function Menu() {
             onDelete={() => handleDelete(id)}
             onClick={() => selectedProduct(id)}
             isHoverable={isModeAdmin}
+            isSelected={id === productClicked.id}
           />
         );
       })}
