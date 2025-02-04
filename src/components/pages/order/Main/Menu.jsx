@@ -25,6 +25,10 @@ export default function Menu() {
     return <EmptyMenuAdmin onReset={resetMenu} />;
   }
 
+  const checkIfProductSelected = (idProductInMenu, idProductClickedOn) => {
+    return idProductInMenu === idProductClickedOn;
+  };
+
   return (
     <MenuStyled className="menu">
       {menu.map(({ id, title, imageSource, price }) => {
@@ -38,7 +42,7 @@ export default function Menu() {
             onDelete={() => handleDelete(id)}
             onClick={() => selectedProduct(id)}
             isHoverable={isModeAdmin}
-            isSelected={id === productClicked.id}
+            isSelected={checkIfProductSelected(id, productClicked.id)}
           />
         );
       })}
