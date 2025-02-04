@@ -13,6 +13,7 @@ export default function Card({
   className,
   onClick,
   isHoverable,
+  isSelected,
 }) {
   return (
     <CardStyled
@@ -20,7 +21,7 @@ export default function Card({
       onClick={onClick}
       isHoverable={isHoverable}
     >
-      <div className="card">
+      <div className="card" style={isSelected ? { background: "orange" } : {}}>
         {hasDeleteButton && (
           <button
             className="delete-button"
