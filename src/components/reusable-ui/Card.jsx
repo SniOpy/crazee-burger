@@ -20,8 +20,9 @@ export default function Card({
       className={className}
       onClick={onClick}
       isHoverable={isHoverable}
+      isSelected={isSelected}
     >
-      <div className="card" style={isSelected ? { background: "orange" } : {}}>
+      <div className="card">
         {hasDeleteButton && (
           <button
             className="delete-button"
@@ -39,7 +40,9 @@ export default function Card({
         <div className="text-info">
           <div className="title">{title}</div>
           <div className="description">
-            <div className="left-description">{leftDescription}</div>
+            <div className="left-description">
+              <span className="price">{leftDescription}</span>
+            </div>
             <div className="right-description">
               <Button className="primary-button" label={"Ajouter"} />
             </div>
@@ -158,6 +161,9 @@ const CardStyled = styled.div`
         }
       }
     }
+
+    ${({ isHoverable, isSelected }) =>
+      isHoverable && isSelected && selectedStyle}
   }
 `;
 
@@ -166,5 +172,34 @@ const hoverableStyle = css`
     transform: scale(1.05);
     box-shadow: ${theme.shadows.orangeHighLight};
     cursor: pointer;
+  }
+`;
+
+const selectedStyle = css`
+  background: ${theme.colors.primary};
+
+  .delete-button {
+    color: ${theme.colors.white};
+    &:hover {
+      color: ${theme.colors.red};
+    }
+    &:active {
+      color: ${theme.colors.white};
+    }
+  }
+
+  .price {
+    color: white;
+  }
+
+  .primary-button {
+    background: ${theme.colors.white};
+    color: ${theme.colors.primary};
+
+    &:hover {
+      border: 1px solid ${theme.colors.white};
+      color: ${theme.colors.white};
+      background-color: ${theme.colors.primary};
+    }
   }
 `;
