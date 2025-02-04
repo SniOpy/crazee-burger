@@ -18,7 +18,6 @@ export default createContext({
   newProduct: [],
   setNewProduct: () => {},
 
-  selectedProduct: () => {},
   setProductSelected: () => {},
   productSelected: [],
 });

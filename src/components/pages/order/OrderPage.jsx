@@ -21,15 +21,6 @@ export default function OrderPage() {
 
   //! comportements
 
-  const selectedProduct = (idCardSelected) => {
-    if (!isModeAdmin) return;
-    const productSelected = menu.find(
-      (product) => product.id === idCardSelected
-    );
-
-    setProductClicked(productSelected);
-  };
-
   const handleDelete = (productId) => {
     // 1. copie du state
     const menuCopy = deepClone(menu);
@@ -84,7 +75,6 @@ export default function OrderPage() {
     resetMenu,
     newProduct,
     setNewProduct,
-    selectedProduct,
     productClicked,
     setProductClicked,
     handleEdit,

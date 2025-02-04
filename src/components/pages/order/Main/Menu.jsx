@@ -17,8 +17,23 @@ export default function Menu() {
     resetMenu,
     productClicked,
     setProductClicked,
-    selectedProduct,
+    setIsCollapsed,
+    setCurrentTabSelected,
   } = useContext(OrderContext);
+
+  const selectedProduct = (idCardSelected) => {
+    // if admin is false, we leave
+    if (!isModeAdmin) return;
+
+    // AdminTab is not collapsed & the current Tab on "edit"
+    setIsCollapsed(false);
+    setCurrentTabSelected("edit");
+    const productSelected = menu.find(
+      (product) => product.id === idCardSelected
+    );
+
+    setProductClicked(productSelected);
+  };
 
   if (menu.length === 0) {
     if (!isModeAdmin) return <EmptyMenuClient />;
