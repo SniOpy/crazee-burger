@@ -51,9 +51,9 @@ export default function Card({
 
 const CardStyled = styled.div`
   ${(props) => props.isHoverable && hoverableStyle}
-  /* border: 1px solid red; */
-  border-radius: ${theme.borderRadius.extraRound};
   transition: all 0.4s ease-out;
+  border-radius: ${theme.borderRadius.extraRound};
+  height: 330px;
 
   .card {
     background: ${theme.colors.white};
