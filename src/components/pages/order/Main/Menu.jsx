@@ -1,5 +1,4 @@
 import styled from "styled-components";
-
 import { theme } from "../../../../theme";
 import { formatPrice } from "../../../../utils/maths";
 import Card from "../../../reusable-ui/Card";
