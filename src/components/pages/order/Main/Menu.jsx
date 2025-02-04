@@ -28,6 +28,11 @@ export default function Menu() {
     return idProductInMenu === idProductClickedOn;
   };
 
+  const handleCardDelete = (event, id) => {
+    event.stopPropagation();
+    handleDelete(id);
+  };
+
   return (
     <MenuStyled className="menu">
       {menu.map(({ id, title, imageSource, price }) => {
@@ -38,7 +43,7 @@ export default function Menu() {
             imageSource={imageSource ? imageSource : IMAGE_BY_DEFAULT}
             leftDescription={formatPrice(price)}
             hasDeleteButton={isModeAdmin}
-            onDelete={() => handleDelete(id)}
+            onDelete={(event) => handleCardDelete(event, id)}
             onClick={() => selectedProduct(id)}
             isHoverable={isModeAdmin}
             isSelected={checkIfProductSelected(id, productClicked.id)}

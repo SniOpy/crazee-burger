@@ -44,7 +44,11 @@ export default function Card({
               <span className="price">{leftDescription}</span>
             </div>
             <div className="right-description">
-              <Button className="primary-button" label={"Ajouter"} />
+              <Button
+                className="primary-button"
+                label={"Ajouter"}
+                onClick={(event) => event.stopPropagation()}
+              />
             </div>
           </div>
         </div>
