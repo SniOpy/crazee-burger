@@ -1,10 +1,10 @@
 import { useContext, useState } from "react";
-// import styled from "styled-components";
 import OrderContext from "../../../../../../context/OrderContext";
 import TextInput from "../../../../../reusable-ui/TextInput";
 import ImagePreview from "./ImagePreview.jsx";
 import { getInputTextConfig } from "./inputTextConfig.jsx";
 import styled from "styled-components";
+import EmptyTabEdit from "../Empty/EmptyTab/EmptyTabEdit.jsx";
 
 export default function EditForm() {
   const { productClicked, setProductClicked, handleEdit } =
@@ -18,11 +18,12 @@ export default function EditForm() {
       ...productClicked,
       [name]: value,
     };
-
     setProductClicked(productBeingEdited);
     handleEdit(productBeingEdited);
   };
-  return (
+  return !productClicked ? (
+    <EmptyTabEdit />
+  ) : (
     <EditFormStyled>
       <ImagePreview
         imageSource={productClicked.imageSource}

@@ -22,6 +22,7 @@ export default function OrderPage() {
   //! comportements
 
   const selectedProduct = (idCardSelected) => {
+    if (!isModeAdmin) return;
     const productSelected = menu.find(
       (product) => product.id === idCardSelected
     );
