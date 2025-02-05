@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { theme } from "../../../../theme";
 import { formatPrice } from "../../../../utils/maths";
 import Card from "../../../reusable-ui/Card";
-import { useContext } from "react";
+import { useContext, useRef } from "react";
 import OrderContext from "../../../../context/OrderContext";
 import EmptyMenuAdmin from "./Admin/Empty/EmptyMenu/EmptyMenuAdmin";
 import EmptyMenuClient from "./Admin/Empty/EmptyMenu/EmptyMenuClient";
@@ -19,20 +19,21 @@ export default function Menu() {
     setProductClicked,
     setIsCollapsed,
     setCurrentTabSelected,
+    titleCardRef,
   } = useContext(OrderContext);
 
-  const selectedProduct = (idCardSelected) => {
+  const selectedProduct = async (idCardSelected) => {
     // if admin is false, we leave
     if (!isModeAdmin) return;
 
     // AdminTab is not collapsed & the current Tab on "edit"
-    setIsCollapsed(false);
-    setCurrentTabSelected("edit");
+    await setIsCollapsed(false);
+    await setCurrentTabSelected("edit");
     const productSelected = menu.find(
       (product) => product.id === idCardSelected
     );
-
-    setProductClicked(productSelected);
+    await setProductClicked(productSelected);
+    titleCardRef.current.focus();
   };
 
   if (menu.length === 0) {

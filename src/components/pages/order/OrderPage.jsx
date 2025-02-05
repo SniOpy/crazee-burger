@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { useParams } from "react-router-dom";
 import styled from "styled-components";
 import { theme } from "../../../theme";
@@ -18,6 +18,8 @@ export default function OrderPage() {
   const [menu, setMenu] = useState(fakeMenu.MEDIUM);
   const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT);
   const [productClicked, setProductClicked] = useState("");
+
+  const titleCardRef = useRef();
 
   //! comportements
 
@@ -78,6 +80,7 @@ export default function OrderPage() {
     productClicked,
     setProductClicked,
     handleEdit,
+    titleCardRef,
   };
 
   //! affichage
