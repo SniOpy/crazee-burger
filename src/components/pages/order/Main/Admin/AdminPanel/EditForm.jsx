@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import React, { useContext, useRef } from "react";
 import OrderContext from "../../../../../../context/OrderContext";
 import TextInput from "../../../../../reusable-ui/TextInput";
 import ImagePreview from "./ImagePreview.jsx";
@@ -7,7 +7,7 @@ import styled from "styled-components";
 import EmptyTabEdit from "../Empty/EmptyTab/EmptyTabEdit.jsx";
 
 export default function EditForm() {
-  const { productClicked, setProductClicked, handleEdit } =
+  const { productClicked, setProductClicked, handleEdit, titleCardRef } =
     useContext(OrderContext);
 
   const inputTexts = getInputTextConfig(productClicked);
@@ -21,6 +21,7 @@ export default function EditForm() {
     setProductClicked(productBeingEdited);
     handleEdit(productBeingEdited);
   };
+
   return !productClicked ? (
     <EmptyTabEdit />
   ) : (
@@ -40,6 +41,7 @@ export default function EditForm() {
               key={input.id}
               onChange={handleChange}
               version="minimalist"
+              ref={input.name === "title" ? titleCardRef : null}
             />
           );
         })}
@@ -47,7 +49,6 @@ export default function EditForm() {
     </EditFormStyled>
   );
 }
-
 const EditFormStyled = styled.form`
   padding: 10px 5%;
   display: grid;

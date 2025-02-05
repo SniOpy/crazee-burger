@@ -20,4 +20,5 @@ export default createContext({
 
   setProductSelected: () => {},
   productSelected: [],
+  titleCardRef: {},
 });
