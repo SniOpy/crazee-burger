@@ -1,21 +1,26 @@
 import styled, { css } from "styled-components";
 import { theme } from "../../theme";
+import React, { forwardRef } from "react";
 
-export default function TextInput({
-  value,
-  onChange,
-  Icon,
-  className,
-  version = "normal",
-  ...extraProps
-}) {
-  return (
-    <InputStyled className={className} version={version}>
-      <div className="icon"> {Icon && Icon}</div>
-      <input onChange={onChange} type="text" {...extraProps} value={value} />
-    </InputStyled>
-  );
-}
+const TextInput = forwardRef(
+  (
+    { value, onChange, Icon, className, version = "normal", ...extraProps },
+    ref
+  ) => {
+    return (
+      <InputStyled className={className} version={version}>
+        <div className="icon"> {Icon && Icon}</div>
+        <input
+          onChange={onChange}
+          type="text"
+          {...extraProps}
+          value={value}
+          ref={ref}
+        />
+      </InputStyled>
+    );
+  }
+);
 
 const InputStyled = styled.div`
   background-color: ${theme.colors.white};
@@ -53,6 +58,8 @@ const InputStyled = styled.div`
 
   ${({ version }) => extraStyle[version]}
 `;
+
+export default TextInput;
 
 const extraNormalStyle = css`
   background-color: ${theme.colors.white};
