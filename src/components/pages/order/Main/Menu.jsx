@@ -6,6 +6,7 @@ import { useContext, useRef } from "react";
 import OrderContext from "../../../../context/OrderContext";
 import EmptyMenuAdmin from "./Admin/Empty/EmptyMenu/EmptyMenuAdmin";
 import EmptyMenuClient from "./Admin/Empty/EmptyMenu/EmptyMenuClient";
+import { EMPTY_PRODUCT } from "../../../../enums/product";
 
 const IMAGE_BY_DEFAULT = "/images/coming-soon.png";
 
@@ -45,10 +46,11 @@ export default function Menu() {
     return idProductInMenu === idProductClickedOn;
   };
 
-  const handleCardDelete = (event, id) => {
+  const handleCardDelete = (event, idProduct) => {
     event.stopPropagation();
-    handleDelete(id);
-    setProductClicked("");
+    handleDelete(idProduct);
+    idProduct === productClicked.id && setProductClicked("")
+    titleCardRef.current.focus();
   };
 
   return (
