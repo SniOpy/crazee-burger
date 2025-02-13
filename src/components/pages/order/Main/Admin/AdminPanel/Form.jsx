@@ -1,20 +1,22 @@
+import React from "react";
 import styled from "styled-components";
 import TextInput from "../../../../../reusable-ui/TextInput";
 import ImagePreview from "./ImagePreview";
 import {getInputTextConfig} from './inputTextConfig.jsx'
-import Button from '../../../../../reusable-ui/Button.jsx'
-import SubmitMessage from './SubmitMessage.jsx'
-export default function Form({newProduct, onChange, onSubmit, isSubmitted}) {
+import { theme } from "../../../../../../theme/index.js";
+
+
+const Form = React.forwardRef(({product, onChange, onSubmit, children}, ref) => {
     
   //comportements 
-  const inputTexts = getInputTextConfig(newProduct);
+  const inputTexts = getInputTextConfig(product);
 
   //affichage 
   return (
     <FormStyled onSubmit={onSubmit}>
       <ImagePreview
-        imageSource={newProduct.imageSource}
-        title={newProduct.title}
+        imageSource={product.imageSource}
+        title={product.title}
       />
       <div className="input-fields">
         {inputTexts.map((input) => {
@@ -24,21 +26,20 @@ export default function Form({newProduct, onChange, onSubmit, isSubmitted}) {
               key={input.id}
               onChange={onChange}
               version="minimalist"
+              ref={ref && input.name === "title" ? ref : null}
             />
           );
         })}
       </div>
-      <div className="submit ">
-        <Button
-          label="Ajouter un nouveau produit au menu"
-          className="submit-button"
-          version="success"
-        />
-        {isSubmitted && <SubmitMessage />}
+      
+      <div className="submit">
+      {children}
       </div>
     </FormStyled>
   )
-}
+});
+
+export default Form;
 
 const FormStyled = styled.form`
   padding: 10px 5%;
@@ -66,4 +67,15 @@ const FormStyled = styled.form`
       width: 50%;
     }
   }
+
+  .sentence {
+    color:${theme.colors.primary};
+    font-size:${theme.fonts.size.SM};
+
+    .live-update {
+      text-decoration: underline;
+    }
+  }
 `;
+
+
