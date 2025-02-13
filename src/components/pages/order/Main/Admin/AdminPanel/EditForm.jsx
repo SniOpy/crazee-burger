@@ -5,6 +5,7 @@ import ImagePreview from "./ImagePreview.jsx";
 import { getInputTextConfig } from "./inputTextConfig.jsx";
 import styled from "styled-components";
 import EmptyTabEdit from "../Empty/EmptyTab/EmptyTabEdit.jsx";
+import { theme } from "../../../../../../theme/index.js";
 
 export default function EditForm() {
   const { productClicked, setProductClicked, handleEdit, titleCardRef } =
@@ -34,17 +35,16 @@ export default function EditForm() {
         {inputTexts.map((input) => {
           return (
             <TextInput
-              name={input.name}
-              placeholder={input.placeholder}
-              value={input.value}
-              Icon={input.Icon}
-              key={input.id}
+              {...input}
               onChange={handleChange}
               version="minimalist"
               ref={input.name === "title" ? titleCardRef : null}
             />
           );
         })}
+      </div>
+      <div className="submit">
+        <span>Cliquez sur un produit pour le modifier <span className="live-update">en temps réel</span></span>
       </div>
     </EditFormStyled>
   );
@@ -70,9 +70,15 @@ const EditFormStyled = styled.form`
     display: flex;
     align-items: center;
     gap: 5px;
+    color: ${theme.colors.primary};
+    font-size: ${theme.fonts.size.SM};
 
     .submit-button {
       width: 50%;
+    }
+
+    .live-update {
+      text-decoration: underline;
     }
   }
 `;
