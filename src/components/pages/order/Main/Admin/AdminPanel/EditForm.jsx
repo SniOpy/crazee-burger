@@ -1,11 +1,10 @@
-import React, { useContext, useRef } from "react";
+import React, { useContext } from "react";
 import OrderContext from "../../../../../../context/OrderContext";
 import TextInput from "../../../../../reusable-ui/TextInput";
 import ImagePreview from "./ImagePreview.jsx";
 import { getInputTextConfig } from "./inputTextConfig.jsx";
 import styled from "styled-components";
 import EmptyTabEdit from "../Empty/EmptyTab/EmptyTabEdit.jsx";
-import { theme } from "../../../../../../theme/index.js";
 import { theme } from "../../../../../../theme/index.js";
 
 export default function EditForm() {
@@ -45,16 +44,13 @@ export default function EditForm() {
         })}
       </div>
       <div className="submit">
-      <div className="sentence">
-        <span >Cliquez sur un produit pour le modifier <span className="live-update">en temps réel</span>
-          
-        </span>
-      </div>
+        <div className="sentence">
+          <span >Cliquez sur un produit pour le modifier <span className="live-update">en temps réel</span>
+            
+          </span>
+        </div>
       </div>
       
-      <div className="submit">
-        <span>Cliquez sur un produit pour le modifier <span className="live-update">en temps réel</span></span>
-      </div>
     </EditFormStyled>
   );
 }
