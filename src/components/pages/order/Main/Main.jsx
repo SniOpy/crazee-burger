@@ -12,9 +12,14 @@ export default function Main() {
   return (
     <MainStyled className="main">
       <div className="basket">
-        <div className="total">Total 0,00 €</div>
-        <div className="contain-cart">Votre commande est vide</div>
-        <div className="message-react">Codé avec <span className="heart"><FaHeart /></span> et React.JS</div>
+        <div className="header">
+          <div className="total">Total </div> 
+          <div className="amount"> 0,00 €</div>
+        </div>
+        <div className="contain-cart">
+          <span>Votre commande est vide.</span>
+        </div>
+        <div className="message-react"><span>Codé avec <span className="heart"><FaHeart /></span> et React.JS</span></div>
       </div>
       <div className="menu-and-admin">
         <Menu />
@@ -37,20 +42,90 @@ const MainStyled = styled.div`
   grid-template-columns: 1fr 3fr;
 
   .basket {
-    background: pink;
-    .total {
-      border: 1px solid black;
+    border-bottom-left-radius: ${theme.borderRadius.extraRound};
+    font-family: 'Amatic SC', cursive;
+    font-size: 36px;
+    font-weight: 400;
+    position:relative;
+
+    .header{
+      background :red;
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      position:absolute;
+      top:0;
+      left:0;
+      right: 0;
+      height:70px;
     }
+
     .contain-cart {
-      border: 1px solid red;
+      background:blue;
+      position:absolute;
+      top:70px;
+      left:0;
+      right: 0;
+      height: 694px;
     }
+
     .message-react {
-      border: 1px solid blue;
-      position: relative;
+      background:green;
+      position:absolute;
+      bottom:0;
+      left:0;
+      right: 0;
+      height:70px;
+    }
+
+    /* .header{
+      width: 350px;
+      height:70px;
+      display:flex;
+      justify-content: space-between;
+      align-items: center;
+
+      background:black;
+      color:orange;
+      padding:0 10px;
+      }
+
+    .contain-cart {
+      top:10%;
+      height: 100%;
+      right:0;            
+      left:0;
+
+      display:flex;
+      justify-content: center;
+      align-items: center;
+
+      box-shadow: ${theme.shadows.strong};
+      color:#747B91;
+      background: white;
+    }
+      
+    .message-react {
+      position:absolute;
       bottom:0;
       left:0;
       right:0;
-    }
+      background: black;
+      display:flex;
+      justify-content: center;
+      align-items: center;
+
+
+      border-bottom-left-radius: ${theme.borderRadius.extraRound};
+      color:#fff;
+      height: 10%;
+      font-size: 25px;
+      font-weight: 700px;
+      
+      .heart {
+        color:red;
+      } 
+
+    }  */
   }
 
   .menu-and-admin {
