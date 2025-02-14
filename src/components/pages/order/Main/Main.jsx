@@ -4,13 +4,18 @@ import OrderContext from "../../../../context/OrderContext"
 import { theme } from "../../../../theme"
 import Admin from "./Admin/Admin"
 import Menu from "./Menu"
+import { FaHeart } from "react-icons/fa"
 
 export default function Main() {
   const { isModeAdmin } = useContext(OrderContext)
 
   return (
     <MainStyled className="main">
-      {/* <div className="basket">Basket</div> */}
+      <div className="basket">
+        <div className="total">Total 0,00 €</div>
+        <div className="contain-cart">Votre commande est vide</div>
+        <div className="message-react">Codé avec <span className="heart"><FaHeart /></span> et React.JS</div>
+      </div>
       <div className="menu-and-admin">
         <Menu />
         {isModeAdmin && <Admin />}
@@ -29,11 +34,23 @@ const MainStyled = styled.div`
   box-shadow: ${theme.shadows.strong};
 
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: 1fr 3fr;
 
   .basket {
     background: pink;
-    border: 1px solid black;
+    .total {
+      border: 1px solid black;
+    }
+    .contain-cart {
+      border: 1px solid red;
+    }
+    .message-react {
+      border: 1px solid blue;
+      position: relative;
+      bottom:0;
+      left:0;
+      right:0;
+    }
   }
 
   .menu-and-admin {
