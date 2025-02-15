@@ -46,8 +46,8 @@ const MainStyled = styled.div`
   .basket {
     border-bottom-left-radius: ${theme.borderRadius.extraRound};
     font-family: 'Amatic SC', cursive;
-    font-size: 36px;
-    font-weight: 400;
+    font-size: ${theme.fonts.size.P4};
+    font-weight: ${theme.fonts.weights.regular};
     position:relative;
 
     .header{
@@ -80,9 +80,7 @@ const MainStyled = styled.div`
       box-shadow: ${theme.shadows.strong};;
       background:${theme.colors.background_white};
       color: ${theme.colors.greyBlue};
-      font-family: Amatic SC;
-      font-weight: 400;
-      font-size: 36px;
+      font-size: ${theme.fonts.size.P4};
       line-height: 72px;
       letter-spacing: 0%;
       text-align: center;
@@ -96,6 +94,20 @@ const MainStyled = styled.div`
       left:0;
       right: 0;
       height:70px;
+
+      display:grid;
+      justify-content: center;
+      align-items:center;
+      font-weight: 700;
+      font-size: 20px;
+      line-height: 25.22px;
+      letter-spacing: 0%;
+      border-bottom-left-radius: ${theme.borderRadius.extraRound};
+
+
+      .heart{
+        color: ${theme.colors.redSecondary}
+      }
     }
 
     /* .header{
