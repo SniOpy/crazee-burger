@@ -16,10 +16,12 @@ export default function Main() {
           <div className="total">Total </div> 
           <div className="amount"> 0,00 €</div>
         </div>
-        <div className="contain-cart">
-          <span>Votre commande est vide.</span>
+        <div className="cart">
+          <div className="contain-cart">Votre commande est vide.</div>
         </div>
-        <div className="message-react"><span>Codé avec <span className="heart"><FaHeart /></span> et React.JS</span></div>
+        <div className="message-react">
+          <div>Codé avec <span className="heart"><FaHeart /></span> et React.JS</div>
+          </div>
       </div>
       <div className="menu-and-admin">
         <Menu />
@@ -49,27 +51,46 @@ const MainStyled = styled.div`
     position:relative;
 
     .header{
-      background :red;
-      display:grid;
-      grid-template-columns: 1fr 1fr;
+      display:flex;
+      justify-content: space-between;
+      text-align: center;
+
       position:absolute;
       top:0;
       left:0;
       right: 0;
       height:70px;
+      padding: 10px;
+
+      background :${theme.colors.dark};
+      color:${theme.colors.primary};
     }
 
-    .contain-cart {
-      background:blue;
+    .cart {
+      display:grid;
+      justify-content: center;
+      align-items: center;
+
       position:absolute;
       top:70px;
       left:0;
       right: 0;
       height: 694px;
+      
+      box-shadow: ${theme.shadows.strong};;
+      background:${theme.colors.background_white};
+      color: ${theme.colors.greyBlue};
+      font-family: Amatic SC;
+      font-weight: 400;
+      font-size: 36px;
+      line-height: 72px;
+      letter-spacing: 0%;
+      text-align: center;
     }
 
     .message-react {
-      background:green;
+      background:${theme.colors.dark};
+      color:${theme.colors.white};
       position:absolute;
       bottom:0;
       left:0;
