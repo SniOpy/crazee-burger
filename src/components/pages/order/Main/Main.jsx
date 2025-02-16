@@ -4,7 +4,7 @@ import OrderContext from "../../../../context/OrderContext"
 import { theme } from "../../../../theme"
 import Admin from "./Admin/Admin"
 import Menu from "./Menu"
-import Basket from "./Admin/Basket"
+import Basket from "./Admin/Basket/Basket"
 
 export default function Main() {
   const { isModeAdmin } = useContext(OrderContext)
