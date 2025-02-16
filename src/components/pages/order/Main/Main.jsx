@@ -4,13 +4,14 @@ import OrderContext from "../../../../context/OrderContext"
 import { theme } from "../../../../theme"
 import Admin from "./Admin/Admin"
 import Menu from "./Menu"
+import Basket from "./Admin/Basket/Basket"
 
 export default function Main() {
   const { isModeAdmin } = useContext(OrderContext)
 
   return (
     <MainStyled className="main">
-      {/* <div className="basket">Basket</div> */}
+      <Basket />
       <div className="menu-and-admin">
         <Menu />
         {isModeAdmin && <Admin />}
@@ -29,12 +30,7 @@ const MainStyled = styled.div`
   box-shadow: ${theme.shadows.strong};
 
   display: grid;
-  grid-template-columns: 1fr;
-
-  .basket {
-    background: pink;
-    border: 1px solid black;
-  }
+  grid-template-columns: 1fr 3fr;
 
   .menu-and-admin {
     position: relative;
