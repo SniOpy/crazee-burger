@@ -1,14 +1,12 @@
 import React from 'react'
-import { theme } from '../../../../../theme';
+import { theme } from '../../../../../../theme';
 import styled from 'styled-components';
+import Header from './Header';
 
 export default function Basket() {
   return (
     <BasketStyled className="basket">
-            <div className="header">
-              <div className="total">Total </div> 
-              <div className="amount"> 0,00 €</div>
-            </div>
+            <Header amountToPay={15}/>
             <div className="cart">
               <div className="contain-cart">Votre commande est vide.</div>
             </div>
@@ -28,17 +26,7 @@ const BasketStyled = styled.div`
     display:flex;
     flex-direction: column;
 
-    .header  {
-      background:${theme.colors.background_dark};
-      color:${theme.colors.primary};
-
-      display:flex;
-      justify-content: space-between;
-      align-items: center;
-      padding : 0 16px;
-      height: 70px;
-
-    }
+    
     .cart  {
       flex:1;
       display:flex;
