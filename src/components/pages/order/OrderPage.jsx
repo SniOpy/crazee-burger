@@ -5,9 +5,8 @@ import { theme } from "../../../theme";
 import Main from "./Main/Main";
 import Navbar from "./Navbar/Navbar";
 import OrderContext from "../../../context/OrderContext";
-import { fakeMenu } from "../../../fakeData/fakeMenu";
 import { EMPTY_PRODUCT } from "../../../enums/product";
-import { deepClone } from "../../../utils/array";
+import { useMenu } from "../../../hooks/useMenu";
 
 export default function OrderPage() {
   //! state
@@ -15,54 +14,10 @@ export default function OrderPage() {
   const [isModeAdmin, setIsModeAdmin] = useState(false);
   const [isCollapsed, setIsCollapsed] = useState(false);
   const [currentTabSelected, setCurrentTabSelected] = useState("add");
-  const [menu, setMenu] = useState(fakeMenu.LARGE);
   const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT);
   const [productClicked, setProductClicked] = useState("");
-
   const titleCardRef = useRef();
-
-  //! comportements
-
-  const handleDelete = (productId) => {
-    // 1. copie du state
-    const menuCopy = deepClone(menu);
-
-    // 2. manipulation de la copie
-    const menuUpdated = menuCopy.filter((product) => product.id !== productId);
-
-    // 3. update du state
-    setMenu(menuUpdated);
-  };
-
-  const handleEdit = (productEdited) => {
-    //1. copy state
-    const menuCopy = deepClone(menu);
-
-    // 2. State manipulation
-    const productIndex = menuCopy.findIndex(
-      (product) => product.id === productEdited.id
-    );
-
-    menuCopy[productIndex] = productEdited;
-
-    // 3. State update
-    setMenu(menuCopy);
-  };
-
-  const resetMenu = () => {
-    setMenu(fakeMenu.MEDIUM);
-  };
-
-  const addProduct = (newProduct) => {
-    //1. Copie du state
-    const copyMenu = deepClone(menu);
-
-    //2. Manipulation du state
-    const updatedMenu = [newProduct, ...copyMenu];
-
-    //3. Nouveau state
-    setMenu(updatedMenu);
-  };
+ const {menu, handleDelete, handleEdit, resetMenu, addProduct} = useMenu()
 
   const orderContextValue = {
     isModeAdmin,
