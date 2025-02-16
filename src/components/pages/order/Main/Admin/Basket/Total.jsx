@@ -2,16 +2,16 @@ import styled from 'styled-components';
 import {formatPrice} from '../../../../../../utils/maths'
 import { theme } from '../../../../../../theme';
 
-export default function Header({amountToPay}) {
+export default function Total({amountToPay}) {
   return (
-    <HeaderStyled className="header">
+    <TotalStyled className="header">
               <div className="total">Total </div> 
               <div className="amount"> {formatPrice(amountToPay)}</div>
-            </HeaderStyled>
+            </TotalStyled>
   )
 }
 
-const HeaderStyled = styled.div`
+const TotalStyled = styled.div`
   background:${theme.colors.background_dark};
       color:${theme.colors.primary};
 

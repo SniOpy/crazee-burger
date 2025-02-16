@@ -1,18 +1,16 @@
 import React from 'react'
 import { theme } from '../../../../../../theme';
 import styled from 'styled-components';
-import Header from './Header';
+import Footer from './Footer';
+import Total from './Total';
+import BasketBody from './BasketBody';
 
 export default function Basket() {
   return (
     <BasketStyled className="basket">
-            <Header amountToPay={15}/>
-            <div className="cart">
-              <div className="contain-cart">Votre commande est vide.</div>
-            </div>
-            <div className="message-react">
-              <div>Codé avec ❤️ et React.JS</div>
-            </div>
+            <Total amountToPay={5.3655}/>
+            <BasketBody/>
+            <Footer/>
           </BasketStyled>
   )
 }
@@ -35,20 +33,4 @@ const BasketStyled = styled.div`
       box-shadow: ${theme.shadows.strong};
       color: ${theme.colors.greyBlue}
     }
-
-    .message-react {
-      background:${theme.colors.background_dark};
-      color:${theme.colors.white};
-
-      height: 70px; 
-      display:flex;
-      justify-content: center;
-      align-items: center;
-
-      font-size: ${theme.fonts.size.P3};
-
-      border-bottom-left-radius: ${theme.borderRadius.extraRound}
-    }
-
-    
 `;
