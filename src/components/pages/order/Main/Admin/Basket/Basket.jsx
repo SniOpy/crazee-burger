@@ -6,6 +6,8 @@ import Total from './Total';
 import BasketBody from './BasketBody';
 
 export default function Basket() {
+
+
   return (
     <BasketStyled className="basket">
             <Total amountToPay={5.3655}/>
