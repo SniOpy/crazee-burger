@@ -15,6 +15,11 @@ export default function Card({
   isHoverable,
   isSelected,
 }) {
+
+  //! comportements
+  const addProductToCart = () => {
+    console.log("addProduct");
+  }
   return (
     <CardStyled
       className={className}
@@ -47,7 +52,7 @@ export default function Card({
               <Button
                 className="primary-button"
                 label={"Ajouter"}
-                onClick={(event) => event.stopPropagation()}
+                onClick={addProductToCart}
               />
             </div>
           </div>

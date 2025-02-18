@@ -6,7 +6,6 @@ import { useContext, useRef } from "react";
 import OrderContext from "../../../../context/OrderContext";
 import EmptyMenuAdmin from "./Admin/Empty/EmptyMenu/EmptyMenuAdmin";
 import EmptyMenuClient from "./Admin/Empty/EmptyMenu/EmptyMenuClient";
-import { EMPTY_PRODUCT } from "../../../../enums/product";
 
 const IMAGE_BY_DEFAULT = "/images/coming-soon.png";
 
@@ -30,6 +29,7 @@ export default function Menu() {
     // AdminTab is not collapsed & the current Tab on "edit"
     await setIsCollapsed(false);
     await setCurrentTabSelected("edit");
+    
     const productSelected = menu.find(
       (product) => product.id === idCardSelected
     );
