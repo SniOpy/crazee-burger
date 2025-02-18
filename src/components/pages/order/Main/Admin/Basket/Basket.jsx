@@ -1,15 +1,18 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { theme } from '../../../../../../theme';
 import styled from 'styled-components';
 import Footer from './Footer';
 import Total from './Total';
 import BasketBody from './BasketBody';
+import {fakeBasket} from '../../../../../../fakeData/fakeBasket'
 
 export default function Basket() {
-
+ const [orders, setOrders] = useState(fakeBasket.SMALL)
+ console.log(orders);
+ 
 
   return (
-    <BasketStyled className="basket">
+          <BasketStyled className="basket">
             <Total amountToPay={5.3655}/>
             <BasketBody/>
             <Footer/>
