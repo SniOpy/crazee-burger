@@ -36,7 +36,6 @@ const BasketBodyStyled = styled.div`
   position: relative;
 
   .products {
-    /* border: 1px solid red; */
     position: absolute;
     top: 0;
     left: 0;
@@ -51,7 +50,6 @@ const BasketBodyStyled = styled.div`
     padding: 8px 16px;
 
     .left-side {
-      /* border: 1px solid blue; */
 
       .image {
         object-fit: contain;
@@ -62,20 +60,19 @@ const BasketBodyStyled = styled.div`
     }
 
     .right-side {
-      /* border: 1px solid green; */
 
       display: flex;
       flex-direction: row;
       justify-content: space-between;
       align-items: center;
       width: 200px;
-      padding: 25px 20.43px;
       gap: 6px;
 
       .information {
         display:flex;
         flex-direction:column;
         gap: 5px 10px;
+        padding-left: 21px; 
 
         .title {
           font-family: Amatic SC;
