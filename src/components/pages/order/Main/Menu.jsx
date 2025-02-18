@@ -29,7 +29,7 @@ export default function Menu() {
     // AdminTab is not collapsed & the current Tab on "edit"
     await setIsCollapsed(false);
     await setCurrentTabSelected("edit");
-    
+
     const productSelected = menu.find(
       (product) => product.id === idCardSelected
     );
@@ -49,7 +49,7 @@ export default function Menu() {
   const handleCardDelete = (event, idProduct) => {
     event.stopPropagation();
     handleDelete(idProduct);
-    idProduct === productClicked.id && setProductClicked("")
+    idProduct === productClicked.id && setProductClicked("");
     titleCardRef.current.focus();
   };
 
