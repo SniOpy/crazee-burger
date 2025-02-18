@@ -8,7 +8,7 @@ import {fakeBasket} from '../../../../../../fakeData/fakeBasket'
 
 export default function Basket() {
  const [orders, setOrders] = useState(fakeBasket.SMALL)
- console.log(orders);
+ 
  
 
   return (

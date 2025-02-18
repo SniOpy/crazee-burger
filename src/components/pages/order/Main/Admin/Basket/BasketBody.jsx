@@ -6,7 +6,15 @@ import { theme } from '../../../../../../theme';
 export default function BasketBody() {
   return (
     <BasketBodyStyled className="cart">
-        <EmptyBasket/>
+        {/* <EmptyBasket/> */}
+        <div className="products">
+          <div className="image">Image</div>
+          <div className="body">
+            <div className="title">Title</div>
+            <div className="price">Price</div>
+          </div>
+          <div className="quantity">Quantity</div>
+        </div>
     </BasketBodyStyled>
   )
 }
@@ -17,5 +25,21 @@ const BasketBodyStyled = styled.div`
      justify-content: center;
      align-items: center; 
      box-shadow: ${theme.shadows.strong};
-      color: ${theme.colors.greyBlue}
+      color: ${theme.colors.greyBlue};
+
+      .products {
+        border:1px solid red;
+        flex:1;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+
+      }
+
+      .body {
+        
+      }
+
+      
 `;
