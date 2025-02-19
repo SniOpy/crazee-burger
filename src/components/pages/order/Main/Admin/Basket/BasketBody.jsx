@@ -1,45 +1,40 @@
 import styled from "styled-components";
 import { theme } from "../../../../../../theme";
+import { fakeBasket } from "../../../../../../fakeData/fakeBasket";
+import { useState } from "react";
+import EmptyBasket from "./EmptyBasket";
+import { formatPrice } from "../../../../../../utils/maths";
 
 export default function BasketBody() {
+  const [orders, setOrders] = useState(fakeBasket.LARGE);
+  console.log(orders);
+  
   return (
     <BasketBodyStyled>
-      {/* <EmptyBasket/> */}
-      <div className="products">
-        <div className="left-side">
-          <img
-            className="image"
-            src="../../../../../../../public/images/burger3.png"
-            alt="IMAGE"
-          />
-        </div>
+      {orders ? (
+        orders.map((order) => {
+          return (
+          <div className="products" key={order.id}>
+            <div className="left-side">
+              <img
+                className="image"
+                src={order.imageSource}
+                alt={order.title}
+              />
+            </div>
 
-        <div className="right-side">
-          <div className="information">
-            <div className="title">BURGER SMOKE BBQ</div>
-            <div className="price">5,60 €</div>
-          </div>
-          <div className="quantity">x 13</div>
-        </div>
-      </div>
-
-      <div className="products">
-        <div className="left-side">
-          <img
-            className="image"
-            src="../../../../../../../public/images/burger3.png"
-            alt="IMAGE"
-          />
-        </div>
-
-        <div className="right-side">
-          <div className="information">
-            <div className="title">BURGER SMOKE BBQ</div>
-            <div className="price">5,60 €</div>
-          </div>
-          <div className="quantity">x 13</div>
-        </div>
-      </div>
+            <div className="right-side">
+              <div className="information">
+                <div className="title">{order.title}</div>
+                <div className="price">{formatPrice(order.price)}</div>
+              </div>
+              <div className="quantity">x 13</div>
+            </div>
+          </div>)
+        })
+      ) : (
+        <EmptyBasket />
+      )}
     </BasketBodyStyled>
   );
 }
@@ -51,9 +46,10 @@ const BasketBodyStyled = styled.div`
   row-gap: 16px;
   box-shadow: ${theme.shadows.strong};
   color: ${theme.colors.greyBlue};
-  height: 778.69px;
+  height: 662.9px;
   overflow-y: scroll;
   padding-top: 10px;
+  padding-bottom: 10px;
 
   .products {
     display: flex;
