@@ -4,10 +4,9 @@ import styled from "styled-components";
 import Footer from "./Footer";
 import Total from "./Total";
 import BasketBody from "./BasketBody";
-import { fakeBasket } from "../../../../../../fakeData/fakeBasket";
 
 export default function Basket() {
-  const [orders, setOrders] = useState(fakeBasket.SMALL);
+  
 
   return (
     <BasketStyled>
