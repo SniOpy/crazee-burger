@@ -1,12 +1,11 @@
 import React from "react";
 import styled, { css } from "styled-components";
 import { formatPrice } from "../../../../../../utils/maths";
+import { IoTrashBin } from "react-icons/io5";
 
-
-
-export default function Product({order, isHoverable}) {
+export default function Product({ order, isHoverable }) {
   return (
-    <ProductStyled key={order.id} isHoverable={isHoverable}>
+    <ProductStyled $isHoverable={isHoverable}>
       <div className="left-side">
         <img className="image" src={order.imageSource} alt={order.title} />
       </div>
@@ -17,19 +16,24 @@ export default function Product({order, isHoverable}) {
           <div className="price">{formatPrice(order.price)}</div>
         </div>
         <div className="quantity">x 13</div>
+        <button className="delete-product"><IoTrashBin /></button>
       </div>
     </ProductStyled>
   );
 }
 
 const ProductStyled = styled.div`
-${(props) => props.isHoverable && productHoverableStyle }
+  ${({ $isHoverable }) => $isHoverable && productHoverableStyle}
   display: flex;
   box-shadow: -4px 4px 15px 0px rgba(0, 0, 0, 0.2);
   margin: 10px 16px;
   border-radius: 5px;
   padding: 8px 16px;
   width: 318px;
+
+  .delete-product {
+    visibility: hidden;
+  }
 
   .left-side {
     .image {
@@ -74,9 +78,25 @@ ${(props) => props.isHoverable && productHoverableStyle }
   }
 `;
 
-
 const productHoverableStyle = css`
   &:hover {
-    background: red;
+    .right-side {
+      position: relative;
+      margin-right: 0;
+
+      .quantity {
+        visibility: hidden;
+      }
+
+      .delete-product {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        visibility: visible;
+        background: rgba(226, 85, 73, 1);
+        color:white;
+       
+      }
+    }
   }
 `;
