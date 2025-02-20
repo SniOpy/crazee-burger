@@ -2,14 +2,20 @@ import styled from "styled-components"
 import Total from "./Total"
 import { formatPrice } from "../../../../../../utils/maths"
 import Footer from "./Footer"
-import BasketBody from "./BasketBody"
+import {fakeBasket} from "../../../../../../fakeData/fakeBasket"
 import EmptyBasket from "./EmptyBasket"
+import { useState } from "react"
+import BasketBody from "./BasketBody"
 
 export default function Basket() {
+
+  //! State 
+  const [basket, setBasket] = useState(fakeBasket.LARGE);
+
   return (
     <BasketStyled>
       <Total amountToPay={formatPrice(0)} />
-      <EmptyBasket />
+       {basket ? <BasketBody basket={basket}/> : <EmptyBasket />}
       <Footer />
     </BasketStyled>
   )
