@@ -3,19 +3,19 @@ import Total from "./Total"
 import { formatPrice } from "../../../../../../utils/maths"
 import Footer from "./Footer"
 import BasketBody from "./BasketBody"
+import EmptyBasket from "./EmptyBasket"
 
 export default function Basket() {
   return (
     <BasketStyled>
       <Total amountToPay={formatPrice(0)} />
-      <BasketBody />
+      <EmptyBasket />
       <Footer />
     </BasketStyled>
   )
 }
 
 const BasketStyled = styled.div`
-  background: pink;
   display: flex;
   flex-direction: column;
 `
