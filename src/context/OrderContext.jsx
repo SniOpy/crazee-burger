@@ -21,4 +21,7 @@ export default createContext({
   setProductSelected: () => {},
   productSelected: [],
   titleCardRef: {},
+
+  basket: [],
+  addProductToCart: () => {},
 });
