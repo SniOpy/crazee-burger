@@ -4,7 +4,7 @@ export const SMALL = [
   {
     id: "1",
     title: "Burger Meal",
-    imageSource: "images/burger1.png",
+    imageSource: "/images/burger1.png",
     quantity: 1,
   },
 ]
