@@ -7,6 +7,7 @@ import Navbar from "./Navbar/Navbar";
 import OrderContext from "../../../context/OrderContext";
 import { EMPTY_PRODUCT } from "../../../enums/product";
 import { useMenu } from "../../../hooks/useMenu";
+import { useBasket } from "../../../hooks/useBasket";
 
 export default function OrderPage() {
   //! state
@@ -17,7 +18,8 @@ export default function OrderPage() {
   const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT);
   const [productClicked, setProductClicked] = useState("");
   const titleCardRef = useRef();
- const {menu, handleDelete, handleEdit, resetMenu, addProduct} = useMenu()
+  const { menu, handleDelete, handleEdit, resetMenu, addProduct } = useMenu();
+  const {basket, addProductToCart} = useBasket();
 
   const orderContextValue = {
     isModeAdmin,
@@ -36,6 +38,8 @@ export default function OrderPage() {
     setProductClicked,
     handleEdit,
     titleCardRef,
+    basket,
+    addProductToCart,
   };
 
   //! affichage
