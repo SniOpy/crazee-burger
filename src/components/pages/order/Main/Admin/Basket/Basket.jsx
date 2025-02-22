@@ -10,13 +10,13 @@ import BasketBody from "./BasketBody"
 export default function Basket() {
 
   //! State 
-  const [basket, setBasket] = useState(fakeBasket.LARGE);
-
+  const [basket, setBasket] = useState(fakeBasket.LARGE_WEIRD);
+  
   return (
     <BasketStyled>
       <Total amountToPay={formatPrice(0)} />
        {basket ? <BasketBody basket={basket}/> : <EmptyBasket />}
-      <Footer />
+      <Footer className={"footer-style"}/>
     </BasketStyled>
   )
 }
