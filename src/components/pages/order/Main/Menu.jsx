@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { theme } from "../../../../theme";
 import { formatPrice } from "../../../../utils/maths";
 import Card from "../../../reusable-ui/Card";
-import { useContext, useRef } from "react";
+import { useContext } from "react";
 import OrderContext from "../../../../context/OrderContext";
 import EmptyMenuAdmin from "./Admin/Empty/EmptyMenu/EmptyMenuAdmin";
 import EmptyMenuClient from "./Admin/Empty/EmptyMenu/EmptyMenuClient";
@@ -20,7 +20,9 @@ export default function Menu() {
     setIsCollapsed,
     setCurrentTabSelected,
     titleCardRef,
+    addProductToCart ,
   } = useContext(OrderContext);
+
 
   const selectedProduct = async (idCardSelected) => {
     // if admin is false, we leave
@@ -53,9 +55,13 @@ export default function Menu() {
     titleCardRef.current.focus();
   };
 
+  
+
   return (
     <MenuStyled className="menu">
       {menu.map(({ id, title, imageSource, price }) => {
+
+        const product = {id, title, imageSource, price}
         return (
           <Card
             key={id}
@@ -67,6 +73,7 @@ export default function Menu() {
             onClick={() => selectedProduct(id)}
             isHoverable={isModeAdmin}
             isSelected={checkIfProductSelected(id, productClicked.id)}
+            handleAdd={() => addProductToCart(product)}
           />
         );
       })}

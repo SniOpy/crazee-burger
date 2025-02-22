@@ -2,10 +2,7 @@ import styled, { css } from "styled-components";
 import { theme } from "../../theme";
 import Button from "./Button";
 import { TiDelete } from "react-icons/ti";
-import React, { useContext, useState } from "react";
-import { deepClone } from "../../utils/array";
-import { EMPTY_PRODUCT } from "../../enums/product";
-import OrderContext from "../../context/OrderContext";
+import React from "react";
 
 export default function Card({
   title,
@@ -17,22 +14,8 @@ export default function Card({
   onClick,
   isHoverable,
   isSelected,
+  handleAdd,
 }) {
-  const [basket, setBasket] = useState([]);
-
-  const { productClicked } = useContext(OrderContext);
-
-  //! comportements
-  const addProductToCart = async (productToCart) => {
-    const copyBasket = [...basket];
-
-    const updateCopyBasket = [productToCart, ...copyBasket];
-
-    await setBasket(updateCopyBasket);
-
-    console.log(basket);
-  };
-
   return (
     <CardStyled
       className={className}
@@ -65,7 +48,7 @@ export default function Card({
               <Button
                 className="primary-button"
                 label={"Ajouter"}
-                onClick={() => addProductToCart(productClicked)}
+                onClick={handleAdd}
               />
             </div>
           </div>

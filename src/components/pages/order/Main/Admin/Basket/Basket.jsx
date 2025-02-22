@@ -1,27 +1,27 @@
-import styled from "styled-components"
-import Total from "./Total"
-import { formatPrice } from "../../../../../../utils/maths"
-import Footer from "./Footer"
-import {fakeBasket} from "../../../../../../fakeData/fakeBasket"
-import EmptyBasket from "./EmptyBasket"
-import { useState } from "react"
-import BasketBody from "./BasketBody"
+import styled from "styled-components";
+import Total from "./Total";
+import { formatPrice } from "../../../../../../utils/maths";
+import Footer from "./Footer";
+import EmptyBasket from "./EmptyBasket";
+import BasketBody from "./BasketBody";
+import OrderContext from "../../../../../../context/OrderContext";
+import { useContext } from "react";
 
 export default function Basket() {
+  const { basket } = useContext(OrderContext);
 
-  //! State 
-  const [basket, setBasket] = useState(fakeBasket.LARGE_WEIRD);
-  
+  //! State
+
   return (
     <BasketStyled>
-      <Total amountToPay={formatPrice(0)} />
-       {basket ? <BasketBody basket={basket}/> : <EmptyBasket />}
-      <Footer className={"footer-style"}/>
+      <Total amountToPay={formatPrice(38.41)} />
+      {basket ? <BasketBody basket={basket} /> : <EmptyBasket />}
+      <Footer className={"footer-style"} />
     </BasketStyled>
-  )
+  );
 }
 
 const BasketStyled = styled.div`
   display: flex;
   flex-direction: column;
-`
+`;
