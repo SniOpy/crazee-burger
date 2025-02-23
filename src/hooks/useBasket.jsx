@@ -4,7 +4,6 @@ import { deepClone } from "../utils/array";
 export const useBasket = () => {
   //! State
   const [basket, setBasket] = useState([]);
-  const [count, setCount] = useState(0);
 
   //! Fonction pour ajouter un produit dans le panier
   const addProductToCart = (productAdded) => {
@@ -14,12 +13,11 @@ export const useBasket = () => {
     // On cherche si le produit ajouté existe déjà dans le panier
     const existingIndex = copyBasket.findIndex(
       (item) => item.id === productAdded.id
-      
     );
 
     if (existingIndex !== -1) {
       // Le produit existe, on incrémente la quantité
-      
+
       copyBasket[existingIndex].quantity += 1;
     } else {
       // Le produit n'existe pas, on l'ajoute
@@ -27,17 +25,13 @@ export const useBasket = () => {
       copyBasket.push(productAdded);
     }
 
-
     // On met à jour le state
-     setBasket(copyBasket);
-
-    
+    setBasket(copyBasket);
   };
 
   //! On retourne ce dont on a besoin dans le composant qui utilise ce hook
   return {
-    basket,  // tableau des produits
-    count,   // nombre total d'articles
+    basket, // tableau des produits
     addProductToCart,
   };
 };
