@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 import styled from "styled-components";
 import { formatPrice } from "../../../../../../utils/maths";
 import { theme } from "../../../../../../theme";
 
 export default function ProductCard({product}) {
+
   return (
     <ProductCardStyled key={product.id}>
       <div className="right-side">
@@ -14,7 +15,7 @@ export default function ProductCard({product}) {
           <div className="title">{product.title}</div>
           <div className="price">{formatPrice(product.price)}</div>
         </div>
-        <div className="quantity">x 13</div>
+        <div className="quantity">x {product.quantity}</div>
       </div>
     </ProductCardStyled>
   );

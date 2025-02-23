@@ -23,5 +23,6 @@ export default createContext({
   titleCardRef: {},
 
   basket: [],
+  count: [],
   addProductToCart: () => {},
 });
