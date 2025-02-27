@@ -1,38 +1,49 @@
-import React, { useContext } from "react";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { formatPrice } from "../../../../../../utils/maths";
 import { theme } from "../../../../../../theme";
+const IMAGE_BY_DEFAULT = "/images/coming-soon.png";
+import { IoTrashBinSharp } from "react-icons/io5";
 
-export default function ProductCard({product}) {
-
+export default function ProductCard({ product }) {
   return (
     <ProductCardStyled key={product.id}>
-      <div className="right-side">
-        <img className="image" src={product.imageSource} alt="" />
-      </div>
       <div className="left-side">
+        <img
+          className="image"
+          src={product.imageSource ? product.imageSource : IMAGE_BY_DEFAULT}
+          alt=""
+        />
+      </div>
+      <div className="right-side">
         <div className="infos">
-          <div className="title">{product.title}</div>
-          <div className="price">{formatPrice(product.price)}</div>
+          <div className="title">{product.title ? product.title : ""}</div>
+          <div className="price">
+            {product.price ? formatPrice(product.price) : "0.00 €"}
+          </div>
         </div>
         <div className="quantity">x {product.quantity}</div>
+        {/* <div className="delete-cross">
+          <IoTrashBinSharp />
+        </div> */}
       </div>
     </ProductCardStyled>
   );
 }
 
 const ProductCardStyled = styled.div`
-  display: grid;
-  grid-template-columns: 35% 65%;
-  height: 86px;
-  margin: 20px 16px;
-  border-radius: 5px;
-  padding: 8px 16px;
-  box-shadow: -4px 4px 15px 0px rgba(0, 0, 0, 0.2);
+  display: flex;
+  height: 70px;
+  width: 318px;
 
-  .right-side {
+  box-shadow: -4px 4px 15px 0px rgba(0, 0, 0, 0.2);
+  padding: 8px 16px;
+  border-radius: 5px;
+  margin-bottom: 20px;
+
+  .left-side {
     display: flex;
     justify-content: center;
+    width: 85.8px;
 
     .image {
       width: 86.5px;
@@ -41,27 +52,31 @@ const ProductCardStyled = styled.div`
       object-position: center;
     }
   }
-  .left-side {
+
+  .right-side {
     display: flex;
     justify-content: space-between;
     align-items: center;
     width: 200.2px;
-    gap: 10.95px;
+    padding-left: 21px;
 
     .infos {
-      padding-left: 10px;
       .title {
+        min-height: 1em;
         font-family: ${theme.fonts.family.stylish};
         font-size: ${theme.fonts.size.P3};
         font-weight: 700;
         line-height: 32px;
         letter-spacing: 0%;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        text-align: left;
+        margin: auto 0;
+        overflow: hidden;
+        width: 119.14px;
       }
     }
 
-    .quantity {
-      margin-right: 16px;
-    }
     .price,
     .quantity {
       font-family: Open Sans;
@@ -70,6 +85,10 @@ const ProductCardStyled = styled.div`
       line-height: 20.43px;
       letter-spacing: 0%;
       color: rgba(255, 160, 27, 1);
+    }
+
+    .delete-cross {
+      visibility: hidden;
     }
   }
 `;

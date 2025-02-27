@@ -20,9 +20,8 @@ export default function Menu() {
     setIsCollapsed,
     setCurrentTabSelected,
     titleCardRef,
-    addProductToCart ,
+    addProductToCart,
   } = useContext(OrderContext);
-
 
   const selectedProduct = async (idCardSelected) => {
     // if admin is false, we leave
@@ -55,13 +54,10 @@ export default function Menu() {
     titleCardRef.current.focus();
   };
 
-  
-
   return (
     <MenuStyled className="menu">
       {menu.map(({ id, title, imageSource, price }) => {
-
-        const product = {id, title, imageSource, price}
+        const product = { id, title, imageSource, price };
         return (
           <Card
             key={id}
