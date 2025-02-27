@@ -19,19 +19,29 @@ export const useBasket = () => {
       // Le produit existe, on incrémente la quantité
 
       copyBasket[existingIndex].quantity += 1;
+      // On met à jour le state
+      setBasket(copyBasket);
     } else {
       // Le produit n'existe pas, on l'ajoute
       productAdded.quantity = 1;
-      copyBasket.push(productAdded);
-    }
+      // copyBasket.push(productAdded);
+      const updateCopyBasket = [productAdded, ...copyBasket];
 
-    // On met à jour le state
-    setBasket(copyBasket);
+      setBasket(updateCopyBasket);
+    }
+  };
+
+  const getTotalPrice = () => {
+    return basket.reduce(
+      (total, product) => total + product.price * (product.quantity || 1),
+      0
+    );
   };
 
   //! On retourne ce dont on a besoin dans le composant qui utilise ce hook
   return {
     basket, // tableau des produits
     addProductToCart,
+    getTotalPrice,
   };
 };

@@ -24,4 +24,5 @@ export default createContext({
 
   basket: [],
   addProductToCart: () => {},
+  getTotalPrice: () => {},
 });

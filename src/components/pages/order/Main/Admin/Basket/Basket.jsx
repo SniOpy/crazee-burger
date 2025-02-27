@@ -8,13 +8,12 @@ import OrderContext from "../../../../../../context/OrderContext";
 import { useContext } from "react";
 
 export default function Basket() {
-  const { basket } = useContext(OrderContext);
+  const { basket, getTotalPrice } = useContext(OrderContext);
 
   //! State
-
   return (
     <BasketStyled>
-      <Total amountToPay={formatPrice(0.0)} />
+      <Total amountToPay={formatPrice(getTotalPrice())} />
       {basket ? <BasketBody basket={basket} /> : <EmptyBasket />}
       <Footer className={"footer-style"} />
     </BasketStyled>
