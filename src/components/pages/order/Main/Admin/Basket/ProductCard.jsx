@@ -4,7 +4,7 @@ import { theme } from "../../../../../../theme";
 const IMAGE_BY_DEFAULT = "/images/coming-soon.png";
 import { IoTrashBinSharp } from "react-icons/io5";
 
-export default function ProductCard({ product }) {
+export default function ProductCard({ product, onClick }) {
   return (
     <ProductCardStyled key={product.id}>
       <div className="left-side">
@@ -22,9 +22,9 @@ export default function ProductCard({ product }) {
           </div>
         </div>
         <div className="quantity">x {product.quantity}</div>
-        {/* <div className="delete-cross">
+        <div className="delete-cross" onClick={onClick}>
           <IoTrashBinSharp />
-        </div> */}
+        </div>
       </div>
     </ProductCardStyled>
   );
@@ -88,7 +88,41 @@ const ProductCardStyled = styled.div`
     }
 
     .delete-cross {
-      visibility: hidden;
+      display: none;
+    }
+  }
+
+  &:hover {
+    position: relative;
+    cursor: pointer;
+    transition: all 0.4s ease-out;
+
+    .delete-cross {
+      position: absolute;
+      right: 0;
+      display: block;
+      height: 86px;
+      width: 76px;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      border-top-right-radius: 5px;
+      border-bottom-right-radius: 5px;
+      background: #e25549;
+      color: white;
+
+      transition: all 0.2s ease-out;
+    }
+    .quantity {
+      display: none;
+    }
+  }
+
+  &:active {
+    .delete-cross {
+      color: black;
     }
   }
 `;
