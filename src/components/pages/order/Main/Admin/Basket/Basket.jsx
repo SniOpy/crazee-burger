@@ -9,13 +9,12 @@ import { useContext } from "react";
 
 export default function Basket() {
   const { basket } = useContext(OrderContext);
-  
 
   //! State
 
   return (
     <BasketStyled>
-      <Total amountToPay={formatPrice(38.41)} />
+      <Total amountToPay={formatPrice(0.0)} />
       {basket ? <BasketBody basket={basket} /> : <EmptyBasket />}
       <Footer className={"footer-style"} />
     </BasketStyled>
