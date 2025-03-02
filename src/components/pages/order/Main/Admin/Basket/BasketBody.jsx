@@ -1,20 +1,34 @@
+import React from "react";
+import styled from "styled-components";
+import { theme } from "../../../../../../theme";
+import ProductCard from "./ProductCard.jsx";
+import { useContext } from "react";
+import OrderContext from "../../../../../../context/OrderContext.jsx";
 
-import styled from 'styled-components';
-import { theme } from '../../../../../../theme';
-
-export default function BasketBody() {
+export default function BasketBody({ basket }) {
+  const { removeItem } = useContext(OrderContext);
   return (
-    <BasketBodyStyled className="cart">
-        <div className="contain-cart">Votre commande est vide.</div>
+    <BasketBodyStyled>
+      {basket.map((product) => {
+        return (
+          <ProductCard
+            product={product}
+            key={product.id}
+            onClick={() => removeItem(product)}
+          />
+        );
+      })}
     </BasketBodyStyled>
-  )
+  );
 }
 
 const BasketBodyStyled = styled.div`
-  flex:1;
-      display:flex;
-      justify-content: center;
-      align-items: center;
-      box-shadow: ${theme.shadows.strong};
-      color: ${theme.colors.greyBlue}
+  height: 600px;
+  width: 350px;
+
+  background: ${theme.colors.background_white};
+  box-shadow: ${theme.shadows.basket};
+  overflow-y: scroll;
+
+  padding: 20px 16px;
 `;

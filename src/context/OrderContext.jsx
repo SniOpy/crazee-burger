@@ -11,6 +11,7 @@ export default createContext({
   setCurrentTabSelected: () => {},
 
   menu: [],
+  setMenu: () => {},
   resetMenu: () => {},
   addProduct: () => {},
   handleDelete: () => {},
@@ -21,4 +22,9 @@ export default createContext({
   setProductSelected: () => {},
   productSelected: [],
   titleCardRef: {},
+
+  basket: [],
+  addProductToCart: () => {},
+  getTotalPrice: () => {},
+  removeItem: () => {},
 });

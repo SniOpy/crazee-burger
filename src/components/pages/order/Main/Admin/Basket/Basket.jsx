@@ -1,36 +1,26 @@
-import React from 'react'
-import { theme } from '../../../../../../theme';
-import styled from 'styled-components';
-import Footer from './Footer';
-import Total from './Total';
-import BasketBody from './BasketBody';
+import styled from "styled-components";
+import Total from "./Total";
+import { formatPrice } from "../../../../../../utils/maths";
+import Footer from "./Footer";
+import EmptyBasket from "./EmptyBasket";
+import BasketBody from "./BasketBody";
+import OrderContext from "../../../../../../context/OrderContext";
+import { useContext } from "react";
 
 export default function Basket() {
+  const { basket, getTotalPrice } = useContext(OrderContext);
+
+  //! State
   return (
-    <BasketStyled className="basket">
-            <Total amountToPay={5.3655}/>
-            <BasketBody/>
-            <Footer/>
-          </BasketStyled>
-  )
+    <BasketStyled>
+      <Total amountToPay={formatPrice(getTotalPrice())} />
+      {basket.length !== 0 ? <BasketBody basket={basket} /> : <EmptyBasket />}
+      <Footer className={"footer-style"} />
+    </BasketStyled>
+  );
 }
 
-
 const BasketStyled = styled.div`
-    /* border-bottom-left-radius: ${theme.borderRadius.extraRound}; */
-    font-family: 'Amatic SC', cursive;
-    font-size: ${theme.fonts.size.P4};
-    font-weight: ${theme.fonts.weights.regular};
-    display:flex;
-    flex-direction: column;
-
-    
-    .cart  {
-      flex:1;
-      display:flex;
-      justify-content: center;
-      align-items: center;
-      box-shadow: ${theme.shadows.strong};
-      color: ${theme.colors.greyBlue}
-    }
+  display: flex;
+  flex-direction: column;
 `;

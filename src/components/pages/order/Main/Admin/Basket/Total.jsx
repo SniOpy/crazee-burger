@@ -1,23 +1,26 @@
-import styled from 'styled-components';
-import {formatPrice} from '../../../../../../utils/maths'
-import { theme } from '../../../../../../theme';
+import styled from "styled-components"
+import { theme } from "../../../../../../theme"
+import Header from "../../../../../reusable-ui/Header.jsx"
 
-export default function Total({amountToPay}) {
+export default function Total({ amountToPay }) {
   return (
-    <TotalStyled className="header">
-              <div className="total">Total </div> 
-              <div className="amount"> {formatPrice(amountToPay)}</div>
-            </TotalStyled>
+    <Header>
+      <TotalStyled>
+        <span className="total">Total</span>
+        <span className="amount">{amountToPay}</span>
+      </TotalStyled>
+    </Header>
   )
 }
 
 const TotalStyled = styled.div`
-  background:${theme.colors.background_dark};
-      color:${theme.colors.primary};
-
-      display:flex;
-      justify-content: space-between;
-      align-items: center;
-      padding : 0 16px;
-      height: 70px;
-`;
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: ${theme.colors.primary};
+  font-family: "Amatic SC", cursive;
+  font-size: ${theme.fonts.size.P4};
+  font-weight: ${theme.fonts.weights.bold};
+  letter-spacing: 2px;
+`
