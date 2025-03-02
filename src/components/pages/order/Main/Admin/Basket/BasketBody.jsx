@@ -24,11 +24,10 @@ export default function BasketBody({ basket }) {
 
 const BasketBodyStyled = styled.div`
   height: 600px;
-  width: 350px;
+  width: 333px;
 
   background: ${theme.colors.background_white};
   box-shadow: ${theme.shadows.basket};
-  overflow-y: scroll;
 
-  padding: 20px 16px;
+  padding: 20px 8.5px;
 `;

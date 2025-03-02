@@ -33,7 +33,7 @@ export default function ProductCard({ product, onClick }) {
 const ProductCardStyled = styled.div`
   display: flex;
   height: 70px;
-  width: 318px;
+  width: 286px;
 
   box-shadow: -4px 4px 15px 0px rgba(0, 0, 0, 0.2);
   padding: 8px 16px;
@@ -71,7 +71,6 @@ const ProductCardStyled = styled.div`
         white-space: nowrap;
         text-overflow: ellipsis;
         text-align: left;
-        margin: auto 0;
         overflow: hidden;
         width: 119.14px;
       }
