@@ -7,12 +7,14 @@ export const useMenu = () => {
 
   //! comportements
 
-  const handleDelete = (productId) => {
+  const handleDelete = (productDeleted) => {
     // 1. copie du state
     const menuCopy = deepClone(menu);
 
     // 2. manipulation de la copie
-    const menuUpdated = menuCopy.filter((product) => product.id !== productId);
+    const menuUpdated = menuCopy.filter(
+      (product) => product.id !== productDeleted.id
+    );
 
     // 3. update du state
     setMenu(menuUpdated);
@@ -48,5 +50,5 @@ export const useMenu = () => {
     setMenu(updatedMenu);
   };
 
-  return { menu, handleDelete, handleEdit, resetMenu, addProduct };
+  return { menu, setMenu, handleDelete, handleEdit, resetMenu, addProduct };
 };

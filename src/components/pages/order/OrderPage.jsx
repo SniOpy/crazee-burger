@@ -18,8 +18,9 @@ export default function OrderPage() {
   const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT);
   const [productClicked, setProductClicked] = useState("");
   const titleCardRef = useRef();
-  const { menu, handleDelete, handleEdit, resetMenu, addProduct } = useMenu();
-  const { basket, addProductToCart, getTotalPrice } = useBasket();
+  const { menu, setMenu, handleDelete, handleEdit, resetMenu, addProduct } =
+    useMenu();
+  const { basket, addProductToCart, getTotalPrice, removeItem } = useBasket();
 
   const orderContextValue = {
     isModeAdmin,
@@ -29,6 +30,7 @@ export default function OrderPage() {
     currentTabSelected,
     setCurrentTabSelected,
     menu,
+    setMenu,
     addProduct,
     handleDelete,
     resetMenu,
@@ -41,6 +43,7 @@ export default function OrderPage() {
     basket,
     addProductToCart,
     getTotalPrice,
+    removeItem,
   };
 
   //! affichage

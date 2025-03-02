@@ -21,6 +21,7 @@ export default function Menu() {
     setCurrentTabSelected,
     titleCardRef,
     addProductToCart,
+    removeItem,
   } = useContext(OrderContext);
 
   const selectedProduct = async (idCardSelected) => {
@@ -50,8 +51,8 @@ export default function Menu() {
   const handleCardDelete = (event, idProduct) => {
     event.stopPropagation();
     handleDelete(idProduct);
+    removeItem(idProduct);
     idProduct === productClicked.id && setProductClicked("");
-    titleCardRef.current.focus();
   };
 
   return (
@@ -65,11 +66,11 @@ export default function Menu() {
             imageSource={imageSource ? imageSource : IMAGE_BY_DEFAULT}
             leftDescription={formatPrice(price)}
             hasDeleteButton={isModeAdmin}
-            onDelete={(event) => handleCardDelete(event, id)}
+            onDelete={(event) => handleCardDelete(event, product)}
             onClick={() => selectedProduct(id)}
             isHoverable={isModeAdmin}
             isSelected={checkIfProductSelected(id, productClicked.id)}
-            handleAdd={() => addProductToCart(product)}
+            handleAdd={(event) => addProductToCart(event, product)}
           />
         );
       })}
