@@ -17,9 +17,6 @@ const FooterStyled = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  border-bottom-left-radius: 5px; /* Appliquer le style directement */
-
-
   span {
     font-size: ${theme.fonts.size.P2};
     font-family: ${theme.fonts.family.stylish};
