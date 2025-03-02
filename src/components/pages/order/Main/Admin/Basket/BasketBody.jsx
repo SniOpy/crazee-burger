@@ -28,6 +28,7 @@ const BasketBodyStyled = styled.div`
 
   background: ${theme.colors.background_white};
   box-shadow: ${theme.shadows.basket};
+  overflow-y: scroll;
 
   padding: 20px 8.5px;
 `;
