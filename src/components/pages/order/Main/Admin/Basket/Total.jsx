@@ -1,6 +1,6 @@
-import styled from "styled-components"
-import { theme } from "../../../../../../theme"
-import Header from "../../../../../reusable-ui/Header.jsx"
+import styled from "styled-components";
+import { theme } from "../../../../../../theme";
+import Header from "../../../../../reusable-ui/Header.jsx";
 
 export default function Total({ amountToPay }) {
   return (
@@ -10,7 +10,7 @@ export default function Total({ amountToPay }) {
         <span className="amount">{amountToPay}</span>
       </TotalStyled>
     </Header>
-  )
+  );
 }
 
 const TotalStyled = styled.div`
@@ -23,4 +23,5 @@ const TotalStyled = styled.div`
   font-size: ${theme.fonts.size.P4};
   font-weight: ${theme.fonts.weights.bold};
   letter-spacing: 2px;
-`
+  border-bottom-left-radius: none; /* Appliquer le style directement */
+`;
