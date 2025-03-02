@@ -2,11 +2,10 @@ import styled from "styled-components";
 import { theme } from "../../../../theme";
 import { formatPrice } from "../../../../utils/maths";
 import Card from "../../../reusable-ui/Card";
-import { useContext, useRef } from "react";
+import { useContext } from "react";
 import OrderContext from "../../../../context/OrderContext";
 import EmptyMenuAdmin from "./Admin/Empty/EmptyMenu/EmptyMenuAdmin";
 import EmptyMenuClient from "./Admin/Empty/EmptyMenu/EmptyMenuClient";
-import { EMPTY_PRODUCT } from "../../../../enums/product";
 
 const IMAGE_BY_DEFAULT = "/images/coming-soon.png";
 
@@ -21,6 +20,8 @@ export default function Menu() {
     setIsCollapsed,
     setCurrentTabSelected,
     titleCardRef,
+    addProductToCart,
+    removeItem,
   } = useContext(OrderContext);
 
   const selectedProduct = async (idCardSelected) => {
@@ -30,6 +31,7 @@ export default function Menu() {
     // AdminTab is not collapsed & the current Tab on "edit"
     await setIsCollapsed(false);
     await setCurrentTabSelected("edit");
+
     const productSelected = menu.find(
       (product) => product.id === idCardSelected
     );
@@ -49,13 +51,14 @@ export default function Menu() {
   const handleCardDelete = (event, idProduct) => {
     event.stopPropagation();
     handleDelete(idProduct);
-    idProduct === productClicked.id && setProductClicked("")
-    titleCardRef.current.focus();
+    removeItem(idProduct);
+    idProduct === productClicked.id && setProductClicked("");
   };
 
   return (
     <MenuStyled className="menu">
       {menu.map(({ id, title, imageSource, price }) => {
+        const product = { id, title, imageSource, price };
         return (
           <Card
             key={id}
@@ -63,10 +66,11 @@ export default function Menu() {
             imageSource={imageSource ? imageSource : IMAGE_BY_DEFAULT}
             leftDescription={formatPrice(price)}
             hasDeleteButton={isModeAdmin}
-            onDelete={(event) => handleCardDelete(event, id)}
+            onDelete={(event) => handleCardDelete(event, product)}
             onClick={() => selectedProduct(id)}
             isHoverable={isModeAdmin}
             isSelected={checkIfProductSelected(id, productClicked.id)}
+            handleAdd={(event) => addProductToCart(event, product)}
           />
         );
       })}

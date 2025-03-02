@@ -1,13 +1,13 @@
-import { useContext } from "react"
-import styled from "styled-components"
-import OrderContext from "../../../../context/OrderContext"
-import { theme } from "../../../../theme"
-import Admin from "./Admin/Admin"
-import Menu from "./Menu"
-import Basket from "./Admin/Basket/Basket"
+import { useContext } from "react";
+import styled from "styled-components";
+import OrderContext from "../../../../context/OrderContext";
+import { theme } from "../../../../theme";
+import Admin from "./Admin/Admin";
+import Menu from "./Menu";
+import Basket from "./Admin/Basket/Basket";
 
 export default function Main() {
-  const { isModeAdmin } = useContext(OrderContext)
+  const { isModeAdmin } = useContext(OrderContext);
 
   return (
     <MainStyled className="main">
@@ -17,7 +17,7 @@ export default function Main() {
         {isModeAdmin && <Admin />}
       </div>
     </MainStyled>
-  )
+  );
 }
 
 const MainStyled = styled.div`
@@ -37,4 +37,4 @@ const MainStyled = styled.div`
     display: grid;
     overflow-y: hidden;
   }
-`
+`;
