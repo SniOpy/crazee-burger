@@ -14,7 +14,7 @@ export default function Basket() {
   return (
     <BasketStyled>
       <Total amountToPay={formatPrice(getTotalPrice())} />
-      {basket ? <BasketBody basket={basket} /> : <EmptyBasket />}
+      {basket.length !== 0 ? <BasketBody basket={basket} /> : <EmptyBasket />}
       <Footer className={"footer-style"} />
     </BasketStyled>
   );

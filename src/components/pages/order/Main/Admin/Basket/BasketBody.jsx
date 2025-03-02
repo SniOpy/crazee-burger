@@ -2,12 +2,21 @@ import React from "react";
 import styled from "styled-components";
 import { theme } from "../../../../../../theme";
 import ProductCard from "./ProductCard.jsx";
+import { useContext } from "react";
+import OrderContext from "../../../../../../context/OrderContext.jsx";
 
 export default function BasketBody({ basket }) {
+  const { removeItem } = useContext(OrderContext);
   return (
     <BasketBodyStyled>
       {basket.map((product) => {
-        return <ProductCard product={product} key={product.id} />;
+        return (
+          <ProductCard
+            product={product}
+            key={product.id}
+            onClick={() => removeItem(product)}
+          />
+        );
       })}
     </BasketBodyStyled>
   );

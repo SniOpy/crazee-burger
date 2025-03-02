@@ -6,11 +6,11 @@ export const useBasket = () => {
   const [basket, setBasket] = useState([]);
 
   //! Fonction pour ajouter un produit dans le panier
-  const addProductToCart = (productAdded) => {
-    // On clone le panier pour ne pas muter directement le state
+  const addProductToCart = (event, productAdded) => {
+    event.stopPropagation();
     const copyBasket = deepClone(basket);
 
-    // On cherche si le produit ajouté existe déjà dans le panier
+    // // On cherche si le produit ajouté existe déjà dans le panier
     const existingIndex = copyBasket.findIndex(
       (item) => item.id === productAdded.id
     );
@@ -24,13 +24,21 @@ export const useBasket = () => {
     } else {
       // Le produit n'existe pas, on l'ajoute
       productAdded.quantity = 1;
-      // copyBasket.push(productAdded);
       const updateCopyBasket = [productAdded, ...copyBasket];
 
       setBasket(updateCopyBasket);
     }
   };
+  //! Fonction pour supprimer un produit dans le panier
+  const removeItem = (productDeleted) => {
+    const copyBasket = deepClone(basket);
 
+    const basketUpdated = copyBasket.filter(
+      (item) => item.id !== productDeleted.id
+    );
+    setBasket(basketUpdated);
+  };
+  //! Fonction pour calculer le montant dans le panier
   const getTotalPrice = () => {
     return basket.reduce(
       (total, product) => total + product.price * (product.quantity || 1),
@@ -43,5 +51,6 @@ export const useBasket = () => {
     basket, // tableau des produits
     addProductToCart,
     getTotalPrice,
+    removeItem,
   };
 };
