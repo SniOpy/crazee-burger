@@ -20,7 +20,13 @@ export default function OrderPage() {
   const titleCardRef = useRef();
   const { menu, setMenu, handleDelete, handleEdit, resetMenu, addProduct } =
     useMenu();
-  const { basket, addProductToCart, getTotalPrice, removeItem } = useBasket();
+  const {
+    basket,
+    addProductToCart,
+    getTotalPrice,
+    removeItem,
+    handleEditBasket,
+  } = useBasket();
 
   const orderContextValue = {
     isModeAdmin,
@@ -44,6 +50,7 @@ export default function OrderPage() {
     addProductToCart,
     getTotalPrice,
     removeItem,
+    handleEditBasket,
   };
 
   //! affichage

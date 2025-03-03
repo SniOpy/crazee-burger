@@ -5,9 +5,13 @@ import Form from "./Form.jsx";
 import EditInfoMessage from "./EditInfoMessage.jsx";
 
 export default function EditForm() {
-  const { productClicked, setProductClicked, handleEdit, titleCardRef } =
-    useContext(OrderContext);
-
+  const {
+    productClicked,
+    setProductClicked,
+    handleEdit,
+    titleCardRef,
+    handleEditBasket,
+  } = useContext(OrderContext);
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -17,13 +21,14 @@ export default function EditForm() {
     };
     setProductClicked(productBeingEdited);
     handleEdit(productBeingEdited);
+    handleEditBasket(productBeingEdited);
   };
 
   return !productClicked ? (
     <EmptyTabEdit />
   ) : (
     <Form onChange={handleChange} product={productClicked} ref={titleCardRef}>
-      <EditInfoMessage/>
+      <EditInfoMessage />
     </Form>
   );
 }

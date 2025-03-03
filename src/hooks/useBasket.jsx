@@ -46,11 +46,31 @@ export const useBasket = () => {
     );
   };
 
+  const handleEditBasket = async (productEdited) => {
+    // //1. copy state
+    const basketCopy = deepClone(basket);
+
+    // 2. State manipulation
+    const productIndex = basketCopy.findIndex(
+      (product) => product.id === productEdited.id
+    );
+
+    basketCopy[productIndex] = productEdited;
+    if (basketCopy[productIndex].quantity === 0) {
+      basketCopy[productIndex].quantity = 1;
+    }
+
+    // 3. State update
+    await setBasket(basketCopy);
+    console.log(basketCopy[productIndex].quantity);
+  };
+
   //! On retourne ce dont on a besoin dans le composant qui utilise ce hook
   return {
     basket, // tableau des produits
     addProductToCart,
     getTotalPrice,
     removeItem,
+    handleEditBasket,
   };
 };

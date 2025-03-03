@@ -22,11 +22,11 @@ export default function Menu() {
     titleCardRef,
     addProductToCart,
     removeItem,
+    handleEditBasket,
   } = useContext(OrderContext);
 
   const selectedProduct = async (idCardSelected) => {
     // if admin is false, we leave
-    if (!isModeAdmin) return;
 
     // AdminTab is not collapsed & the current Tab on "edit"
     await setIsCollapsed(false);
@@ -67,6 +67,9 @@ export default function Menu() {
             leftDescription={formatPrice(price)}
             hasDeleteButton={isModeAdmin}
             onDelete={(event) => handleCardDelete(event, product)}
+            onChange={() => {
+              handleEditBasket(event, product);
+            }}
             onClick={() => selectedProduct(id)}
             isHoverable={isModeAdmin}
             isSelected={checkIfProductSelected(id, productClicked.id)}
