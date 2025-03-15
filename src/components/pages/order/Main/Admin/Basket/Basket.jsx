@@ -1,26 +1,41 @@
-import styled from "styled-components";
-import Total from "./Total";
-import { formatPrice } from "../../../../../../utils/maths";
-import Footer from "./Footer";
-import EmptyBasket from "./EmptyBasket";
-import BasketBody from "./BasketBody";
-import OrderContext from "../../../../../../context/OrderContext";
-import { useContext } from "react";
+import styled from "styled-components"
+import Total from "./Total"
+import Footer from "./Footer"
+import EmptyBasket from "./EmptyBasket"
+import { useContext } from "react"
+import OrderContext from "../../../../../context/OrderContext"
+import BasketProducts from "./BasketProducts"
+import { theme } from "../../../../../theme"
+import { isEmpty } from "../../../../../utils/array"
 
 export default function Basket() {
-  const { basket, getTotalPrice } = useContext(OrderContext);
+  const { basket } = useContext(OrderContext)
 
-  //! State
   return (
     <BasketStyled>
-      <Total amountToPay={formatPrice(getTotalPrice())} />
-      {basket.length !== 0 ? <BasketBody basket={basket} /> : <EmptyBasket />}
-      <Footer className={"footer-style"} />
+      <Total />
+      {isEmpty(basket) ? <EmptyBasket /> : <BasketProducts />}
+      <Footer />
     </BasketStyled>
-  );
+  )
 }
 
 const BasketStyled = styled.div`
+  background: ${theme.colors.background_white};
+  box-shadow: ${theme.shadows.basket};
   display: flex;
   flex-direction: column;
-`;
+  border-bottom-left-radius: ${theme.borderRadius.extraRound};
+  height: 100vh;
+
+  .head {
+    position: sticky;
+    top: 0;
+  }
+
+  .footer {
+    border-bottom-left-radius: ${theme.borderRadius.extraRound};
+    position: sticky;
+    bottom: 0;
+  }
+`
