@@ -30,5 +30,6 @@ const BasketBodyStyled = styled.div`
   box-shadow: ${theme.shadows.basket};
   overflow-y: scroll;
 
+
   padding: 20px 8.5px;
 `;
