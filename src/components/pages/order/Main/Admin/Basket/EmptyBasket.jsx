@@ -11,7 +11,7 @@ export default function EmptyBasket() {
 
 const EmptyBasketStyled = styled.div`
   display: flex;
-  height: calc(95vh - 10vh - 70px - 70px);
+  height: calc(90vh - 10vh - 70px - 70px);
   width: 350px;
   text-align: center;
   flex: 1;
