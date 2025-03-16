@@ -5003,3 +5003,8 @@ yocto-queue@^0.1.0:
   version "0.1.0"
   resolved "https://registry.npmjs.org/yocto-queue/-/yocto-queue-0.1.0.tgz"
   integrity sha512-rVksvsnNCdJ/ohGc6xgPwyN8eheCxsiLM8mxuE/t/mOVqJewPuO1miLpTHQiRgTKCLexL4MeAFVagts7HmNZ2Q==
+
+zsh@^0.0.1:
+  version "0.0.1"
+  resolved "https://registry.yarnpkg.com/zsh/-/zsh-0.0.1.tgz#35c2796d94a1e160c252e6031aa510d3be4a0640"
+  integrity sha512-JFVRW6WWrsXoGJfnEvY0f/g2MKtTRZPOY+8VwIMvm/ThpH5YaWySc49Mx8Q0VK4SA4aIEAPXqmrFh46xjdqwJA==
