@@ -24,7 +24,7 @@ export default function Menu() {
     removeItem,
   } = useContext(OrderContext);
 
-  const selectedProduct = async (idCardSelected) => {
+const selectedProduct = async (idCardSelected) => {
     // if admin is false, we leave
     if (!isModeAdmin) return;
 
@@ -47,7 +47,7 @@ export default function Menu() {
   const checkIfProductSelected = (idProductInMenu, idProductClickedOn) => {
     return idProductInMenu === idProductClickedOn;
   };
-
+  
   const handleCardDelete = (event, idProduct) => {
     event.stopPropagation();
     handleDelete(idProduct);

@@ -6,15 +6,37 @@ import { useContext } from "react";
 import OrderContext from "../../../../../../context/OrderContext.jsx";
 
 export default function BasketBody({ basket }) {
-  const { removeItem } = useContext(OrderContext);
+  const { removeItem,isModeAdmin, setProductClicked, productClicked } = useContext(OrderContext);
+
+ const handleDelete = (event, productDeleted ) => {
+  event.stopPropagation();
+
+  removeItem(productDeleted);
+ }
+
+ const handleClick = (idCardBasket) => {
+
+  const productSelectedInBasket = basket.find((product) => product.id === idCardBasket)
+  setProductClicked(productSelectedInBasket);
+  
+ }
+
+ const checkIfItemSelectedInBasket = (idItem, idProductSelected) => {
+  return idItem === idProductSelected
+ }
   return (
     <BasketBodyStyled>
       {basket.map((product) => {
+
         return (
           <ProductCard
             product={product}
             key={product.id}
-            onClick={() => removeItem(product)}
+            onRemove={(event) => handleDelete(event,product)}
+            onClick={() => handleClick(product.id)}
+            isClickable={isModeAdmin}
+            isSelected={checkIfItemSelectedInBasket(product.id, productClicked.id)}
+
           />
         );
       })}

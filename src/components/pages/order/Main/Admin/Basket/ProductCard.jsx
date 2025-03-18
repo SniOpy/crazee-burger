@@ -4,9 +4,12 @@ import { theme } from "../../../../../../theme";
 const IMAGE_BY_DEFAULT = "/images/coming-soon.png";
 import { IoTrashBinSharp } from "react-icons/io5";
 
-export default function ProductCard({ product, onClick }) {
+export default function ProductCard({ product, onRemove,onClick, isSelected, isClickable}) {
+  
+
+  
   return (
-    <ProductCardStyled key={product.id}>
+    <ProductCardStyled key={product.id}  onClick={onClick} $isClickable={isClickable} $isSelected={isSelected}>
       <div className="left-side">
         <img
           className="image"
@@ -22,7 +25,7 @@ export default function ProductCard({ product, onClick }) {
           </div>
         </div>
         <div className="quantity">x {product.quantity}</div>
-        <div className="delete-cross" onClick={onClick}>
+        <div className="delete-cross" onClick={onRemove}>
           <IoTrashBinSharp />
         </div>
       </div>
@@ -31,7 +34,9 @@ export default function ProductCard({ product, onClick }) {
 }
 
 const ProductCardStyled = styled.div`
-  display: flex;
+
+
+display: flex;
   height: 70px;
   width: 286px;
 
@@ -93,7 +98,6 @@ const ProductCardStyled = styled.div`
 
   &:hover {
     position: relative;
-    cursor: pointer;
     transition: all 0.4s ease-out;
 
     .delete-cross {
@@ -124,4 +128,19 @@ const ProductCardStyled = styled.div`
       color: black;
     }
   }
+
+  ${({ $isClickable, $isSelected }) =>  $isSelected && $isClickable && clickableStyle}
+`;
+
+const clickableStyle = css`
+
+background: ${theme.colors.primary};
+
+.right-side {
+  .price, .quantity {
+    color:  ${theme.colors.white};
+}
+}
+
+ 
 `;
