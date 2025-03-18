@@ -35,8 +35,8 @@ export default function ProductCard({ product, onRemove,onClick, isSelected, isC
 
 const ProductCardStyled = styled.div`
 
-
-display: flex;
+  cursor: ${({ $isClickable }) => ($isClickable ? "pointer" : "auto")};
+  display: flex;
   height: 70px;
   width: 286px;
 
