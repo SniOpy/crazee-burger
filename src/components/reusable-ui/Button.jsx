@@ -1,27 +1,22 @@
-import styled, { css } from "styled-components";
-import { theme } from "../../theme";
+import styled, { css } from "styled-components"
+import { theme } from "../../theme"
 
-export default function Button({
-  label,
-  Icon,
-  className,
-  onClick,
-  version = "normal",
-}) {
+export default function Button({ label, Icon, className, version = "normal", onClick }) {
   return (
-    <ButtonStyled className={className} onClick={onClick} version={version}>
+    <ButtonStyled className={className} version={version} onClick={onClick}>
       <span>{label}</span>
-      <div className="icon"> {Icon && Icon}</div>
+      <div className="icon">{Icon && Icon}</div>
     </ButtonStyled>
-  );
+  )
 }
 
 const ButtonStyled = styled.button`
-  ${(props) => extraStyle[props.version]}
-`;
+  ${({ version }) => extraStyle[version]};
+`
 
-const extraStyleNormal = css`
+const extraStylePrimary = css`
   width: 100%;
+  border: 1px solid red;
   display: inline-flex;
   justify-content: center;
   align-items: center;
@@ -30,22 +25,21 @@ const extraStyleNormal = css`
   text-decoration: none; //removes the text decoration in case you’re applying the .btn class to a link.
   line-height: 1;
 
-  padding: ${theme.fonts.size.P1} ${theme.fonts.size.P3};
-  border-radius: ${theme.borderRadius.round};
-  font-size: ${theme.fonts.size.XS};
-  font-weight: ${theme.fonts.weights.bold};
-  color: ${theme.colors.white};
-  background-color: ${theme.colors.primary};
-  border: 1px solid ${theme.colors.primary};
+  padding: 18px 24px;
+  border-radius: 5px;
+  font-size: 15px;
+  font-weight: 800;
+  color: white;
+  background-color: #ff9f1b;
+  border: 1px solid #ff9f1b;
 
-  &:hover {
+  :hover {
     color: ${theme.colors.primary};
     background-color: ${theme.colors.white};
     border: 1px solid ${theme.colors.primary};
     transition: all 200ms ease-out;
   }
-
-  &:active {
+  :active {
     background-color: ${theme.colors.primary};
     color: ${theme.colors.white};
   }
@@ -56,55 +50,49 @@ const extraStyleNormal = css`
     z-index: 2;
   }
 
-  .icon {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    /* margin-left: 10px; */
-    /* min-width: 1em; // that way, the icon size is NOT affected by width of the entire component. */
-  }
-
   &.with-focus {
-    border: 1px solid ${theme.colors.white};
+    border: 1px solid white;
     background-color: ${theme.colors.white};
     color: ${theme.colors.primary};
-
-    &:hover {
-      color: ${theme.colors.primary};
+    :hover {
+      color: ${theme.colors.white};
       background-color: ${theme.colors.primary};
       border: 1px solid ${theme.colors.white};
     }
-
-    &:active {
+    :active {
       background-color: ${theme.colors.white};
       color: ${theme.colors.primary};
     }
   }
-`;
+
+  .icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+`
 
 const extraStyleSuccess = css`
-  background: ${theme.colors.success};
-  font-size: ${theme.fonts.size.XS};
-  border-radius: ${theme.borderRadius.round};
-  padding: ${theme.fonts.size.XXS} 29px;
+  cursor: pointer;
   color: ${theme.colors.white};
+  background: ${theme.colors.success};
   border: 1px solid ${theme.colors.success};
-  font-weight: ${theme.fonts.weights.bold};
-  font-family: "Arial", cursive;
-
-  &:hover {
+  border-radius: ${theme.borderRadius.round};
+  height: 100%;
+  padding: 0 1.5em;
+  font-weight: ${theme.fonts.weights.semiBold};
+  :hover {
+    background: ${theme.colors.white};
     color: ${theme.colors.success};
-    background-color: ${theme.colors.white};
     border: 1px solid ${theme.colors.success};
   }
-
-  &:active {
-    background-color: ${theme.colors.white};
-    color: ${theme.colors.success};
+  :active {
+    color: ${theme.colors.white};
+    background: ${theme.colors.success};
+    border: 1px solid ${theme.colors.success};
   }
-`;
-
+`
 const extraStyle = {
-  normal: extraStyleNormal,
+  normal: extraStylePrimary,
   success: extraStyleSuccess,
-};
+}

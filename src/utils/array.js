@@ -1,8 +1,3 @@
-<<<<<<< HEAD
-export const deepClone = (array) => { 
-    return JSON.parse(JSON.stringify(array));
- }
-=======
 export const deepClone = (array) => {
   return JSON.parse(JSON.stringify(array))
 }
@@ -33,4 +28,3 @@ export const isEmpty = (array) => {
 // console.log("fruits: ", fruits)
 // //console.log("fruitsShallowCopy: ", fruitsShallowCopy)
 // console.log("fruitsDeepCopy: ", fruitsDeepCopy)
->>>>>>> Reset crazee burger project

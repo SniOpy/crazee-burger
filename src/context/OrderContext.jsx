@@ -1,4 +1,4 @@
-import { createContext } from "react";
+import { createContext } from "react"
 
 export default createContext({
   isModeAdmin: false,
@@ -11,20 +11,21 @@ export default createContext({
   setCurrentTabSelected: () => {},
 
   menu: [],
-  setMenu: () => {},
-  resetMenu: () => {},
-  addProduct: () => {},
+  handleAdd: () => {},
   handleDelete: () => {},
   handleEdit: () => {},
-  newProduct: [],
+  resetMenu: () => {},
+
+  newProduct: {},
   setNewProduct: () => {},
 
+  productSelected: {},
   setProductSelected: () => {},
-  productSelected: [],
-  titleCardRef: {},
+  handleProductSelected: () => {},
+
+  titleEditRef: {},
 
   basket: [],
-  addProductToCart: () => {},
-  getTotalPrice: () => {},
-  removeItem: () => {},
-});
+  handleAddToBasket: () => {},
+  handleDeleteBasketProduct: () => {},
+})
