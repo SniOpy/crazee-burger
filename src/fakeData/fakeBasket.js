@@ -1,19 +1,12 @@
-<<<<<<< HEAD
-=======
 import { EMPTY_PRODUCT } from "../enums/product"
 
->>>>>>> Reset crazee burger project
 export const EMPTY = []
 
 export const SMALL = [
   {
     id: "1",
     title: "Burger Meal",
-<<<<<<< HEAD
-    imageSource: "/images/burger1.png",
-=======
     imageSource: "images/burger1.png",
->>>>>>> Reset crazee burger project
     quantity: 1,
   },
 ]
@@ -21,22 +14,14 @@ export const SMALL = [
 export const MEDIUM = [
   {
     id: "1",
-<<<<<<< HEAD
-    imageSource: "/images/burger1.png",
-=======
     imageSource: "images/burger1.png",
->>>>>>> Reset crazee burger project
     title: "Burger Smoke BBQ",
     price: 5,
     quantity: 2,
   },
   {
     id: "2",
-<<<<<<< HEAD
-    imageSource: "/images/burger6.png",
-=======
     imageSource: "images/burger6.png",
->>>>>>> Reset crazee burger project
     title: "Vegan Burger",
     price: 5,
     quantity: 1,
@@ -50,11 +35,7 @@ export const MEDIUM = [
   },
   {
     id: "4",
-<<<<<<< HEAD
-    imageSource: "/images/drink1.png",
-=======
     imageSource: "images/drink1.png",
->>>>>>> Reset crazee burger project
     title: "Cheese Burger",
     price: 5,
     quantity: 4,
@@ -156,13 +137,10 @@ export const LARGE = [
 
 export const LARGE_WEIRD = [
   {
-<<<<<<< HEAD
-=======
     ...EMPTY_PRODUCT,
     quantity: 1,
   },
   {
->>>>>>> Reset crazee burger project
     id: "1",
     imageSource: "/images/fries3.png",
     title: "New York Fries",

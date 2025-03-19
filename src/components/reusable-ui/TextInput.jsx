@@ -1,67 +1,49 @@
-import styled, { css } from "styled-components";
-import { theme } from "../../theme";
-import React, { forwardRef } from "react";
+import React from "react"
+import styled, { css } from "styled-components"
+import { theme } from "../../theme"
 
-const TextInput = forwardRef(
-  (
-    { value, onChange, Icon, className, version = "normal", ...extraProps },
-    ref
-  ) => {
+const TextInput = React.forwardRef(
+  ({ onChange, Icon, className, version = "normal", ...extraProps }, ref) => {
     return (
-      <InputStyled className={className} version={version}>
-        <div className="icon"> {Icon && Icon}</div>
-        <input
-          onChange={onChange}
-          type="text"
-          {...extraProps}
-          value={value}
-          ref={ref}
-        />
-      </InputStyled>
-    );
+      <TextInputStyled className={className} version={version}>
+        <div className="icon">{Icon && Icon}</div>
+        <input ref={ref} onChange={onChange} type="text" {...extraProps} />
+      </TextInputStyled>
+    )
   }
-);
+)
 
-const InputStyled = styled.div`
-  background-color: ${theme.colors.white};
+export default TextInput
+const TextInputStyled = styled.div`
   border-radius: ${theme.borderRadius.round};
   display: flex;
   align-items: center;
-  padding: 18px 24px;
 
   .icon {
-    display: flex;
-    justify-content: center;
-    align-items: center;
     font-size: ${theme.fonts.size.SM};
-    margin: 0 8px 0 10px;
-    color: ${theme.colors.greySemiDark};
-    /* min-width: 1em; // that way, the icon size is NOT affected by width of the entire component. */
+    margin: 0 13px 0 8px;
+    display: flex; // to center icon vertically
   }
 
   input {
     border: none;
     font-size: ${theme.fonts.size.SM};
-    color: ${theme.colors.dark};
     width: 100%;
 
-    /* display: flex; */
-
     &::placeholder {
-      background: ${theme.colors.background_white};
       color: ${theme.colors.greyMedium};
     }
   }
 
-  /* ${(props) => props.version === "normal" && extraNormalStyle}
-  ${(props) => props.version === "minimalist" && extraMinimalistStyle} */
+  /* ${(props) => {
+    if (props.version === "normal") return extraStyleNormal
+    if (props.version === "minimalist") return extraStyleMinimalist
+  }} */
 
   ${({ version }) => extraStyle[version]}
-`;
+`
 
-export default TextInput;
-
-const extraNormalStyle = css`
+const extraStyleNormal = css`
   background-color: ${theme.colors.white};
   padding: 18px 28px;
   color: ${theme.colors.greySemiDark};
@@ -73,25 +55,24 @@ const extraNormalStyle = css`
       background: ${theme.colors.white};
     }
   }
-`;
+`
 
-const extraMinimalistStyle = css`
+const extraStyleMinimalist = css`
   background-color: ${theme.colors.background_white};
   padding: 8px 16px;
   color: ${theme.colors.greyBlue};
 
   input {
-    background: ${theme.colors.background_white};
+    background: ${theme.colors.background_white}; ////+
     color: ${theme.colors.dark};
 
     &:focus {
-      outline: 0; // add outline
+      outline: 0; //// add outline
     }
   }
-`;
+`
 
-// les dictionnaires
 const extraStyle = {
-  normal: extraNormalStyle,
-  minimalist: extraMinimalistStyle,
-};
+  normal: extraStyleNormal,
+  minimalist: extraStyleMinimalist,
+}

@@ -1,26 +1,32 @@
-import { useRef, useState } from "react";
-import { useParams } from "react-router-dom";
-import styled from "styled-components";
-import { theme } from "../../../theme";
-import Main from "./Main/Main";
-import Navbar from "./Navbar/Navbar";
-import OrderContext from "../../../context/OrderContext";
-import { EMPTY_PRODUCT } from "../../../enums/product";
-import { useMenu } from "../../../hooks/useMenu";
-import { useBasket } from "../../../hooks/useBasket";
+import { useRef, useState } from "react"
+import styled from "styled-components"
+import { theme } from "../../../theme"
+import Main from "./Main/Main"
+import Navbar from "./Navbar/Navbar"
+import OrderContext from "../../../context/OrderContext"
+import { EMPTY_PRODUCT } from "../../../enums/product"
+import { useMenu } from "../../../hooks/useMenu"
+import { useBasket } from "../../../hooks/useBasket"
+import { findObjectById } from "../../../utils/array"
 
 export default function OrderPage() {
-  //! state
-  const { username } = useParams();
-  const [isModeAdmin, setIsModeAdmin] = useState(false);
-  const [isCollapsed, setIsCollapsed] = useState(false);
-  const [currentTabSelected, setCurrentTabSelected] = useState("add");
-  const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT);
-  const [productClicked, setProductClicked] = useState("");
-  const titleCardRef = useRef();
-  const { menu, setMenu, handleDelete, handleEdit, resetMenu, addProduct } =
-    useMenu();
-  const { basket, addProductToCart, getTotalPrice, removeItem } = useBasket();
+  // state
+  const [isModeAdmin, setIsModeAdmin] = useState(false)
+  const [isCollapsed, setIsCollapsed] = useState(false)
+  const [currentTabSelected, setCurrentTabSelected] = useState("add")
+  const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT)
+  const [productSelected, setProductSelected] = useState(EMPTY_PRODUCT)
+  const titleEditRef = useRef()
+  const { menu, handleAdd, handleDelete, handleEdit, resetMenu } = useMenu()
+  const { basket, handleAddToBasket, handleDeleteBasketProduct } = useBasket()
+
+  const handleProductSelected = async (idProductClicked) => {
+    const productClickedOn = findObjectById(idProductClicked, menu)
+    await setIsCollapsed(false)
+    await setCurrentTabSelected("edit")
+    await setProductSelected(productClickedOn)
+    titleEditRef.current.focus()
+  }
 
   const orderContextValue = {
     isModeAdmin,
@@ -30,33 +36,32 @@ export default function OrderPage() {
     currentTabSelected,
     setCurrentTabSelected,
     menu,
-    setMenu,
-    addProduct,
+    handleAdd,
     handleDelete,
     resetMenu,
     newProduct,
     setNewProduct,
-    productClicked,
-    setProductClicked,
+    productSelected,
+    setProductSelected,
     handleEdit,
-    titleCardRef,
+    titleEditRef,
     basket,
-    addProductToCart,
-    getTotalPrice,
-    removeItem,
-  };
+    handleAddToBasket,
+    handleDeleteBasketProduct,
+    handleProductSelected,
+  }
 
-  //! affichage
+  //affichage
   return (
     <OrderContext.Provider value={orderContextValue}>
       <OrderPageStyled>
         <div className="container">
-          <Navbar username={username} />
+          <Navbar />
           <Main />
         </div>
       </OrderPageStyled>
     </OrderContext.Provider>
-  );
+  )
 }
 
 const OrderPageStyled = styled.div`
@@ -74,4 +79,4 @@ const OrderPageStyled = styled.div`
     flex-direction: column;
     border-radius: ${theme.borderRadius.extraRound};
   }
-`;
+`
