@@ -1,12 +1,13 @@
 import { useState } from "react"
 import { fakeMenu } from "../fakeData/fakeMenu"
 import { deepClone } from "../utils/array"
+import { synchBothMenus } from "../api/product"
 
 export const useMenu = () => {
   const [menu, setMenu] = useState(fakeMenu.LARGE)
 
   // comportements (gestionnaire de state ou "state handlers")
-  const handleAdd = (newProduct) => {
+  const handleAdd = (newProduct,username) => {
     // 1. copie du tableau
     const menuCopy = deepClone(menu)
 
@@ -15,6 +16,7 @@ export const useMenu = () => {
 
     // 3. update du state
     setMenu(menuUpdated)
+    synchBothMenus(username, menuUpdated)
   }
 
   const handleDelete = (idOfProductToDelete) => {
@@ -23,7 +25,6 @@ export const useMenu = () => {
 
     //2. manip de la copie state
     const menuUpdated = menuCopy.filter((product) => product.id !== idOfProductToDelete)
-    console.log("menuUpdated: ", menuUpdated)
 
     //3. update du state
     setMenu(menuUpdated)
