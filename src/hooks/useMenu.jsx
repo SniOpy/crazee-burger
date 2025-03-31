@@ -32,7 +32,7 @@ export const useMenu = () => {
 
   }
 
-  const handleEdit = (productBeingEdited) => {
+  const handleEdit = (productBeingEdited,username) => {
     // 1. copie du state (deep clone)
     const menuCopy = deepClone(menu)
 
@@ -44,6 +44,8 @@ export const useMenu = () => {
 
     // 3. update du state
     setMenu(menuCopy)
+    synchBothMenus(username, menuCopy)
+
   }
 
   const resetMenu = () => {
