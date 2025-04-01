@@ -9,6 +9,7 @@ import { useMenu } from "../../../hooks/useMenu"
 import { useBasket } from "../../../hooks/useBasket"
 import { findObjectById } from "../../../utils/array"
 import { useParams } from "react-router-dom"
+import { useSuccessMessage } from "../../../hooks/useSuccessMessage"
 
 export default function OrderPage() {
   // state
@@ -22,6 +23,7 @@ export default function OrderPage() {
 
   const { menu, handleAdd, handleDelete, handleEdit, resetMenu } = useMenu()
   const { basket, handleAddToBasket, handleDeleteBasketProduct } = useBasket()
+  const {isSubmitted, displaySuccessMessage} = useSuccessMessage()
 
   const handleProductSelected = async (idProductClicked) => {
     const productClickedOn = findObjectById(idProductClicked, menu)
@@ -53,6 +55,8 @@ export default function OrderPage() {
     handleAddToBasket,
     handleDeleteBasketProduct,
     handleProductSelected,
+    isSubmitted, 
+    displaySuccessMessage,
   }
 
   //affichage

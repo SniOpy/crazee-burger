@@ -1,19 +1,20 @@
-import React from "react"
+import React, { useState } from "react"
 import styled from "styled-components"
 import TextInput from "../../../../../../reusable-ui/TextInput"
 import ImagePreview from "./ImagePreview"
 import { getInputTextsConfig } from "./inputTextConfig"
 
-const Form = React.forwardRef(({ product, onSubmit, onChange, children }, ref) => {
+const Form = React.forwardRef(({ product, onSubmit, onChange, children, onBlur}, ref) => {
   // state (vide)
-
-  // comportements (vide)
-
+ 
+  
+  // comportements
+  
   const inputTexts = getInputTextsConfig(product)
 
   // affichage
   return (
-    <FormStyled onSubmit={onSubmit}>
+    <FormStyled onSubmit={onSubmit} >
       <ImagePreview imageSource={product.imageSource} title={product.title} />
       <div className="input-fields">
         {inputTexts.map((input) => (
@@ -23,6 +24,7 @@ const Form = React.forwardRef(({ product, onSubmit, onChange, children }, ref) =
             onChange={onChange}
             version="minimalist"
             ref={ref && input.name === "title" ? ref : null}
+            onBlur={onBlur}
           />
         ))}
       </div>

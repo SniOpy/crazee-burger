@@ -8,8 +8,8 @@ import SubmitButton from "./SubmitButton"
 
 export default function AddForm() {
   // state
-  const { username, handleAdd, newProduct, setNewProduct } = useContext(OrderContext)
-  const { isSubmitted, displaySuccessMessage } = useSuccessMessage()
+  const { username, handleAdd, newProduct, setNewProduct,isSubmitted, displaySuccessMessage } = useContext(OrderContext)
+
 
   // comportements
   const handleSubmit = (event) => {

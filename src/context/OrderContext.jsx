@@ -29,4 +29,8 @@ export default createContext({
   basket: [],
   handleAddToBasket: () => {},
   handleDeleteBasketProduct: () => {},
+  
+  isSubmitted: false,
+  displaySuccessMessage : () => {},
+
 })
