@@ -23,6 +23,10 @@ export default function Menu() {
     handleDeleteBasketProduct,
     handleProductSelected,
   } = useContext(OrderContext)
+
+
+  
+  
   // state
 
   // comportements (gestionnaires d'événement ou "event handlers")
@@ -41,7 +45,7 @@ export default function Menu() {
   // affichage
   if (isEmpty(menu)) {
     if (!isModeAdmin) return <EmptyMenuClient />
-    return <EmptyMenuAdmin onReset={resetMenu} />
+    return <EmptyMenuAdmin onReset={()=> resetMenu(username)} />
   }
 
   return (

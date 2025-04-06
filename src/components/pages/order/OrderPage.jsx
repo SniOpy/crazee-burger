@@ -10,6 +10,8 @@ import { useBasket } from "../../../hooks/useBasket"
 import { findObjectById } from "../../../utils/array"
 import { useParams } from "react-router-dom"
 import { useSuccessMessage } from "../../../hooks/useSuccessMessage"
+import { synchBothMenus } from "../../../api/product"
+import { useEffect } from "react"
 
 export default function OrderPage() {
   // state
@@ -21,7 +23,7 @@ export default function OrderPage() {
   const titleEditRef = useRef()
   const {username} = useParams();
 
-  const { menu, handleAdd, handleDelete, handleEdit, resetMenu } = useMenu()
+  const { menu, handleAdd, handleDelete, handleEdit, resetMenu, handleMenu } = useMenu()
   const { basket, handleAddToBasket, handleDeleteBasketProduct } = useBasket()
   const {isSubmitted, displaySuccessMessage} = useSuccessMessage()
 
@@ -32,6 +34,13 @@ export default function OrderPage() {
     await setProductSelected(productClickedOn)
     titleEditRef.current.focus()
   }
+
+  useEffect(() => {
+    
+    if(username){
+      handleMenu(username)
+    }
+  }, [username]);
 
   const orderContextValue = {
     username,
@@ -57,7 +66,10 @@ export default function OrderPage() {
     handleProductSelected,
     isSubmitted, 
     displaySuccessMessage,
+
   }
+
+
 
   //affichage
   return (

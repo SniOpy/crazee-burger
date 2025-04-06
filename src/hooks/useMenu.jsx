@@ -1,10 +1,12 @@
-import { useState } from "react"
+import { useContext, useState } from "react"
 import { fakeMenu } from "../fakeData/fakeMenu"
 import { deepClone } from "../utils/array"
-import { synchBothMenus } from "../api/product"
+import { synchBothMenus, getMenus} from "../api/product"
+import OrderContext from "../context/OrderContext"
+
 
 export const useMenu = () => {
-  const [menu, setMenu] = useState(fakeMenu.SMALL )
+  const [menu, setMenu] = useState([])
 
   // comportements (gestionnaire de state ou "state handlers")
   const handleAdd = (newProduct,username) => {
@@ -25,7 +27,7 @@ export const useMenu = () => {
 
     //2. manip de la copie state
     const menuUpdated = menuCopy.filter((product) => product.id !== idOfProductToDelete)
-
+    
     //3. update du state
     setMenu(menuUpdated)
     synchBothMenus(username, menuUpdated)
@@ -48,9 +50,20 @@ export const useMenu = () => {
 
   }
 
-  const resetMenu = () => {
-    setMenu(fakeMenu.MEDIUM)
+  const resetMenu = async (userId) => {
+    
+    const updatedMenu = fakeMenu.MEDIUM
+    setMenu(updatedMenu)
+    await synchBothMenus(userId, updatedMenu)
   }
 
-  return { menu, setMenu, handleAdd, handleDelete, handleEdit, resetMenu }
+  const handleMenu = async (username) => {
+
+    const fetchMenu = await getMenus(username)
+    setMenu(fetchMenu.menu);
+
+    
+  }
+
+  return { menu, setMenu, handleAdd, handleDelete, handleEdit, resetMenu, handleMenu}
 }
