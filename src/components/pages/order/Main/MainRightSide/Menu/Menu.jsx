@@ -13,6 +13,7 @@ import { isEmpty } from "../../../../../../utils/array"
 export default function Menu() {
   const {
     menu,
+    username,
     isModeAdmin,
     handleDelete,
     resetMenu,
@@ -22,12 +23,16 @@ export default function Menu() {
     handleDeleteBasketProduct,
     handleProductSelected,
   } = useContext(OrderContext)
+
+
+  
+  
   // state
 
   // comportements (gestionnaires d'événement ou "event handlers")
   const handleCardDelete = (event, idProductToDelete) => {
     event.stopPropagation()
-    handleDelete(idProductToDelete)
+    handleDelete(idProductToDelete,username)
     handleDeleteBasketProduct(idProductToDelete)
     idProductToDelete === productSelected.id && setProductSelected(EMPTY_PRODUCT)
   }
@@ -40,7 +45,7 @@ export default function Menu() {
   // affichage
   if (isEmpty(menu)) {
     if (!isModeAdmin) return <EmptyMenuClient />
-    return <EmptyMenuAdmin onReset={resetMenu} />
+    return <EmptyMenuAdmin onReset={()=> resetMenu(username)} />
   }
 
   return (

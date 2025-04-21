@@ -1,81 +1,121 @@
-<<<<<<< HEAD
-# React + Vite
+# 🍔 Crazee Burger
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**Crazee Burger** est une application web moderne permettant de gérer une liste de burgers personnalisés. Ce projet met en œuvre une stack Frontend avec des technologies modernes et une organisation professionnelle du travail, de la maquette à la mise en production.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-=======
-# Getting Started with Create React App
+## 🚀 Fonctionnalités principales
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+- Affichage dynamique de burgers
+- Ajout, modification et suppression de burgers
+- Navigation fluide entre les pages grâce à React Router DOM
+- Authentification avec Firebase
+- Hooks personnalisés pour une meilleure organisation du code
+- UI moderne avec Styled Components
+- Maquette réalisée sur Figma
+- Suivi agile avec Trello (backlogs, user stories, sprints)
 
-## Available Scripts
+---
 
-In the project directory, you can run:
+## 🛠️ Stack technique
 
-### `npm start`
+- **React** (avec hooks personnalisés)
+- **React Router DOM**
+- **Firebase** (base de données)
+- **Styled Components**
+- **Figma** pour le design UI/UX
+- **Trello** pour la gestion agile
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+---
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## 📦 Installation
 
-### `npm test`
+### ✅ Prérequis
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Avant de commencer, assure-toi d’avoir installé :
 
-### `npm run build`
+- [Node.js](https://nodejs.org/) (version 18 ou supérieure recommandée)
+- [npm](https://www.npmjs.com/) (installé avec Node.js)
+- L’application utilise **[Vite](https://vitejs.dev/)** comme bundler pour le développement rapide
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Clone le projet à partir de GitHub :
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```bash
+git clone https://github.com/SniOpy/crazee-burger.git
+cd crazee-burger
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### 💻 Lancer l’application en local
 
-### `npm run eject`
+1. Installe les dépendances :
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+```bash
+npm install
+```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+2. Crée un fichier `.env` à la racine avec tes clés Firebase :
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+```env
+VITE_API_KEY=your_api_key
+VITE_AUTH_DOMAIN=your_project.firebaseapp.com
+VITE_PROJECT_ID=your_project_id
+VITE_STORAGE_BUCKET=your_project.appspot.com
+VITE_MESSAGING_SENDER_ID=your_sender_id
+VITE_APP_ID=your_app_id
+```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+3. Démarre le serveur de développement :
 
-## Learn More
+```bash
+npm run dev
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+> L’application sera disponible sur `http://localhost:5173`
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+---
 
-### Code Splitting
+## 📁 Structure du projet
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+```
+crazee-burger/
+│
+├── public/
+│
+└── src/
+    ├── components/         # Composants réutilisables
+    ├── hooks/              # Hooks personnalisés
+    ├── pages/              # Pages principales
+    ├── services/           # Intégration Firebase
+    ├── styles/             # Styled Components
+    ├── router/             # Configuration React Router
+    └── App.jsx             # Point d’entrée principal
+```
 
-### Analyzing the Bundle Size
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## 🧠 Méthodologie
 
-### Making a Progressive Web App
+Le projet a été mené selon la **méthode agile** avec :
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+- Un **Trello** complet (Product Backlog, Sprint Backlog, Done)
+- Des **sprints hebdomadaires**
+- Des **revues de sprint** et **rétrospectives**
+- Un **suivi de l’avancement** via des commits Git réguliers
 
-### Advanced Configuration
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+## 🎨 Design
 
-### Deployment
+- Maquette originale réalisée sur **Figma**
+- Interface responsive et épurée
+- Composants UI modulaires avec **Styled Components**
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+---
 
-### `npm run build` fails to minify
+## ✍️ Auteur
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
->>>>>>> Reset crazee burger project
+Développé avec ❤️ par **SniOpy**  
+📫 Contact : soufianeibna@gmail.com  
+🌐 GitHub : [https://github.com/SniOpy](https://github.com/SniOpy)
+
+---

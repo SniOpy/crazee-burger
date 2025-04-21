@@ -8,6 +8,10 @@ import { EMPTY_PRODUCT } from "../../../enums/product"
 import { useMenu } from "../../../hooks/useMenu"
 import { useBasket } from "../../../hooks/useBasket"
 import { findObjectById } from "../../../utils/array"
+import { useParams } from "react-router-dom"
+import { useSuccessMessage } from "../../../hooks/useSuccessMessage"
+import { synchBothMenus } from "../../../api/product"
+import { useEffect } from "react"
 
 export default function OrderPage() {
   // state
@@ -17,8 +21,11 @@ export default function OrderPage() {
   const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT)
   const [productSelected, setProductSelected] = useState(EMPTY_PRODUCT)
   const titleEditRef = useRef()
-  const { menu, handleAdd, handleDelete, handleEdit, resetMenu } = useMenu()
+  const {username} = useParams();
+
+  const { menu, handleAdd, handleDelete, handleEdit, resetMenu, handleMenu } = useMenu()
   const { basket, handleAddToBasket, handleDeleteBasketProduct } = useBasket()
+  const {isSubmitted, displaySuccessMessage} = useSuccessMessage()
 
   const handleProductSelected = async (idProductClicked) => {
     const productClickedOn = findObjectById(idProductClicked, menu)
@@ -28,7 +35,15 @@ export default function OrderPage() {
     titleEditRef.current.focus()
   }
 
+  useEffect(() => {
+    
+    if(username){
+      handleMenu(username)
+    }
+  }, [username]);
+
   const orderContextValue = {
+    username,
     isModeAdmin,
     setIsModeAdmin,
     isCollapsed,
@@ -49,7 +64,12 @@ export default function OrderPage() {
     handleAddToBasket,
     handleDeleteBasketProduct,
     handleProductSelected,
+    isSubmitted, 
+    displaySuccessMessage,
+
   }
+
+
 
   //affichage
   return (
